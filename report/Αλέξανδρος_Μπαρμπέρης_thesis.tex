@@ -1,0 +1,159 @@
+\documentclass[11pt, twoside, a4paper]{ntua_thesis_class}
+
+\usepackage{blindtext}
+\usepackage[a4paper, textwidth=15.5cm, hmarginratio=1:1, bindingoffset=0.7cm, top=2.5cm, bottom=2.5cm, ignoreheadfoot]{geometry}
+\usepackage{graphicx}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{csquotes}
+% For weird horizontal lines
+\usepackage{arydshln}
+
+% I would use babelbib but it has no support for iee style.
+% \usepackage{babelbib}
+% \selectbiblanguage{english}
+% \setbtxfallbacklanguage{english}
+
+\usepackage{cite}
+\bibliographystyle{ieeetran}
+
+
+\usepackage{epigraph}
+\setlength\epigraphwidth{10cm}
+\setlength\epigraphrule{0pt}
+
+\usepackage{wrapfig}
+\usepackage[main=greek, english]{babel}
+
+\usepackage{fancyhdr}
+\usepackage{cite}
+
+
+
+% Better paragraphs
+\usepackage{parskip}
+\setlength{\parindent}{15pt}
+
+\setlength{\headheight}{15pt}
+
+% The command below lets us use english bibliography (with ieee style) and a greek title for bibliography.
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{\selectlanguage{english}\renewcommand\bibname{\gr{Βιβλιογραφία}}}
+
+% Line spacing
+% 1.2 spacing
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+% \setlength{\footskip}{25pt}
+
+% typeset short english phrases
+\newcommand{\en}[1]{\foreignlanguage{english}{#1}}
+\newcommand{\gr}[1]{\foreignlanguage{greek}{#1}}
+
+% typeset source code
+\newcommand{\src}[1]{{\tt\en{#1}}}
+
+\usepackage{afterpage}
+
+\newcommand{\blankpage}{%
+    \null%
+    \thispagestyle{empty}%
+    \newpage}
+
+\newcommand{\plainpage}{%
+    \null%
+    \thispagestyle{plain}%
+    \newpage%
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[LE, RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0pt}% Line at the footer visible
+}
+
+% Use this command for other fonts in english language.
+\usepackage[T1, LGR]{fontenc}
+% % shortcuts for latin and greek text
+\newcommand{\tl}[1]{\textlatin{#1}}
+\newcommand{\tg}[1]{\textgreek{#1}}
+
+
+
+
+\begin{document}
+    \include{front/cover_page}
+    % Leave a Total Blank page (without numbering).
+    \blankpage
+
+    \include{front/title_page}
+    \include{front/copyright}
+    
+    \blankpage
+    \blankpage
+    % Clear default headers & footers
+    \pagestyle{fancy}
+    \fancyhf{}
+    % Use the same footer for pages
+    \fancyfoot[LE, RO]{\thepage}
+    % Start counting from here.
+    \pagenumbering{roman}
+    \setcounter{page}{1}
+
+    \renewcommand{\headrulewidth}{0.5pt}
+    \fancyhead[LE]{\leftmark}
+    \fancyhead[LO]{\rightmark}
+    % \renewcommand{\footrulewidth}{1pt}
+
+
+    % Abstract in Greek
+    \include{front/abstract_gr}
+
+    \blankpage
+
+    % Abstract in English
+    \include{front/abstract_en}
+
+    \blankpage
+
+    % Thanksgiving page 
+    \include{front/thanks_gr}
+
+    \blankpage
+
+    % Contents Table (Include contents table in contents table.)
+    \tableofcontents
+    \addcontentsline{toc}{chapter}{\contentsname}
+
+    % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed. In a two-sided printing style, 
+    % it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
+    \cleardoublepage
+
+    % Reset page numbering. 
+    % Careful! Transition from roman to arabic should respect parity.
+    % i.e. transition from even roman number -> odd arabic number(1).
+    % This must be taken care automatically (due to the \cleardoublepage command).
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+
+    
+    % Introduction
+    \include{main_body/introduction}
+    \include{main_body/theory}
+
+    \blankpage
+    % Add Bibliography to contents table.
+    \phantomsection 
+    \addcontentsline{toc}{chapter}{Βιβλιογραφία}
+    % Tell LaTeX where bibliography.bib file is.
+    \bibliography{references/bibliography.bib}
+    \blankpage
+    \appendix
+    \include{appendixes/definitions}
+    \include{appendixes/apodosixenwnorwn.tex}
+    \include{appendixes/abbreviations.tex}
+    
+    
+\end{document}
