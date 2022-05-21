@@ -16,7 +16,7 @@ __pycache__/
 *.cb
 *.cb2
 .*.lb
-*thesis.pdf
+report/*thesis.pdf
 
 ## Intermediate documents:
 *.dvi
