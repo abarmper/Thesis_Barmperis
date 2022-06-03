@@ -25,4 +25,13 @@ fig, ax = plt.subplots() # or
 p = sns.lineplot(data=data_word_frequences, x = "Year", y = "Word Frequency", palette="muted", color='red')
 p.set_xlabel("Year", fontsize = 16)
 p.set_ylabel("\'AI\' Word Frequency", fontsize = 16)
-fig.savefig('ngramAI.eps', format='eps')
+fig.savefig('ngramAI_.svg', format='svg')
+
+# Plot the data in greek
+sns.set(font_scale = 2)
+sns.set_theme() # Set default theme
+fig, ax = plt.subplots() # or 
+p = sns.lineplot(data=data_word_frequences, x = "Year", y = "Word Frequency", palette="muted", color='red')
+p.set_xlabel("Έτος", fontsize = 16)
+p.set_ylabel("Συχνότητα Λέξης \'AI\'", fontsize = 16)
+fig.savefig('ngramAI_greek.svg', format='svg')
