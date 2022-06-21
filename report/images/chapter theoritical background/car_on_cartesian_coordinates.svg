@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg:svg
+   version="1.0"
+   width="301"
+   height="301"
+   id="svg1415"
+   sodipodi:docname="2D_Cartesian_Coordinates.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview61"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.2344574"
+     inkscape:cx="95.996459"
+     inkscape:cy="131.3518"
+     inkscape:window-width="1724"
+     inkscape:window-height="1259"
+     inkscape:window-x="1206"
+     inkscape:window-y="407"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g1590" />
+  <svg:defs
+     id="defs1417" />
+  <svg:g
+     id="layer1">
+    <svg:g
+       transform="translate(-309.1428,35.85211)"
+       id="g1590">
+      <svg:text
+         x="314.16318"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text3">-6</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line5"
+         y2="-34.689827"
+         x2="310.84976"
+         y1="262.9462"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="338.96738"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text7">-5</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line9"
+         y2="-34.689827"
+         x2="335.65475"
+         y1="262.9462"
+         x1="335.65475"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="363.77017"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text11">-4</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line13"
+         y2="-34.689827"
+         x2="360.45676"
+         y1="262.9462"
+         x1="360.45676"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="388.57336"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text15">-3</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line17"
+         y2="-34.689827"
+         x2="385.26077"
+         y1="262.9462"
+         x1="385.26077"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="413.37555"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text19">-2</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line21"
+         y2="-34.689827"
+         x2="410.06277"
+         y1="262.9462"
+         x1="410.06277"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="438.17834"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text23">-1</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line25"
+         y2="-34.689827"
+         x2="434.86777"
+         y1="262.9462"
+         x1="434.86777"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="474.22815"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text27">1</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line29"
+         y2="-34.689827"
+         x2="484.47275"
+         y1="262.9462"
+         x1="484.47275"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="499.03186"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text31">2</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line33"
+         y2="-34.689827"
+         x2="509.27576"
+         y1="262.9462"
+         x1="509.27576"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="523.83453"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text35">3</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line37"
+         y2="-34.689827"
+         x2="534.07776"
+         y1="262.9462"
+         x1="534.07776"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="548.63928"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text39">4</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line41"
+         y2="-34.689827"
+         x2="558.88379"
+         y1="262.9462"
+         x1="558.88379"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="573.44104"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text43">5</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line45"
+         y2="-34.689827"
+         x2="583.68579"
+         y1="262.9462"
+         x1="583.68579"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="598.24377"
+         y="127.99088"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text47">6</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line49"
+         y2="-34.689827"
+         x2="608.48877"
+         y1="262.9462"
+         x1="608.48877"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="443.95615"
+         y="259.63348"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text51">-6</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line53"
+         y2="262.9462"
+         x2="608.48877"
+         y1="262.9462"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="443.95615"
+         y="234.83128"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text55">-5</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line57"
+         y2="238.14418"
+         x2="608.48877"
+         y1="238.14418"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="443.95615"
+         y="210.02797"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text59">-4</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line61"
+         y2="213.34016"
+         x2="608.48877"
+         y1="213.34016"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="443.95615"
+         y="185.22527"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text63">-3</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line65"
+         y2="188.53816"
+         x2="608.48877"
+         y1="188.53816"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="443.95615"
+         y="160.42258"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text67">-2</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line69"
+         y2="163.73416"
+         x2="608.48877"
+         y1="163.73416"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line71"
+         y2="138.93016"
+         x2="608.48877"
+         y1="138.93016"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="101.50846"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text73">1</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line75"
+         y2="89.326172"
+         x2="608.48877"
+         y1="89.326172"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="76.704773"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text77">2</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line79"
+         y2="64.522171"
+         x2="608.48877"
+         y1="64.522171"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="51.90107"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text81">3</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line83"
+         y2="39.718174"
+         x2="608.48877"
+         y1="39.718174"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="27.098272"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text85">4</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line87"
+         y2="14.916174"
+         x2="608.48877"
+         y1="14.916174"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="2.2955737"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text89">5</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line91"
+         y2="-9.8878269"
+         x2="608.48877"
+         y1="-9.8878269"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:text
+         x="447.43805"
+         y="-22.507627"
+         style="font-size:10.4608px;font-family:ArialMT"
+         id="text93">6</svg:text>
+      <svg:line
+         style="fill:none;stroke:#00a0c6;stroke-width:0.797;stroke-linecap:square;stroke-miterlimit:10"
+         id="line95"
+         y2="-34.689827"
+         x2="608.48877"
+         y1="-34.689827"
+         x1="310.84976"
+         stroke-miterlimit="10" />
+      <svg:polyline
+         id="polyline97"
+         points="11.383,170.331 0.398,174.253 11.383,178.175 6.989,174.253 "
+         transform="translate(310.45173,-60.124825)" />
+      <svg:polyline
+         id="polyline99"
+         points="287.052,178.175 298.037,174.253 287.052,170.331 291.445,174.253 "
+         transform="translate(310.45173,-60.124825)" />
+      <svg:polyline
+         id="polyline101"
+         points="145.295,312.088 149.219,323.071 153.141,312.088 149.219,316.481 "
+         transform="translate(310.45173,-60.124825)" />
+      <svg:polyline
+         id="polyline103"
+         points="153.141,36.417 149.219,25.435 145.295,36.417 149.219,32.025 "
+         transform="translate(310.45173,-60.124825)" />
+      <svg:line
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10"
+         id="line109"
+         y2="114.12817"
+         x2="601.89679"
+         y1="114.12817"
+         x1="317.44077"
+         stroke-miterlimit="10" />
+      <svg:line
+         style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10"
+         id="line111"
+         y2="-28.099825"
+         x2="459.67075"
+         y1="256.35617"
+         x1="459.67075"
+         stroke-miterlimit="10" />
+    </svg:g>
+  </svg:g>
+  <script />
+</svg:svg>
