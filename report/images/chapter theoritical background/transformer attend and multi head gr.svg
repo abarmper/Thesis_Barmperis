@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="transformer attend and multi head gr.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.829812"
+     inkscape:cx="430.64533"
+     inkscape:cy="314.78644"
+     inkscape:window-width="3840"
+     inkscape:window-height="2126"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_1" />
+  <defs
+     id="defs2">
+    <rect
+       x="749.68748"
+       y="159.98485"
+       width="422.99932"
+       height="34.818155"
+       id="rect4440" />
+  </defs>
+  <g
+     inkscape:label="Στρώση 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="Group_113"
+       data-name="Group 113"
+       transform="matrix(0.26458333,0,0,0.26458333,-62.939564,28.16523)">
+      <g
+         id="Rectangle_2"
+         data-name="Rectangle 2"
+         class="cls-1"
+         transform="translate(338,71)"
+         style="fill:#f7f7f7;stroke:#707070">
+        <rect
+           class="cls-25"
+           width="392"
+           height="472"
+           id="rect136"
+           style="stroke:none"
+           x="0"
+           y="0" />
+        <rect
+           class="cls-26"
+           x="0.5"
+           y="0.5"
+           width="391"
+           height="471"
+           id="rect138"
+           style="fill:none" />
+        <rect
+           class="cls-25"
+           width="392"
+           height="472"
+           id="rect136-7"
+           style="fill:#f7f7f7;stroke:#707070;stroke-opacity:1;fill-opacity:0.81034487"
+           x="4.9161382"
+           y="-5.7603769" />
+      </g>
+      <g
+         id="Group_1"
+         data-name="Group 1"
+         transform="translate(0,-996)">
+        <rect
+           id="Rectangle_58-2"
+           data-name="Rectangle 58"
+           class="cls-19"
+           width="500.79144"
+           height="528.33649"
+           style="fill:#10ebfd;fill-opacity:0.492611;stroke-width:7.51902"
+           x="842.86865"
+           y="1047.2463" />
+        <rect
+           id="Rectangle_47"
+           data-name="Rectangle 47"
+           class="cls-2"
+           width="40"
+           height="40"
+           transform="translate(435,1487)"
+           style="opacity:0.502;fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wq1"
+           class="cls-3"
+           transform="translate(455,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;opacity:0.502;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan142">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan144">q1</tspan></text>
+        <g
+           id="Group_90"
+           data-name="Group 90"
+           transform="translate(455.358,1451.598)">
+          <line
+             id="Line_7"
+             data-name="Line 7"
+             class="cls-5"
+             x2="0.142"
+             y2="31.902"
+             transform="translate(0,2)"
+             style="fill:none;stroke:#c9c9c9"
+             x1="0"
+             y1="0" />
+        </g>
+        <g
+           id="Group_91"
+           data-name="Group 91"
+           transform="rotate(-90,956.6155,509.0735)">
+          <g
+             id="Path_16"
+             data-name="Path 16"
+             class="cls-6"
+             transform="rotate(135,6.2237681,7.1635054)"
+             style="fill:#c9c9c9">
+            <path
+               class="cls-25"
+               d="M 4.6242523,10.180093 0.8966583,0.89179039 10.226916,4.5774202 7.4021688,7.4021678 Z"
+               id="path149"
+               style="stroke:none" />
+            <path
+               class="cls-27"
+               d="M 1.793314,1.7835875 4.8062057,9.2910175 7.0486088,7.0486078 9.3346558,4.7625613 1.793314,1.7835875 M -9.5367432e-7,-1.9073486e-6 11.119159,4.3922777 7.7557192,7.7557178 4.4422889,11.069158 Z"
+               id="path151"
+               style="fill:#c9c9c9;stroke:none" />
+          </g>
+        </g>
+        <g
+           id="Symbol_3_1"
+           data-name="Symbol 3 – 1"
+           class="cls-7"
+           transform="translate(720,1787)"
+           style="opacity:0.502">
+          <rect
+             id="Rectangle_1"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan156">MatMul</tspan></text>
+        </g>
+        <rect
+           id="Rectangle_51"
+           data-name="Rectangle 51"
+           class="cls-10"
+           width="40"
+           height="40"
+           transform="translate(362,1551)"
+           style="fill:#9db4ff"
+           x="0"
+           y="0" />
+        <text
+           id="Q"
+           class="cls-11"
+           transform="translate(382,1578)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-6.0209999"
+             y="0"
+             id="tspan161">Q</tspan></text>
+        <text
+           id="q.d"
+           class="cls-12"
+           transform="translate(382,1606)"
+           style="font-style:italic;font-size:15px;font-family:Hack-Italic, Hack;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan164">q.d</tspan></text>
+        <rect
+           id="Rectangle_50"
+           data-name="Rectangle 50"
+           class="cls-13"
+           width="90"
+           height="52"
+           transform="translate(505,1250)"
+           style="opacity:0.502;fill:#10ebfd"
+           x="0"
+           y="0" />
+        <text
+           id="Attend"
+           class="cls-14"
+           transform="translate(550,1283)"
+           style="font-size:20px;font-family:Menlo-Regular, Menlo;opacity:0.502;fill:#020000"><tspan
+             x="-36.123001"
+             y="0"
+             id="tspan168">Attend</tspan></text>
+        <rect
+           id="Rectangle_55"
+           data-name="Rectangle 55"
+           class="cls-15"
+           width="40"
+           height="40"
+           transform="translate(392,1487)"
+           style="fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wqh"
+           class="cls-11"
+           transform="translate(412,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan172">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan174">qh</tspan></text>
+        <g
+           id="Symbol_3_2"
+           data-name="Symbol 3 – 2"
+           transform="translate(693,1812)">
+          <rect
+             id="Rectangle_1-2"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-2"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan178">MatMul</tspan></text>
+        </g>
+        <g
+           id="Group_92"
+           data-name="Group 92"
+           transform="translate(132,23)">
+          <g
+             id="Group_74"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-2"
+               data-name="Line 7"
+               class="cls-16"
+               y2="15"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-2"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path184"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path186"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <g
+           id="Group_102"
+           data-name="Group 102"
+           class="cls-18"
+           transform="rotate(-90,549.625,1236.125)"
+           style="opacity:0.501">
+          <line
+             id="Line_57"
+             data-name="Line 57"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1118.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <g
+             id="Group_80"
+             data-name="Group 80"
+             transform="rotate(90,-395.268,834.268)">
+            <g
+               id="Path_3"
+               data-name="Path 3"
+               class="cls-17"
+               transform="rotate(45,3.974,9.5940847)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.7900949,10.354955 0.91325688,0.90838456 10.401868,4.7431903 7.5725255,7.5725245 Z"
+                 id="path192"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.8265228,1.8167667 4.9675417,9.4703884 7.2189655,7.2189641 9.5142059,4.9237304 1.8265228,1.8167667 M -4.7683716e-6,4.7683716e-6 11.289515,4.5626445 7.9260755,7.926074 4.6126451,11.239504 Z"
+                 id="path194"
+                 style="fill:#707070;stroke:none" />
+            </g>
+            <g
+               id="Group_9"
+               data-name="Group 9"
+               transform="translate(7.965,0.641)">
+              <line
+                 id="Line_7-3"
+                 data-name="Line 7"
+                 class="cls-16"
+                 y2="15"
+                 style="fill:none;stroke:#707070"
+                 x1="0"
+                 y1="0"
+                 x2="0" />
+            </g>
+          </g>
+          <line
+             id="Line_58"
+             data-name="Line 58"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1237.325)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <line
+             id="Line_59"
+             data-name="Line 59"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1354.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <line
+             id="Line_60"
+             data-name="Line 60"
+             class="cls-16"
+             y2="236"
+             transform="translate(423.5,1118.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             x2="0" />
+        </g>
+        <rect
+           id="Rectangle_58"
+           data-name="Rectangle 58"
+           class="cls-19"
+           width="90"
+           height="52"
+           transform="translate(485,1286)"
+           style="fill:#10ebfd"
+           x="0"
+           y="0" />
+        <text
+           id="Attend-2"
+           data-name="Attend"
+           class="cls-9"
+           transform="translate(530,1319)"
+           style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+             x="-36.123001"
+             y="0"
+             id="tspan205">Attend</tspan></text>
+        <text
+           id="q._h_w_"
+           data-name="q.(h*w)"
+           class="cls-20"
+           transform="translate(656,1201)"
+           style="font-style:italic;font-size:15px;font-family:Menlo-Italic, Menlo;fill:#020000"><tspan
+             x="-31.608"
+             y="0"
+             id="tspan208">q.(h*w)</tspan></text>
+        <text
+           id="_h_w_.v"
+           data-name="(h*w).v"
+           class="cls-20"
+           transform="translate(436,1145)"
+           style="font-style:italic;font-size:15px;font-family:Menlo-Italic, Menlo;fill:#020000"><tspan
+             x="-31.608"
+             y="0"
+             id="tspan211">(h*w).v</tspan></text>
+        <g
+           id="Rectangle_60"
+           data-name="Rectangle 60"
+           class="cls-1"
+           transform="translate(469.995,1170.992)"
+           style="fill:#f7f7f7;stroke:#707070">
+          <rect
+             class="cls-25"
+             width="137.005"
+             height="51.198002"
+             id="rect214"
+             style="stroke:none"
+             x="0"
+             y="0" />
+          <rect
+             class="cls-26"
+             x="0.5"
+             y="0.5"
+             width="136.005"
+             height="50.198002"
+             id="rect216"
+             style="fill:none" />
+        </g>
+        <g
+           id="Rectangle_61"
+           data-name="Rectangle 61"
+           class="cls-21"
+           transform="translate(476.596,1168.629)"
+           style="fill:#f7f7f7;stroke:#f7f7f7">
+          <rect
+             class="cls-25"
+             width="122.703"
+             height="55.451"
+             id="rect219"
+             style="stroke:none"
+             x="0"
+             y="0" />
+          <rect
+             class="cls-26"
+             x="0.5"
+             y="0.5"
+             width="121.703"
+             height="54.451"
+             id="rect221"
+             style="fill:none" />
+        </g>
+        <path
+           id="Path_20"
+           data-name="Path 20"
+           class="cls-22"
+           d="M 0,0 H 49 V 40 H 0 Z"
+           transform="translate(474,1177)"
+           style="fill:#95abf4" />
+        <text
+           id="U1"
+           class="cls-11"
+           transform="translate(500,1205)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-9.0310001"
+             y="0"
+             id="tspan225">U</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan227">1</tspan></text>
+        <rect
+           id="Rectangle_63"
+           data-name="Rectangle 63"
+           class="cls-22"
+           width="49"
+           height="40"
+           transform="translate(553.288,1177)"
+           style="fill:#95abf4"
+           x="0"
+           y="0" />
+        <text
+           id="Uh"
+           class="cls-11"
+           transform="translate(578.288,1204)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-9.0310001"
+             y="0"
+             id="tspan231">U</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan233">h</tspan></text>
+        <text
+           id="_..."
+           data-name="..."
+           class="cls-23"
+           transform="translate(538,1200)"
+           style="font-size:15px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan236">...</tspan></text>
+        <g
+           id="Group_82"
+           data-name="Group 82"
+           transform="rotate(90,-269.134,518.259)">
+          <g
+             id="Path_3-2"
+             data-name="Path 3"
+             class="cls-17"
+             transform="rotate(45,447.21118,263.30094)"
+             style="fill:#707070">
+            <path
+               class="cls-25"
+               d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+               id="path239"
+               style="stroke:none" />
+            <path
+               class="cls-28"
+               d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+               id="path241"
+               style="fill:#707070;stroke:none" />
+          </g>
+          <g
+             id="Group_9-2"
+             data-name="Group 9"
+             transform="translate(317.185,-238.479)">
+            <line
+               id="Line_7-4"
+               data-name="Line 7"
+               class="cls-16"
+               y2="26"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+        </g>
+        <rect
+           id="Rectangle_64"
+           data-name="Rectangle 64"
+           class="cls-22"
+           width="40"
+           height="40"
+           transform="translate(517,995)"
+           style="fill:#95abf4"
+           x="0"
+           y="0" />
+        <text
+           id="Ua"
+           class="cls-11"
+           transform="translate(537,1022)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-9.0310001"
+             y="0"
+             id="tspan248">U</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan250">a</tspan></text>
+        <text
+           id="q.v"
+           class="cls-12"
+           transform="translate(580,1022)"
+           style="font-style:italic;font-size:15px;font-family:Hack-Italic, Hack;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan253">q.v</tspan></text>
+        <text
+           id="_...-2"
+           data-name="..."
+           class="cls-24"
+           transform="matrix(0.469,-0.883,0.883,0.469,586.181,1322.286)"
+           style="font-size:15px;font-family:Hack-Regular, Hack;opacity:0.497;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan256">...</tspan></text>
+        <g
+           id="Symbol_3_3"
+           data-name="Symbol 3 – 3"
+           transform="translate(825,1478)">
+          <rect
+             id="Rectangle_1-3"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-3"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan260">MatMul</tspan></text>
+        </g>
+        <g
+           id="Group_93"
+           data-name="Group 93"
+           transform="translate(102,31)">
+          <g
+             id="Group_74-2"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-5"
+               data-name="Line 7"
+               class="cls-16"
+               y2="70.124001"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-2"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-3"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path266"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path268"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <rect
+           id="Rectangle_65"
+           data-name="Rectangle 65"
+           class="cls-2"
+           width="40"
+           height="40"
+           transform="translate(553,1487)"
+           style="opacity:0.502;fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wq1-2"
+           data-name="Wq1"
+           class="cls-3"
+           transform="translate(573,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;opacity:0.502;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan274">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan276">q1</tspan></text>
+        <g
+           id="Group_94"
+           data-name="Group 94"
+           transform="translate(573.358,1451.598)">
+          <line
+             id="Line_7-6"
+             data-name="Line 7"
+             class="cls-5"
+             x2="0.142"
+             y2="31.902"
+             transform="translate(0,2)"
+             style="fill:none;stroke:#c9c9c9"
+             x1="0"
+             y1="0" />
+        </g>
+        <g
+           id="Group_95"
+           data-name="Group 95"
+           transform="rotate(-90,1015.6155,450.0735)">
+          <g
+             id="Path_16-4"
+             data-name="Path 16"
+             class="cls-6"
+             transform="rotate(135,6.2237681,7.1635054)"
+             style="fill:#c9c9c9">
+            <path
+               class="cls-25"
+               d="M 4.6242523,10.180093 0.8966583,0.89179039 10.226916,4.5774202 7.4021688,7.4021678 Z"
+               id="path281"
+               style="stroke:none" />
+            <path
+               class="cls-27"
+               d="M 1.793314,1.7835875 4.8062057,9.2910175 7.0486088,7.0486078 9.3346558,4.7625613 1.793314,1.7835875 M -9.5367432e-7,-1.9073486e-6 11.119159,4.3922777 7.7557192,7.7557178 4.4422889,11.069158 Z"
+               id="path283"
+               style="fill:#c9c9c9;stroke:none" />
+          </g>
+        </g>
+        <g
+           id="Symbol_3_4"
+           data-name="Symbol 3 – 4"
+           class="cls-7"
+           transform="translate(838,1787)"
+           style="opacity:0.502">
+          <rect
+             id="Rectangle_1-4"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-4"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan288">MatMul</tspan></text>
+        </g>
+        <rect
+           id="Rectangle_66"
+           data-name="Rectangle 66"
+           class="cls-10"
+           width="40"
+           height="40"
+           transform="translate(480,1551)"
+           style="fill:#9db4ff"
+           x="0"
+           y="0" />
+        <text
+           id="K"
+           class="cls-11"
+           transform="translate(500,1578)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-6.0209999"
+             y="0"
+             id="tspan293">K</tspan></text>
+        <text
+           id="n.d"
+           class="cls-12"
+           transform="translate(500,1606)"
+           style="font-style:italic;font-size:15px;font-family:Hack-Italic, Hack;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan296">n.d</tspan></text>
+        <rect
+           id="Rectangle_67"
+           data-name="Rectangle 67"
+           class="cls-15"
+           width="40"
+           height="40"
+           transform="translate(510,1487)"
+           style="fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wqh-2"
+           data-name="Wqh"
+           class="cls-11"
+           transform="translate(530,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan300">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan302">qh</tspan></text>
+        <g
+           id="Symbol_3_5"
+           data-name="Symbol 3 – 5"
+           transform="translate(811,1812)">
+          <rect
+             id="Rectangle_1-5"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-5"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan306">MatMul</tspan></text>
+        </g>
+        <g
+           id="Group_96"
+           data-name="Group 96"
+           transform="translate(250,23)">
+          <g
+             id="Group_74-3"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-7"
+               data-name="Line 7"
+               class="cls-16"
+               y2="15"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-3"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-5"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path312"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path314"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <g
+           id="Group_97"
+           data-name="Group 97"
+           transform="translate(220,31)">
+          <g
+             id="Group_74-4"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-8"
+               data-name="Line 7"
+               class="cls-16"
+               y2="70.124001"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-4"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-6"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path321"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path323"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <rect
+           id="Rectangle_68"
+           data-name="Rectangle 68"
+           class="cls-2"
+           width="40"
+           height="40"
+           transform="translate(671,1487)"
+           style="opacity:0.502;fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wq1-3"
+           data-name="Wq1"
+           class="cls-3"
+           transform="translate(691,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;opacity:0.502;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan329">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan331">q1</tspan></text>
+        <g
+           id="Group_98"
+           data-name="Group 98"
+           transform="translate(691.358,1451.598)">
+          <line
+             id="Line_7-9"
+             data-name="Line 7"
+             class="cls-5"
+             x2="0.142"
+             y2="31.902"
+             transform="translate(0,2)"
+             style="fill:none;stroke:#c9c9c9"
+             x1="0"
+             y1="0" />
+        </g>
+        <g
+           id="Group_99"
+           data-name="Group 99"
+           transform="rotate(-90,1074.6155,391.0735)">
+          <g
+             id="Path_16-7"
+             data-name="Path 16"
+             class="cls-6"
+             transform="rotate(135,6.2237681,7.1635054)"
+             style="fill:#c9c9c9">
+            <path
+               class="cls-25"
+               d="M 4.6242523,10.180093 0.8966583,0.89179039 10.226916,4.5774202 7.4021688,7.4021678 Z"
+               id="path336"
+               style="stroke:none" />
+            <path
+               class="cls-27"
+               d="M 1.793314,1.7835875 4.8062057,9.2910175 7.0486088,7.0486078 9.3346558,4.7625613 1.793314,1.7835875 M -9.5367432e-7,-1.9073486e-6 11.119159,4.3922777 7.7557192,7.7557178 4.4422889,11.069158 Z"
+               id="path338"
+               style="fill:#c9c9c9;stroke:none" />
+          </g>
+        </g>
+        <g
+           id="Symbol_3_6"
+           data-name="Symbol 3 – 6"
+           class="cls-7"
+           transform="translate(956,1787)"
+           style="opacity:0.502">
+          <rect
+             id="Rectangle_1-6"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-6"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan343">MatMul</tspan></text>
+        </g>
+        <rect
+           id="Rectangle_69"
+           data-name="Rectangle 69"
+           class="cls-10"
+           width="40"
+           height="40"
+           transform="translate(598,1551)"
+           style="fill:#9db4ff"
+           x="0"
+           y="0" />
+        <text
+           id="V"
+           class="cls-11"
+           transform="translate(618,1578)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-6.0209999"
+             y="0"
+             id="tspan348">V</tspan></text>
+        <text
+           id="n.v"
+           class="cls-12"
+           transform="translate(618,1606)"
+           style="font-style:italic;font-size:15px;font-family:Hack-Italic, Hack;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan351">n.v</tspan></text>
+        <rect
+           id="Rectangle_70"
+           data-name="Rectangle 70"
+           class="cls-15"
+           width="40"
+           height="40"
+           transform="translate(628,1487)"
+           style="fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wqh-3"
+           data-name="Wqh"
+           class="cls-11"
+           transform="translate(648,1514)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-12.041"
+             y="0"
+             id="tspan355">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan357">qh</tspan></text>
+        <g
+           id="Symbol_3_7"
+           data-name="Symbol 3 – 7"
+           transform="translate(929,1812)">
+          <rect
+             id="Rectangle_1-7"
+             data-name="Rectangle 1"
+             class="cls-8"
+             width="86"
+             height="52"
+             transform="translate(-331,-399)"
+             style="fill:#fb9dff"
+             x="0"
+             y="0" />
+          <text
+             id="MatMul-7"
+             data-name="MatMul"
+             class="cls-9"
+             transform="translate(-287,-366)"
+             style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+               x="-36.123001"
+               y="0"
+               id="tspan361">MatMul</tspan></text>
+        </g>
+        <g
+           id="Group_100"
+           data-name="Group 100"
+           transform="translate(368,23)">
+          <g
+             id="Group_74-5"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-10"
+               data-name="Line 7"
+               class="cls-16"
+               y2="15"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-5"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-8"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path367"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path369"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <g
+           id="Group_101"
+           data-name="Group 101"
+           transform="translate(338,31)">
+          <g
+             id="Group_74-6"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-11"
+               data-name="Line 7"
+               class="cls-16"
+               y2="70.124001"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-6"
+             data-name="Group 89"
+             transform="rotate(-90,494.887,1200.078)">
+            <g
+               id="Path_16-9"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,-78.500159,544.81185)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path376"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path378"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <g
+           id="Group_103"
+           data-name="Group 103"
+           transform="rotate(-90,549.625,1256.125)">
+          <line
+             id="Line_57-2"
+             data-name="Line 57"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1118.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <g
+             id="Group_80-2"
+             data-name="Group 80"
+             transform="rotate(90,-395.268,834.268)">
+            <g
+               id="Path_3-3"
+               data-name="Path 3"
+               class="cls-17"
+               transform="rotate(45,3.974,9.5940847)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.7900949,10.354955 0.91325688,0.90838456 10.401868,4.7431903 7.5725255,7.5725245 Z"
+                 id="path384"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.8265228,1.8167667 4.9675417,9.4703884 7.2189655,7.2189641 9.5142059,4.9237304 1.8265228,1.8167667 M -4.7683716e-6,4.7683716e-6 11.289515,4.5626445 7.9260755,7.926074 4.6126451,11.239504 Z"
+                 id="path386"
+                 style="fill:#707070;stroke:none" />
+            </g>
+            <g
+               id="Group_9-3"
+               data-name="Group 9"
+               transform="translate(7.965,0.641)">
+              <line
+                 id="Line_7-12"
+                 data-name="Line 7"
+                 class="cls-16"
+                 y2="15"
+                 style="fill:none;stroke:#707070"
+                 x1="0"
+                 y1="0"
+                 x2="0" />
+            </g>
+          </g>
+          <line
+             id="Line_58-2"
+             data-name="Line 58"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1237.325)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <line
+             id="Line_59-2"
+             data-name="Line 59"
+             class="cls-16"
+             x2="15"
+             transform="translate(408.5,1354.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             y2="0" />
+          <line
+             id="Line_60-2"
+             data-name="Line 60"
+             class="cls-16"
+             y2="236"
+             transform="translate(423.5,1118.5)"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             x2="0" />
+        </g>
+        <g
+           id="Group_106"
+           data-name="Group 106"
+           transform="translate(218,-222)">
+          <g
+             id="Group_74-7"
+             data-name="Group 74"
+             transform="translate(280.358,1447.331)">
+            <line
+               id="Line_7-13"
+               data-name="Line 7"
+               class="cls-16"
+               y2="55.533001"
+               style="fill:none;stroke:#707070"
+               x1="0"
+               y1="0"
+               x2="0" />
+          </g>
+          <g
+             id="Group_89-7"
+             data-name="Group 89"
+             transform="rotate(-90,865.9825,593.4405)">
+            <g
+               id="Path_16-10"
+               data-name="Path 16"
+               class="cls-17"
+               transform="rotate(135,6.2239752,7.1630054)"
+               style="fill:#707070">
+              <path
+                 class="cls-25"
+                 d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+                 id="path398"
+                 style="stroke:none" />
+              <path
+                 class="cls-28"
+                 d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+                 id="path400"
+                 style="fill:#707070;stroke:none" />
+            </g>
+          </g>
+        </g>
+        <text
+           id="_...-3"
+           data-name="..."
+           class="cls-24"
+           transform="rotate(-45,1987.0815,-107.9021)"
+           style="font-size:15px;font-family:Hack-Regular, Hack;opacity:0.497;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan405">...</tspan></text>
+        <text
+           id="_...-4"
+           data-name="..."
+           class="cls-24"
+           transform="rotate(-45,2087.8719,-115.65084)"
+           style="font-size:15px;font-family:Hack-Regular, Hack;opacity:0.497;fill:#020000"><tspan
+             x="-13.546"
+             y="0"
+             id="tspan408">...</tspan></text>
+        <rect
+           id="Rectangle_59"
+           data-name="Rectangle 59"
+           class="cls-15"
+           width="40"
+           height="40"
+           transform="translate(416,1085)"
+           style="fill:#9dffa8"
+           x="0"
+           y="0" />
+        <text
+           id="Wo"
+           class="cls-11"
+           transform="translate(436,1112)"
+           style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+             x="-9.0310001"
+             y="0"
+             id="tspan412">W</tspan><tspan
+             class="cls-4"
+             y="0"
+             id="tspan414">o</tspan></text>
+        <g
+           id="Group_107"
+           data-name="Group 107"
+           transform="translate(578.288,1225.331)">
+          <line
+             id="Line_7-14"
+             data-name="Line 7"
+             class="cls-16"
+             y2="20.136"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             x2="0" />
+        </g>
+        <g
+           id="Group_108"
+           data-name="Group 108"
+           transform="rotate(-90,532.887,940.078)">
+          <g
+             id="Path_16-11"
+             data-name="Path 16"
+             class="cls-17"
+             transform="rotate(135,-78.500159,544.81185)"
+             style="fill:#707070">
+            <path
+               class="cls-25"
+               d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+               id="path419"
+               style="stroke:none" />
+            <path
+               class="cls-28"
+               d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+               id="path421"
+               style="fill:#707070;stroke:none" />
+          </g>
+        </g>
+        <g
+           id="Group_109"
+           data-name="Group 109"
+           transform="translate(537.288,1148.493)">
+          <line
+             id="Line_7-15"
+             data-name="Line 7"
+             class="cls-16"
+             y2="20.136"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             x2="0" />
+        </g>
+        <g
+           id="Group_110"
+           data-name="Group 110"
+           transform="rotate(-90,841.4825,311.9405)">
+          <g
+             id="Path_16-12"
+             data-name="Path 16"
+             class="cls-17"
+             transform="rotate(135,6.2234752,7.1627983)"
+             style="fill:#707070">
+            <path
+               class="cls-25"
+               d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+               id="path427"
+               style="stroke:none" />
+            <path
+               class="cls-28"
+               d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+               id="path429"
+               style="fill:#707070;stroke:none" />
+          </g>
+        </g>
+        <g
+           id="Group_111"
+           data-name="Group 111"
+           transform="translate(537.288,1052.493)">
+          <line
+             id="Line_7-16"
+             data-name="Line 7"
+             class="cls-16"
+             y2="20.136"
+             style="fill:none;stroke:#707070"
+             x1="0"
+             y1="0"
+             x2="0" />
+        </g>
+        <g
+           id="Group_112"
+           data-name="Group 112"
+           transform="rotate(-90,793.4825,263.9405)">
+          <g
+             id="Path_16-13"
+             data-name="Path 16"
+             class="cls-17"
+             transform="rotate(135,6.2234752,7.1627983)"
+             style="fill:#707070">
+            <path
+               class="cls-25"
+               d="M 4.6242504,10.180091 0.89665687,0.89178967 10.226914,4.5774274 7.4021668,7.4021659 Z"
+               id="path435"
+               style="stroke:none" />
+            <path
+               class="cls-28"
+               d="M 1.7933121,1.7835875 4.8062038,9.2910156 7.0486069,7.0486059 9.3346519,4.7625675 1.7933121,1.7835875 M -2.8610229e-6,-3.8146973e-6 11.119157,4.3922858 7.7557173,7.7557158 4.442287,11.069156 Z"
+               id="path437"
+               style="fill:#707070;stroke:none" />
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           transform="translate(146.61561,896.65329)"
+           id="text4438"
+           style="font-size:29.3333px;font-family:sans-serif;-inkscape-font-specification:sans-serif;text-align:center;white-space:pre;shape-inside:url(#rect4440);display:inline;fill:#000000;fill-opacity:0.492611;stroke:#000000;stroke-width:0.498898;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"><tspan
+             x="759.0126"
+             y="186.74603"
+             id="tspan2529">Επίπεδο Προσοχής (Attend)</tspan></text>
+      </g>
+    </g>
+    <g
+       transform="matrix(0.30102149,0,0,0.30102149,163.57659,280.21328)"
+       id="g692">
+      <rect
+         class="a"
+         width="122"
+         height="52"
+         transform="translate(185,-750)"
+         id="rect568"
+         style="fill:#fb9dff"
+         x="0"
+         y="0" />
+      <text
+         class="b"
+         transform="translate(246,-716)"
+         id="text572"
+         style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+           x="-36.123001"
+           y="0"
+           id="tspan570">MatMul</tspan></text>
+      <rect
+         class="a"
+         width="122"
+         height="52"
+         transform="translate(98,-382)"
+         id="rect574"
+         style="fill:#fb9dff"
+         x="0"
+         y="0" />
+      <text
+         class="b"
+         transform="translate(159,-348)"
+         id="text578"
+         style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+           x="-36.123001"
+           y="0"
+           id="tspan576">MatMul</tspan></text>
+      <rect
+         class="c"
+         width="122"
+         height="52"
+         transform="translate(98,-566)"
+         id="rect580"
+         style="fill:#ff9d9d"
+         x="0"
+         y="0" />
+      <text
+         class="b"
+         transform="translate(159,-532)"
+         id="text586"
+         style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+           x="-53.583"
+           y="0"
+           id="tspan582">Mask</tspan><tspan
+           class="d"
+           y="0"
+           xml:space="preserve"
+           id="tspan584"> (opt.)</tspan></text>
+      <rect
+         class="e"
+         width="122"
+         height="52"
+         transform="translate(98,-658)"
+         id="rect588"
+         style="fill:#10ebfd"
+         x="0"
+         y="0" />
+      <text
+         class="b"
+         transform="translate(159,-624)"
+         id="text592"
+         style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+           x="-42.144001"
+           y="0"
+           id="tspan590">SoftMax</tspan></text>
+      <rect
+         class="f"
+         width="40"
+         height="40"
+         transform="translate(98,-290)"
+         id="rect594"
+         style="fill:#9db4ff"
+         x="0"
+         y="0" />
+      <text
+         class="g"
+         transform="translate(118,-263)"
+         id="text598"
+         style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+           x="-6.0209999"
+           y="0"
+           id="tspan596">Q</tspan></text>
+      <rect
+         class="f"
+         width="40"
+         height="40"
+         transform="translate(180,-290)"
+         id="rect600"
+         style="fill:#9db4ff"
+         x="0"
+         y="0" />
+      <text
+         class="g"
+         transform="translate(200,-263)"
+         id="text604"
+         style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+           x="-6.0209999"
+           y="0"
+           id="tspan602">K</tspan></text>
+      <rect
+         class="f"
+         width="40"
+         height="40"
+         transform="translate(261,-290)"
+         id="rect606"
+         style="fill:#9db4ff"
+         x="0"
+         y="0" />
+      <text
+         class="g"
+         transform="translate(281,-263)"
+         id="text610"
+         style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+           x="-6.0209999"
+           y="0"
+           id="tspan608">V</tspan></text>
+      <g
+         class="h"
+         transform="rotate(45,450.68886,-21.92556)"
+         id="g616"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path612"
+           style="stroke:none" />
+        <path
+           class="k"
+           d="m 120.10765,-108.74408 -3.624,-9.45458 9.49857,3.58 -2.9617,2.9617 z"
+           id="path612-5"
+           style="fill:#707070;stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path614"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(116.5,-324.479)"
+         id="g620">
+        <line
+           class="i"
+           y2="30"
+           id="line618"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+      <g
+         class="h"
+         transform="rotate(45,976.90416,-7.9600479)"
+         id="g626"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.5392041,10.367871 0.87005317,0.86521339 10.416729,4.4903464 7.4535379,7.4535379 Z"
+           id="path622"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7401114,1.7304363 4.7289052,9.4710503 7.0999775,7.099978 9.5165825,4.6833739 1.7401114,1.7304363 M -1.9073486e-6,-1.9073486e-6 11.316857,4.297318 7.8070879,7.8070879 4.3494978,11.264678 Z"
+           id="path624"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(280.518,-692.475)"
+         id="g630">
+        <line
+           class="i"
+           y2="361.9697"
+           id="line628"
+           style="fill:none;stroke:#707070;stroke-width:0.953667"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+      <rect
+         class="j"
+         width="122"
+         height="52"
+         transform="translate(98,-474)"
+         id="rect632"
+         style="fill:#9dffa8"
+         x="0"
+         y="0" />
+      <text
+         class="g"
+         transform="translate(159,-440)"
+         id="text636"
+         style="font-size:20px;font-family:Menlo-Regular, Menlo;fill:#020000"><tspan
+           x="-30.103001"
+           y="0"
+           id="tspan634">Scale</tspan></text>
+      <text
+         class="b"
+         transform="translate(159,-440)"
+         id="text640"
+         style="font-size:20px;font-family:Hack-Regular, Hack;fill:#020000"><tspan
+           x="-30.103001"
+           y="0"
+           id="tspan638">Scale</tspan></text>
+      <g
+         class="h"
+         transform="rotate(45,493.18886,80.678516)"
+         id="g646"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path642"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path644"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(201.5,-324.479)"
+         id="g650">
+        <line
+           class="i"
+           y2="30"
+           id="line648"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+        <line
+           class="i"
+           y2="30.29834"
+           id="line648-0"
+           style="fill:none;stroke:#707070;stroke-width:0.873972"
+           x1="80.817986"
+           y1="7.3835144"
+           x2="80.817986" />
+      </g>
+      <g
+         class="h"
+         transform="rotate(45,580.24269,-23.262609)"
+         id="g656"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path652"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path654"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(153.5,-416.479)"
+         id="g660">
+        <line
+           class="i"
+           y2="30"
+           id="line658"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+      <g
+         class="h"
+         transform="rotate(45,691.29651,-69.262609)"
+         id="g666"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path662"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path664"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(153.5,-508.479)"
+         id="g670">
+        <line
+           class="i"
+           y2="30"
+           id="line668"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+      <g
+         class="h"
+         transform="rotate(45,802.35034,-115.26261)"
+         id="g676"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path672"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path674"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(153.5,-600.479)"
+         id="g680">
+        <line
+           class="i"
+           y2="30"
+           id="line678"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+      <g
+         class="h"
+         transform="rotate(45,941.40416,-93.664629)"
+         id="g686"
+         style="fill:#707070">
+        <path
+           class="k"
+           d="M 4.4893003,10.315049 0.86530113,0.86046714 10.363871,4.4404702 7.4021745,7.4021749 Z"
+           id="path682"
+           style="stroke:none" />
+        <path
+           class="l"
+           d="M 1.7305822,1.7209148 4.6804504,9.416769 7.0486145,7.048605 9.4622412,4.6349778 1.7305822,1.7209148 M 4.7683716e-6,-4.7683716e-6 11.265484,4.245955 7.7557244,7.7557154 4.2981343,11.213305 Z"
+           id="path684"
+           style="fill:#707070;stroke:none" />
+      </g>
+      <g
+         transform="translate(209.5,-692.479)"
+         id="g690">
+        <line
+           class="i"
+           y2="30"
+           id="line688"
+           style="fill:none;stroke:#707070"
+           x1="0"
+           y1="0"
+           x2="0" />
+      </g>
+    </g>
+  </g>
+</svg>
