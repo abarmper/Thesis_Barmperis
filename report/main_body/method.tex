@@ -290,3 +290,32 @@
 Στην ανωτέρω σχέση το $\alpha_i$ είναι η πιθανότητα ενεργοποίησης της κάψουλας του τελευταίου επιπέδου με αύξοντα αριθμό $i$. $\alpha_t$ είναι η τιμή της πιθανότητας ενεργοποίησης της κάψουλας που έχει αύξοντα αριθμό ίδιο με αυτόν της κλάσης στόχου. Στα αρχικά παραδείγματα της εκπαίδευσης, το \textquote{περιθώριο} $m$ \footnote{Το περιθώριο συμβολίζει τη μέγιστη διαφορά που μπορούν να έχουν η πιθανότητα ενεργοποίησης της κάψουλας που αναφέρεται στη σωστή κλάση και της αντίστοιχης τιμής της κάψουλας $i \neq t$ και να μην προσμετρηθεί στο σφάλμα.} είναι μικρό ($0.2$) έτσι ώστε να αποφεύγεται ο σχηματισμός μόνιμα ανενεργών καψουλών. Καθώς η εκπαίδευση συνεχίζεται, το περιθώριο αυξάνεται σταδιακά στην τιμή $0.9$.\par
 
 Τέλος, σημειώνουμε ότι ακολουθώντας την περιγραφή της υλοποίησης στο \cite{gritzman2019avoiding}, επιβάλουμε ένα κάτω φράγμα στη διασπορά $(\sigma_j^h)^2$ προσθέτοντας την τιμή $\epsilon = 10^(-4)$ έτσι ώστε να μην παρατηρείται το πρόβλημα της \textquote{σύνθλιψης της διακύμανσης} (\en{variance collapse}).
+
+
+\section{\en{Multi-Head Self-Attention Capsules}}
+
+Ενα λίγο κείμενο.
+
+\en{
+\begin{algorithm}[H]
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Προσοχή Πολλών Κεφαλών} \en{Multi-Head Attention Routing}}\label{alg:mhattention_routing}
+  \begin{algorithmic}[1]
+      \Procedure{MH Routing}{$v^L$}
+      \State $A^{L} \gets ComputeAttentionMaps(v^L), \text{\gr{ όπου }} A^{L} \in \Re^{N^{L+1} \times N^{L} \times N^{L}}$
+      \State $ v^{L+1} \gets ComputeParentCapsules(A^L), \text{\gr{ όπου }} v^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
+      \State \Return $v^{L+1}$
+      \EndProcedure
+      \Procedure{ComputeAttentionMaps}{$v^L$}
+        \State $\forall j \in \Omega_{L+1}: A_j^{L} \gets v_j^{L} \times (v_j^L)^T, A_j^L \in \Re^{N^L \times N^L}$
+        \State $\text{\gr{Στοίβαξε} (Stack) \gr{τα} }A_j^L \text{\gr{ σε μια μήτρα }} A^L \in \Re^{N^{L+1} \times N^L \times N^L}$ \label{op:summer}
+        \State \Return $A^L$
+      \EndProcedure
+      \Procedure{ComputeParentCapsules}{$A^L, v^{L}$}
+      \State $embedings^{L+1} \gets A^L \times v^{L}, embedings \in \Re^{N^{L+1} \times N^{L} \times D^{L+1}}$
+      \State $s^{L+1} \gets \sum_i^{N^L} embedings_{jid}, s^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
+      \State $\forall j \in \Omega_{L+1}: v^{L+1}_j \gets squash(s^{L+1}_j), v^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
+      \State \Return $v^{L+1}$
+      \EndProcedure
+  \end{algorithmic}
+  \end{algorithm}
+}
