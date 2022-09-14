@@ -9,7 +9,7 @@
 \usepackage{arydshln}
 
 \usepackage{amsmath} 
-
+\usepackage{mathtools}
 % I would use babelbib but it has no support for iee style.
 % \usepackage{babelbib}
 % \selectbiblanguage{english}
@@ -51,7 +51,10 @@
 % 1.2 spacing
 \renewcommand{\baselinestretch}{1.2}
 
-
+% Line spacing in algorithmic environment.
+\usepackage{setspace}
+\let\Algorithm\algorithm
+\renewcommand\algorithm[1][]{\Algorithm[#1]\setstretch{1.4}}
 
 % \setlength{\footskip}{25pt}
 

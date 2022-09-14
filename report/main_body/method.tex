@@ -74,9 +74,9 @@
   \State \hspace{\algorithmicindent }\parbox[t]{.8\linewidth}{\raggedright #1}
 }
 
-\algnewcommand{\Initialize}[1]{%
+\algnewcommand{\Initializee}[1]{%
   \State \textbf{Initialize:}
-  \State \hspace{\algorithmicindent}\parbox[t]{.8\linewidth}{\raggedright #1}
+  \State \hspace{\algorithmicindent }\parbox[t]{.8\linewidth}{\raggedright #1}
 }
 
 \en{
@@ -253,14 +253,14 @@
       \State $\forall i \in \Omega_{L}: E-Step(\mu, \sigma, \alpha, V, i)$
       \EndFor
       \EndProcedure
-      \Procedure{M-Step}{$\alpha, R, V, j$}
+      \Procedure{M-Step}{$\alpha, R, V, j$} \Comment{\gr{Για μια κάψουλα υψηλότερου επιπέδου, $j$}}
         \State $\forall i \in \Omega_L: R_{ij} \gets R_{ij} \ast \alpha_i$
         \State $\forall h: \mu_j^h \gets \frac{\sum_i R_{ij}V_{ij}^h}{\sum_i R_{ij}}$
         \State $\forall h: (\sigma_j^h)^2 \gets \frac{\sum_i R_{ij}(V_{ij}^h - \mu_j^h)^2}{\sum_i R_{ij}}$
         \State $\forall h: \acute{cost}^h \gets (\beta_u + log(\sigma_j^h)) \sum_i R_{ij}$ \label{op:sum_rij}
         \State $\alpha_j \gets logistic(\lambda(\beta_{\alpha} - \sum_h \acute{cost}^h))$ 
       \EndProcedure
-      \Procedure{E-Step}{$\mu, \sigma, \alpha, V, i$}
+      \Procedure{E-Step}{$\mu, \sigma, \alpha, V, i$} \Comment{\gr{Για μια κάψουλα χαμηλότερου επιπέδου, $i$}}
       \State $\forall j \in \Omega_{L+1}: p_j \gets \frac{1}{\sqrt{\prod _h^H 2\pi(\sigma_j^h)^2}} \exp(- \sum_h^H \frac{(V_{ij}^h - \mu_j^h)^2}{2(\sigma_j^h)^2})$
       \State $\forall j \in \Omega_{L+1}: R_{ij} \gets \frac{\alpha_j p_j}{\sum_{k \in \Omega_{L+1}} \alpha_k p_k}$
       \EndProcedure
@@ -352,40 +352,110 @@
 
 Όπως γίνεται αντιληπτό από το κεφάλαιο \ref{chap:related_work}, δεν είναι η πρώτη φορά που χρησιμοποιείται μηχανισμός αυτο\textendash προσοχής στο πλαίσιο των νευρωνικών δικτύων με κάψουλες. Στα έργα \cite{hoogi2019self, huang2020capsnet} χρησιμοποιείται ο εν λόγω μηχανισμός ως επίπεδο που προηγείται του σχηματισμού των \en{PrimaryCaps}, το οποίο διαφέρει σημαντικά από την υλοποίησή μας που ενσωματώνει τον μηχανισμό αυτο\textendash προσοχής στον αλγόριθμο δρομολόγησης. Επίσης, αν και η υλοποίησή μας άντλησε στοιχεία από το έργο \cite{mazzia2021efficient} (το μόνο που εφαρμόζει τον μηχανισμό στον αλγόριθμο δρομολόγησης) είναι πολύ πιο πιστή στις βασικές υποθέσεις των δικτύων με κάψουλες. Εν αντιθέσει, για τον αλγόριθμο δρομολόγησης των \en{Mazzia et al.} (τον ονομάζουμε \textquote{απλοϊκό αλγόριθμο δρομολόγησης με αυτο\textendash προσοχή}) δεν καταφέραμε να δώσουμε μια λογική εξήγηση ου να συμφωνεί με τις αρχές των νευρωνικών δικτύων με κάψουλες. Επίσης, όπως θα φανεί στο επόμενο κεφάλαιο, η υλοποίησή μας με παρόμοιο αριθμό παραμέτρων επιτυγχάνει καλύτερες επιδόσεις (χωρίς ιδιαίτερο πειραματισμό των παραμέτρων).\par
 
-Στην παρούσα υποενότητα θα παρουσιάσουμε τους δύο εναλλακτικούς αλγορίθμους που αναπτύξαμε καθώς και τη λογική πίσω από τον καθένα. Επίσης, για λόγους πληρότητας, θα παρουσιάσουμε τον \textquote{απλοϊκό αλγόριθμο δρομολόγησης με αυτο\textendash προσοχή} που χρησιμοποιείται στην υλοποίηση \cite{mazzia2021efficient}. Προτού όμως ξεκινήσουμε την παρουσίαση, κρίνεται σκόπιμο να ορίσουμε τον συμβολισμό που θα χρησιμοποιηθεί σε όλη την έκταση των αλγορίθμων μας. Έτσι έχουμε:
+Στην παρούσα υποενότητα θα παρουσιάσουμε τους δύο εναλλακτικούς αλγορίθμους που αναπτύξαμε καθώς και τη λογική πίσω από τον καθένα. Επίσης, για λόγους πληρότητας, θα παρουσιάσουμε τον \textquote{απλοϊκό αλγόριθμο δρομολόγησης με αυτο\textendash προσοχή} που χρησιμοποιείται στην υλοποίηση \cite{mazzia2021efficient}. Προτού όμως ξεκινήσουμε την παρουσίαση, κρίνεται σκόπιμο να ορίσουμε τον συμβολισμό που θα χρησιμοποιηθεί σε όλη την έκταση των αλγορίθμων μας. Χρησιμοποιούμε τον δικό μας συμβολισμό ο οποίος διαφέρει από αυτών των προηγούμενων αλγορίθμων καθώς δεν ήταν επαρκής ώστε να περιγράψει τις νέες έννοιες που εισάγουμε. Έτσι έχουμε:
 \begin{itemize}
+  \item Σαν σύμβαση, χρησιμοποιούμε τον δείκτη $i$ για να αναφερθούμε σε κάψουλες επιπέδου $L$ και τον δείκτη $j$ για τις κάψουλες επιπέδου $L+1$.
   \item Το σύνολο των καψουλών ενός επιπέδου $L$ το συμβολίζουμε ως $\Omega_L$ και τον πληθάριθμο του συνόλου (\en{cardinality}) ως $n^L = \left\lvert \Omega_L \right\rvert$.
-  \item Τις επιμέρους κάψουλες ενός επιπέδου $L$ τις συμβολίζουμε με $c^L$ ενώ με $C^L$ συμβολίζουμε τη μήτρα στην οποία οργανώνονται όλες οι κάψουλες επιπέδου $L$.
-  \item Μεταξύ δύο επιπέδων από κάψουλες $L$ και $L+1$, κάθε κάψουλα $c^L \in \Omega_L$ προβλέπει ποια θα είναι η πόζα της κάθε κάψουλας $c^{L+1} \in \Omega_{L+1}$. Έτσι προκύπτουν $n^L \times n^{L+1}$ προβλέψεις ή ψήφοι όπου την κάθε μια τη συμβολίζουμε με $v_{ij}^L$. Αυτές οι ψήφοι οργανώνονται στη μήτρα $V^L$ η οποία όπως είναι λογικό, περιέχει $n^L \times n^{L+1}$ κάψουλες - ψήφους: $n^L$ ψήφους για κάθε κάψουλα $c^{L+1}$.
-  \item Σε περίπτωση που θα θέλαμε να αναφερθούμε σε όλες τις ψήφους που αφορούν μια κάψουλα επιπέδου $L+1$ αρκεί να \textquote{δεσμεύσουμε} την ελεύθερη μεταβλητή $j$ και να γράψουμε $V^L_j$. Κατά αντιστοιχία, αν θα θέλαμε να αναφερθούμε στις ψήφους που προκύπτουν από την κάψουλα $c^L_i$ θα γράφαμε $V^L_j$. Γενικότερα, σαν σύμβαση χρησιμοποιούμε τη μεταβλητή $i$ για να περιγράψουμε ένα στοιχεία επιπέδου $L$ και τη μεταβλητή $j$ για στοιχεία επιπέδου $L+1$.
-  \item Οι πίνακες από βάρη ενός επιπέδου $L$ που αποθηκεύουν τις σχέσεις μέρους - όλου οργανώνονται στη μήτρα $\boldmath{W}^L$. Η μήτρα περιέχει όλα τα επιμέρους βάρη $W_{ij}$ που χρησιμοποιούν οι κάψουλες $C^L$ για να παράξουν τις προβλέψεις ($V^L$). Για μια κάψουλα $c_i^L \in \Omega_L$, η ψήφος της υπολογίζεται με τη φόρμουλα: $v_{ij}^L = c_i^L \times W_{ij}^L$.
+  \item Τις επιμέρους κάψουλες ενός επιπέδου $L$ τις συμβολίζουμε με $C^L_i$ ενώ με $C^L$ συμβολίζουμε τη μήτρα στην οποία οργανώνονται όλες οι κάψουλες επιπέδου $L$. Το μέγεθος της κάθε κάψουλας επιπέδου $L$ (μήκος του διανύσματος με το οποίο αναπαρίσταται η κάψουλα) συμβολίζεται με $d^L$.
+  \item Μεταξύ δύο επιπέδων από κάψουλες $L$ και $L+1$, κάθε κάψουλα $C^L_i \in \Omega_L$ προβλέπει ποια θα είναι η πόζα της κάθε κάψουλας $C^{L+1}_j \in \Omega_{L+1}$. Έτσι προκύπτουν $n^L \times n^{L+1}$ προβλέψεις (ή ψήφοι) όπου την κάθε μια τη συμβολίζουμε με $V_{ij}^L$. Αυτές οι ψήφοι οργανώνονται στη μήτρα $V^L$ η οποία όπως είναι λογικό, περιέχει $n^L \times n^{L+1}$ κάψουλες - ψήφους: $n^L$ ψήφους για κάθε κάψουλα $C^{L+1}_i$.
+  \item Σε περίπτωση που θα θέλαμε να αναφερθούμε σε όλες τις ψήφους που αφορούν μια κάψουλα επιπέδου $L+1$ αρκεί να \textquote{δεσμεύσουμε} την ελεύθερη μεταβλητή $j$ και να γράψουμε $V^L_j$ (ή, καλύτερα, $V^L_{:j}$ ώστε να είναι εμφανές ότι η μεταβλητή $i$ που αφορά τις κάψουλες επιπέδου $L$ παραμένει ελεύθερη). Κατά αντιστοιχία, αν θα θέλαμε να αναφερθούμε στις ψήφους που προκύπτουν από την κάψουλα $C^L_i$ θα γράφαμε $V^L_i$ (ή, σαφέστερα, $V^L_{i:}$). Κατά αυτόν τον τρόπο, αν δεσμεύσουμε όλες τις διαστάσεις μιας μήτρας, τότε έχουμε ένα βαθμωτό μέγεθος. Για παράδειγμα, έστω κάψουλες $C^L \in \Re^{n^L \times d^L}$. Τότε αν δεσμεύσουμε την ελεύθερη μεταβλητή $i \in [1, n^L]$ τότε ισχύει $C_i^L \in \Re^{d^L}$. Αν δεσμεύσουμε και το επιμέρους τμήμα του διανύσματος της κάψουλας λαμβάνουμε έναν πραγματικό αριθμό, δηλαδή: $C_{ik}^L \in \Re$ \footnote{Μάλιστα είναι $C_{ik}^L \in [0,1]$ αφού η συνάρτηση \en{squash} δεν επιτρέπει τα διανύσματα των καψουλών να έχουν μήκος μεγαλύτερο της μονάδας.}.
+  \item Όπως γίνεται κατανοητό από το ανωτέρω παράδειγμα, ο δείκτης $k_L$ θα χρησιμοποιείται για να αναφερόμαστε στα επιμέρους στοιχεία ενός διανύσματος μεγέθους $d^L$.
+  \item Οι πίνακες από βάρη ενός επιπέδου $L$ που αποθηκεύουν τις σχέσεις μέρους - όλου οργανώνονται στη μήτρα $W^L$. Η μήτρα περιέχει όλα τα επιμέρους βάρη $W_{ij}^L$ που χρησιμοποιούν οι κάψουλες $C^L$ για να παράξουν τις προβλέψεις $V^L$. Για μια κάψουλα $c_i^L \in \Omega_L$, η ψήφος της υπολογίζεται με τη φόρμουλα: $V_{ij}^L = C_i^L \times W_{ij}^L$.
   \item Συνήθως, μπορεί να αναφερόμαστε στις κάψουλες επιπέδου $L$ ως κάψουλες παιδιά και στις αντίστοιχες του επιπέδου $L+1$ ως κάψουλες γονείς.
-  \item Ο επιμέρους πίνακας που προκύπτει από τον μηχανισμό αυτο\textendash προσοχής των ψήφων $V^L_j$ για μια κάψουλα $c_j^{L+1}$ συμβολίζεται ως $Α^L_j$. Η μήτρα που περιέχει όλους τους πίνακες προσοχής ($\forall c_j^{L+1} \in \Omega_{L+1}$) συμβολίζεται με $\boldsymbol{A}^L$.
-  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $c^{L+1}_j$ συμβολίζεται ως ${A^{h=1}_j}^L$.
+  \item Ο επιμέρους πίνακας που προκύπτει από τον μηχανισμό αυτο\textendash προσοχής των ψήφων $V^L_j$ για μια κάψουλα $C_j^{L+1}$ συμβολίζεται ως $Α^L_j$. Η μήτρα που περιέχει όλους τους πίνακες προσοχής ($\forall C_j^{L+1} \in \Omega_{L+1}$) συμβολίζεται με $A^L$.
+  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $C^{L+1}_j$ συμβολίζεται ως $A_{jh=1}^L$.
+  \item Η μήτρα βαρών δρομολόγησης μεταξύ επιπέδων $L$ και $L + 1$ συμβολίζεται με $\mathbf{R}^L$. Αυτή, μεταξύ δύο πλήρως διασυνδεδεμένων επιπέδων από κάψουλες, περιέχει όλα τα βάρη ακμών τα οποία συμβολίζονται με $\mathbf{R}_{ij}^L$.
 \end{itemize}
 
 
+\subsubsection{Απλοϊκός αλγόριθμος δρομολόγησης με αυτο\textendash προσοχή}
+
+Στην παράγραφο αυτή γίνεται αναφορά στον αλγόριθμο που χρησιμοποιεί το έργο \cite{mazzia2021efficient}. Σε γενικές γραμμές, πρόκειται για τον μη\textendash επαναληπτικό αλγόριθμο ο οποίος χρησιμοποιεί τον μηχανισμό αυτο\textendash προσοχής προκειμένου να υπολογίσει τα βάρη δρομολόγησης (\en{coupling coefficients}). Αν και το έργο δεν προσφέρει μια πειστική, λογική εξήγηση για όλα τα βήματα του αλγορίθμου, οι υψηλές επιδόσεις του παρακίνησαν την κατασκευή των εξελιγμένων αλγορίθμων που παρουσιάζουμε σε επόμενες παραγράφους.\par
 
 \en{
 \begin{algorithm}[H]
-  \caption{\gr{Αλγόριθμος Δρομολόγησης με Προσοχή Πολλών Κεφαλών} \en{Multi-Head Attention Routing}}\label{alg:mhattention_routing}
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}}\label{alg:method3_sum_routing}
+  \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, b^L \in \Re^{n^{L+1} \times n^L}$
+
   \begin{algorithmic}[1]
-      \Procedure{MH Routing}{$v^L$}
-      \State $A^{L} \gets ComputeAttentionMaps(v^L), \text{\gr{ όπου }} A^{L} \in \Re^{N^{L+1} \times N^{L} \times N^{L}}$
-      \State $ v^{L+1} \gets ComputeParentCapsules(A^L), \text{\gr{ όπου }} v^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
-      \State \Return $v^{L+1}$
-      \EndProcedure
-      \Procedure{ComputeAttentionMaps}{$v^L$}
-        \State $\forall j \in \Omega_{L+1}: A_j^{L} \gets v_j^{L} \times (v_j^L)^T, A_j^L \in \Re^{N^L \times N^L}$
-        \State $\text{\gr{Στοίβαξε} (Stack) \gr{τα} }A_j^L \text{\gr{ σε μια μήτρα }} A^L \in \Re^{N^{L+1} \times N^L \times N^L}$ \label{op:summer}
-        \State \Return $A^L$
-      \EndProcedure
-      \Procedure{ComputeParentCapsules}{$A^L, v^{L}$}
-      \State $embedings^{L+1} \gets A^L \times v^{L}, embedings \in \Re^{N^{L+1} \times N^{L} \times D^{L+1}}$
-      \State $s^{L+1} \gets \sum_i^{N^L} embedings_{jid}, s^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
-      \State $\forall j \in \Omega_{L+1}: v^{L+1}_j \gets squash(s^{L+1}_j), v^{L+1} \in \Re^{N^{L+1} \times D^{L+1}}$
-      \State \Return $v^{L+1}$
-      \EndProcedure
+    % \item[] % Empty, unnumbered line
+    \Procedure{Main}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
+      \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
+      \State $\textbf{R}^L \gets$ \Call{ComputeRootingCoefficients}{$A^L$}
+      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets (\textbf{R}_j^L + b_j^L) \times V_j^L$ \Comment{Equiv.: $C_{jk}^{L+1} \gets \sum_i^{n^L} (\textbf{R}_{ji}^L + b_{ji}^L) \ast V_{jik}^L$}
+      \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
+    \EndProcedure
+    % \item[] % Empty, unnumbered line
+    \Procedure{ComputeVotes}{$C^L$}  \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: V_{ji:}^L \gets C_{i:}^L \times W_{ji::}^L$ \Comment{Equiv.: $V^L_{jik_{L+1}} \gets \sum_{k_{L}}^{d^L} C_{ik_L}^L \ast W_{jik_Lk_{L+1}}$}
+      \State \Return $V^{L}$ \Comment{Output: $V^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+    
+    \Procedure{Self-Attention}{$V^L$}  \Comment{Input: $V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+      \State $\forall j \in \Omega_{L+1}: A_j^L \gets \frac{V^L_j \times {V_j^{L}}^T}{\sqrt{d^{L+1}}}$ \Comment{Equiv.: $A^L_{ji_1i_2} \gets \sum_k^{d^{L+1}} V^L_{ji_1k} \ast V^L_{ji_2k}$}
+      \State \Return $A^{L}$ \Comment{Output: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+    \Procedure{ComputeRootingCoefficients}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+      \State $\forall j \in \Omega_{L+1}: R_j^L \gets \sum_{i_1}^{n^L} A^L_{ji_1:}$ \Comment{Equiv.: $R_{ji_2}^L \gets \sum_{i_1}^{n^L} A^L_{ji_1i_2}$} \label{op:stupid_algo_is_sum_of_rows}
+      \State $\forall j \in \Omega_{L+1}: \mathbf{R}_j^L \gets \mathit{softmax}(R_j^L)$ \Comment{Equiv.: $\mathbf{R}_{ji}^L \gets \frac{\exp(R_{ji}^L)}{\sum_j^{n^{L+1}} \exp(R_{ji}^L)}$} \label{op:stupid_algo_softmax_definition}% How to define softmax: $\mathit{softmax}(X \in \Re^{1\times n}) = $
+      \State \Return $\mathbf{R}^L$ \Comment{Output: $\mathbf{R}^{L} \in \Re^{n^{L+1} \times n^{L}}$}
+    \EndProcedure
+
+  \end{algorithmic}
+  \end{algorithm}
+}
+
+
+Αν και τα ανωτέρω βήματα έχουν παρουσιαστεί πολύ αναλυτικά με ισοδύναμες (\en{"Equivalent"}), σημειακές εκφράσεις, μπορούμε να κάνουμε τα παρακάτω σχόλια:
+\begin{itemize}
+  \item Το σύμβολο $\ast$ συμβολίζει τον πολλαπλασιασμό μεταξύ δύο βαθμωτών μεγεθών (\en{scalars}).
+  \item Η συνάρτηση $softmax()$ στο βήμα \ref{op:stupid_algo_softmax_definition} σκοπό έχει να επιβάλει τον περιορισμό $\sum_j^{n^{L+1}} R_{ji} = 1$ και να ενισχύσει το βάρος δρομολόγησης με το μεγαλύτερο μέτρο έτσι ώστε, τελικά, μια κάψουλα παιδί να μην ανήκει ολοκληρωτικά σε πολλούς γονείς (\en{single parent assumption}). Σε τεχνικό επίπεδο, η συνάρτηση δέχεται σαν είσοδο ένα διάνυσμα γραμμή και μπορεί να οριστεί ως εξής:
+  \begin{equation}
+    \mathit{softmax}(X \in \Re^{1\times n}) = \frac{\exp(X_k)}{\sum_k^n \exp(X_k)}.
+  \end{equation}
+  \item Στη γραμμή \ref{op:stupid_algo_is_sum_of_rows} του αλγορίθμου, το αριστερό άθροισμα διενεργείται σημειακά σε διανύσματα γραμμές. Ουσιαστικά, για μια κάψουλα γονέα $j$, οι ομοιότητες της εκάστοτε ψήφου από την κάψουλα $C_i^L$ με τις άλλες ψήφους από τις κάψουλες $C_{\acute{i}}^L \in \Omega_L \setminus C_i^L$ αθροίζονται στην τιμή $R_{ji}^L$. Η ποιοτική ερμηνεία αυτής της πράξης δεν αναλύεται στο έργο \cite{mazzia2021efficient}. Σε μια προσπάθεια ερμηνείας, θα μπορούσαμε να αναφέρουμε ότι κάθε θέση $i$ του διανύσματος γραμμής $R_j^L$ που προκύπτει, φανερώνει ποιες ψήφοι καψουλών $C_i^L$ εμφανίζουν μεγάλη ομοιότητα με τις υπόλοιπες ψήφους για το συγκεκριμένο το $j$. Έτσι, στη συνέχεια, η κάθε κάψουλα $C_j^{L+1}$ θα συντίθεται μόνο από τις ψήφους των $C_{i}^L$ που εμφάνιζαν μεγάλη ομοιότητα με τις υπόλοιπες ψήφους από τις κάψουλες $C_{\acute{i}}^L \in \Omega_L \setminus C_i^L$ (πάντα για συγκεκριμένο $j$).
+\end{itemize}
+
+Πλέον, είμαστε σε θέση να παρουσιάσουμε τους δικούς μας αλγορίθμους οι οποίοι έχουν περισσότερο προφανή ποιοτική ερμηνεία και μάλιστα, επιτυγχάνουν καλύτερα πειραματικά αποτελέσματα.
+
+\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}
+
+\en{
+\begin{algorithm}[H]
+  \caption{\gr{Απλοϊκός Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}}\label{alg:method3_stupid_routing}
+  \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, b^L \in \Re^{n^{L+1} \times n^L}$
+  \begin{algorithmic}[1]
+    % \item[] % Empty, unnumbered line
+    \Procedure{Main}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
+      \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
+      \State $E^L \gets$ \Call{NewEmb}{$A^L, V^L$} \Comment{Computes new, context-aware, votes.}
+      \State $\forall j \in \Omega_{L+1}: C^{L+1}_j \gets \sum_i^{n^L} E^L_{ji}$ \Comment{Equiv.: $C^{L+1}_{jk} \gets \sum_i^{n^L} E^L_{jik}$}
+      \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
+    \EndProcedure
+    % \item[] % Empty, unnumbered line
+    \Procedure{ComputeVotes}{$C^L$}  \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: V_{ji:}^L \gets C_{i:}^L \times W_{ji::}^L$ \Comment{Equiv.: $V^L_{jik_{L+1}} \gets \sum_{k_{L}}^{d^L} C_{ik_L}^L \ast W_{jik_Lk_{L+1}}$}
+      \State \Return $V^{L}$ \Comment{Output: $V^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+    
+    \Procedure{Self-Attention}{$V^L$}  \Comment{Input: $V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+      \State $\forall j \in \Omega_{L+1}: A_j^L \gets \frac{V^L_j \times {V_j^L}^T}{\sqrt{d^{L+1}}}$ \Comment{Equiv.: $A^L_{ji_1i_2} \gets \sum_k^{d^{L+1}} V^L_{ji_1k} \ast V^L_{ji_2k}$}
+      \State \Return $A^{L}$ \Comment{Output: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+    \Procedure{NewEmb}{$A^L, V^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}, V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+    \State $\forall j \in \Omega_{L+1}:  \prescript{+}{}{A^{L}_j} \gets \mathbf{ReLU}(A^L_j)$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji\tilde{i}}} \gets ReLU(A^L_{ji\tilde{i}})$} \label{op:method3_sum_pointwise_relu_this_op_may_be_different}
+    \State $\forall j \in \Omega_{L+1}: E^L_j \gets \prescript{+}{}{A_j^L} \times V_j^L$ \Comment{Equiv.: $E^L_{jik} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{A_{ji\tilde{i}}^L} \ast V^L_{j\tilde{i}k}$} \label{op:method3_sum_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
+    \State \Return $E^L$ \Comment{Output: $E^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+
   \end{algorithmic}
   \end{algorithm}
 }
