@@ -373,8 +373,8 @@
 Στην παράγραφο αυτή γίνεται αναφορά στον αλγόριθμο που χρησιμοποιεί το έργο \cite{mazzia2021efficient}. Σε γενικές γραμμές, πρόκειται για τον μη\textendash επαναληπτικό αλγόριθμο ο οποίος χρησιμοποιεί τον μηχανισμό αυτο\textendash προσοχής προκειμένου να υπολογίσει τα βάρη δρομολόγησης (\en{coupling coefficients}). Αν και το έργο δεν προσφέρει μια πειστική, λογική εξήγηση για όλα τα βήματα του αλγορίθμου, οι υψηλές επιδόσεις του παρακίνησαν την κατασκευή των εξελιγμένων αλγορίθμων που παρουσιάζουμε σε επόμενες παραγράφους.\par
 
 \en{
-\begin{algorithm}[H]
-  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}}\label{alg:method3_sum_routing}
+\begin{algorithm}[hp]
+  \caption{\gr{Απλοϊκός Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}}\label{alg:method3_stupid_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, b^L \in \Re^{n^{L+1} \times n^L}$
@@ -401,7 +401,7 @@
 
     \Procedure{ComputeRootingCoefficients}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
       \State $\forall j \in \Omega_{L+1}: R_j^L \gets \sum_{i_1}^{n^L} A^L_{ji_1:}$ \Comment{Equiv.: $R_{ji_2}^L \gets \sum_{i_1}^{n^L} A^L_{ji_1i_2}$} \label{op:stupid_algo_is_sum_of_rows}
-      \State $\forall j \in \Omega_{L+1}: \mathbf{R}_j^L \gets \mathit{softmax}(R_j^L)$ \Comment{Equiv.: $\mathbf{R}_{ji}^L \gets \frac{\exp(R_{ji}^L)}{\sum_j^{n^{L+1}} \exp(R_{ji}^L)}$} \label{op:stupid_algo_softmax_definition}% How to define softmax: $\mathit{softmax}(X \in \Re^{1\times n}) = $
+      \State $\forall i \in \Omega_{L}: \mathbf{R}_{:i}^L \gets \mathit{softmax}(R_{:i}^L)$ \Comment{Equiv.: $\mathbf{R}_{ji}^L \gets \frac{\exp(R_{ji}^L)}{\sum_j^{n^{L+1}} \exp(R_{ji}^L)}$} \label{op:stupid_algo_softmax_definition}% How to define softmax: $\mathit{softmax}(X \in \Re^{1\times n}) = $
       \State \Return $\mathbf{R}^L$ \Comment{Output: $\mathbf{R}^{L} \in \Re^{n^{L+1} \times n^{L}}$}
     \EndProcedure
 
@@ -413,29 +413,30 @@
 Αν και τα ανωτέρω βήματα έχουν παρουσιαστεί πολύ αναλυτικά με ισοδύναμες (\en{"Equivalent"}), σημειακές εκφράσεις, μπορούμε να κάνουμε τα παρακάτω σχόλια:
 \begin{itemize}
   \item Το σύμβολο $\ast$ συμβολίζει τον πολλαπλασιασμό μεταξύ δύο βαθμωτών μεγεθών (\en{scalars}).
-  \item Η συνάρτηση $softmax()$ στο βήμα \ref{op:stupid_algo_softmax_definition} σκοπό έχει να επιβάλει τον περιορισμό $\sum_j^{n^{L+1}} R_{ji} = 1$ και να ενισχύσει το βάρος δρομολόγησης με το μεγαλύτερο μέτρο έτσι ώστε, τελικά, μια κάψουλα παιδί να μην ανήκει ολοκληρωτικά σε πολλούς γονείς (\en{single parent assumption}). Σε τεχνικό επίπεδο, η συνάρτηση δέχεται σαν είσοδο ένα διάνυσμα γραμμή και μπορεί να οριστεί ως εξής:
+  \item Η συνάρτηση $softmax()$ στο βήμα \ref{op:stupid_algo_softmax_definition} σκοπό έχει να επιβάλει τον περιορισμό $\sum_j^{n^{L+1}} R_{ji} = 1$ και να ενισχύσει το βάρος δρομολόγησης με το μεγαλύτερο μέτρο έτσι ώστε, τελικά, μια κάψουλα παιδί να μην ανήκει ολοκληρωτικά σε πολλούς γονείς (\en{single parent assumption}). Σε τεχνικό επίπεδο, η συνάρτηση δέχεται σαν είσοδο ένα διάνυσμα στήλη και μπορεί να οριστεί ως εξής:
   \begin{equation}
-    \mathit{softmax}(X \in \Re^{1\times n}) = \frac{\exp(X_k)}{\sum_k^n \exp(X_k)}.
+    \mathit{softmax}(X \in \Re^{n \times 1}) = \frac{\exp(X_k)}{\sum_k^n \exp(X_k)}.
   \end{equation}
   \item Στη γραμμή \ref{op:stupid_algo_is_sum_of_rows} του αλγορίθμου, το αριστερό άθροισμα διενεργείται σημειακά σε διανύσματα γραμμές. Ουσιαστικά, για μια κάψουλα γονέα $j$, οι ομοιότητες της εκάστοτε ψήφου από την κάψουλα $C_i^L$ με τις άλλες ψήφους από τις κάψουλες $C_{\acute{i}}^L \in \Omega_L \setminus C_i^L$ αθροίζονται στην τιμή $R_{ji}^L$. Η ποιοτική ερμηνεία αυτής της πράξης δεν αναλύεται στο έργο \cite{mazzia2021efficient}. Σε μια προσπάθεια ερμηνείας, θα μπορούσαμε να αναφέρουμε ότι κάθε θέση $i$ του διανύσματος γραμμής $R_j^L$ που προκύπτει, φανερώνει ποιες ψήφοι καψουλών $C_i^L$ εμφανίζουν μεγάλη ομοιότητα με τις υπόλοιπες ψήφους για το συγκεκριμένο το $j$. Έτσι, στη συνέχεια, η κάθε κάψουλα $C_j^{L+1}$ θα συντίθεται μόνο από τις ψήφους των $C_{i}^L$ που εμφάνιζαν μεγάλη ομοιότητα με τις υπόλοιπες ψήφους από τις κάψουλες $C_{\acute{i}}^L \in \Omega_L \setminus C_i^L$ (πάντα για συγκεκριμένο $j$).
 \end{itemize}
 
 Πλέον, είμαστε σε θέση να παρουσιάσουμε τους δικούς μας αλγορίθμους οι οποίοι έχουν περισσότερο προφανή ποιοτική ερμηνεία και μάλιστα, επιτυγχάνουν καλύτερα πειραματικά αποτελέσματα.
 
-\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}
+\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RooMAV})}
 
 \en{
-\begin{algorithm}[H]
-  \caption{\gr{Απλοϊκός Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή}}\label{alg:method3_stupid_routing}
+\begin{algorithm}[hp]
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RooMAV}) }}\label{alg:method3_sum_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
-  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, b^L \in \Re^{n^{L+1} \times n^L}$
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}$
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
-    \Procedure{Main}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+    \Procedure{Main-RooMAV}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
-      \State $E^L \gets$ \Call{NewEmb}{$A^L, V^L$} \Comment{Computes new, context-aware, votes.}
+      \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
+      \State $E^L \gets$ \Call{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Computes new, context-aware, votes.}
       \State $\forall j \in \Omega_{L+1}: C^{L+1}_j \gets \sum_i^{n^L} E^L_{ji}$ \Comment{Equiv.: $C^{L+1}_{jk} \gets \sum_i^{n^L} E^L_{jik}$}
       \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
     \EndProcedure
@@ -450,8 +451,12 @@
       \State \Return $A^{L}$ \Comment{Output: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
     \EndProcedure
 
-    \Procedure{NewEmb}{$A^L, V^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}, V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
-    \State $\forall j \in \Omega_{L+1}:  \prescript{+}{}{A^{L}_j} \gets \mathbf{ReLU}(A^L_j)$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji\tilde{i}}} \gets ReLU(A^L_{ji\tilde{i}})$} \label{op:method3_sum_pointwise_relu_this_op_may_be_different}
+    \Procedure{ComputeNonNegativeAttentionMap}{$A^L$}\Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+      \State $\forall j \in \Omega_{L+1}:  \prescript{+}{}{A^{L}_j} \gets \mathbf{ReLU}(A^L_j)$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji\tilde{i}}} \gets ReLU(A^L_{ji\tilde{i}})$} \label{op:method3_sum_pointwise_relu_this_op_may_be_different}
+      \State \Return $\prescript{+}{}{A^{L}}$ \Comment{Output: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+    \Procedure{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Input: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}, V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
     \State $\forall j \in \Omega_{L+1}: E^L_j \gets \prescript{+}{}{A_j^L} \times V_j^L$ \Comment{Equiv.: $E^L_{jik} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{A_{ji\tilde{i}}^L} \ast V^L_{j\tilde{i}k}$} \label{op:method3_sum_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
     \State \Return $E^L$ \Comment{Output: $E^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
     \EndProcedure
@@ -459,3 +464,59 @@
   \end{algorithmic}
   \end{algorithm}
 }
+
+\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 2 (Αλγόριθμος \en{RoWSS})}
+
+\en{
+\begin{algorithm}[hp]
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 2 (Αλγόριθμος \en{RoWSS})}}\label{alg:method3_max_rooting}
+  \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}$
+  \begin{algorithmic}[1]
+    % \item[] % Empty, unnumbered line
+    \Procedure{Main-RoWSS}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
+      \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
+      \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
+      \State $E^L \gets$ \Call{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Computes new, context-aware, votes.}
+      \State $Winners^L \gets$ \Call{FindWinnerIndexes}{$\prescript{+}{}{A^{L}}$}
+      \State $\forall j \in \Omega_{L+1}: C^{L+1}_j \gets E^L_{ji=Winners_j^L}$ \Comment{Equiv.: $C^{L+1}_{jk} \gets E^L_{ji=Winners_j^Lk}$}
+      \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
+    \EndProcedure
+    % \item[] % Empty, unnumbered line
+    \Procedure{ComputeVotes}{$C^L$}  \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: V_{ji:}^L \gets C_{i:}^L \times W_{ji::}^L$ \Comment{Equiv.: $V^L_{jik_{L+1}} \gets \sum_{k_{L}}^{d^L} C_{ik_L}^L \ast W_{jik_Lk_{L+1}}$}
+      \State \Return $V^{L}$ \Comment{Output: $V^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+    
+    \Procedure{Self-Attention}{$V^L$}  \Comment{Input: $V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+      \State $\forall j \in \Omega_{L+1}: A_j^L \gets \frac{V^L_j \times {V_j^L}^T}{\sqrt{d^{L+1}}}$ \Comment{Equiv.: $A^L_{ji_1i_2} \gets \sum_k^{d^{L+1}} V^L_{ji_1k} \ast V^L_{ji_2k}$}
+      \State \Return $A^{L}$ \Comment{Output: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+    \Procedure{ComputeNonNegativeAttentionMap}{$A^L$}\Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \State $\forall j \in \Omega_{L+1}:  \prescript{+}{}{A^{L}_j} \gets \mathbf{ReLU}(A^L_j)$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji\tilde{i}}} \gets ReLU(A^L_{ji\tilde{i}})$} \label{op:method3_max_pointwise_relu_this_op_may_be_different}
+    \State \Return $\prescript{+}{}{A^{L}}$ \Comment{Output: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+    \Procedure{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Input: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}, V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+    \State $\forall j \in \Omega_{L+1}: E^L_j \gets \prescript{+}{}{A_j^L} \times V_j^L$ \Comment{Equiv.: $E^L_{jik} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{A_{ji\tilde{i}}^L} \ast V^L_{j\tilde{i}k}$} \label{op:method3_max_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
+    \State \Return $E^L$ \Comment{Output: $E^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+
+    \Procedure{FindWinnerIndexes}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \State $\forall j \in \Omega_{L+1}: SC_j^L \gets (\sum_{i_2}^{n^L} A^L_{j:i_2})^T$ \Comment{Equiv.: $SC_{ji}^L \gets \sum_{i_2}^{n^L} A^L_{jii_2}$} \label{op:method3_max_sum_of_vector_columns} % Επίσης, πες που ανήκει το SC (διαστάσεις). Πες ότι το άθροισμα αριστερά είναι ισοδύναμο με το  $\forall j \in \Omega_{L+1}: SC_j^L \gets \sum_{i_1}^{n^L} A^L_{ji_1:}$ επειδή ο πίνακας Α είναι συμμετρικός (άθροισμα γραμμών == άθροισμα στηλών).
+    \State \Comment{$SC^L \in \Re^{n^{L+1} \times n^L}$}
+    \State $\forall i \in \Omega_L: SoftSC_{:i}^L \gets softmax(SC^L_{:i})$ \Comment{Equiv.: $ SoftSC_{ji}^L \gets \frac{\exp(SC_{ji}^L)}{\sum_j^{n^{L+1}} \exp(SC_{ji}^L)}$} \label{op:method3_max_softmax_like_previous_softmax}
+    \State $\forall j \in \Omega_{L+1}: Winners_j^L \gets \underset{i \in [1,n^L]}{\mathrm{argmax}}(SoftSC_j^L)$ \label{op:method3_max_argmax_say_that_input_is_a_row}
+    \State \Return $Winners^L$ \Comment{Output: $Winners^L \in \Re^{n^{L+1} \times 1}$}
+    \EndProcedure
+
+  \end{algorithmic}
+  \end{algorithm}
+}
+
+\subsubsection{Διαδικασία Προσοχής Πολλών Κεφαλών}
+% Just mention that instead of attention matrices procedure you can use multihead attention matrices procedure (again, you will return one attention map by summing along the heads).
+% No need to repet the two algorithms, just describe the new procedure.
