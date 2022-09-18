@@ -385,7 +385,8 @@
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
       \State $\textbf{R}^L \gets$ \Call{ComputeRootingCoefficients}{$A^L$}
-      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets (\textbf{R}_j^L + b_j^L) \times V_j^L$ \Comment{Equiv.: $C_{jk}^{L+1} \gets \sum_i^{n^L} (\textbf{R}_{ji}^L + b_{ji}^L) \ast V_{jik}^L$}
+      \State $\forall j \in \Omega_{L+1}: S_j^{L+1} \gets (\textbf{R}_j^L + b_j^L) \times V_j^L$ \Comment{Equiv.: $S_{jk}^{L+1} \gets \sum_i^{n^L} (\textbf{R}_{ji}^L + b_{ji}^L) \ast V_{jik}^L$}
+      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets squash(S_j^{L+1})$
       \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
     \EndProcedure
     % \item[] % Empty, unnumbered line
@@ -437,7 +438,8 @@
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
       \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
       \State $E^L \gets$ \Call{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Computes new, context-aware, votes.}
-      \State $\forall j \in \Omega_{L+1}: C^{L+1}_j \gets \sum_i^{n^L} E^L_{ji}$ \Comment{Equiv.: $C^{L+1}_{jk} \gets \sum_i^{n^L} E^L_{jik}$}
+      \State $\forall j \in \Omega_{L+1}: S^{L+1}_j \gets \sum_i^{n^L} E^L_{ji}$ \Comment{Equiv.: $S^{L+1}_{jk} \gets \sum_i^{n^L} E^L_{jik}$}
+      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets squash(S_j^{L+1})$
       \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
     \EndProcedure
     % \item[] % Empty, unnumbered line
@@ -481,7 +483,8 @@
       \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
       \State $E^L \gets$ \Call{NewEmb}{$\prescript{+}{}{A^{L}}, V^L$} \Comment{Computes new, context-aware, votes.}
       \State $Winners^L \gets$ \Call{FindWinnerIndexes}{$\prescript{+}{}{A^{L}}$}
-      \State $\forall j \in \Omega_{L+1}: C^{L+1}_j \gets E^L_{ji=Winners_j^L}$ \Comment{Equiv.: $C^{L+1}_{jk} \gets E^L_{ji=Winners_j^Lk}$}
+      \State $\forall j \in \Omega_{L+1}: S^{L+1}_j \gets E^L_{ji=Winners_j^L}$ \Comment{Equiv.: $S^{L+1}_{jk} \gets E^L_{ji=Winners_j^Lk}$}
+      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets squash(S_j^{L+1})$
       \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
     \EndProcedure
     % \item[] % Empty, unnumbered line
@@ -520,3 +523,7 @@
 \subsubsection{Διαδικασία Προσοχής Πολλών Κεφαλών}
 % Just mention that instead of attention matrices procedure you can use multihead attention matrices procedure (again, you will return one attention map by summing along the heads).
 % No need to repet the two algorithms, just describe the new procedure.
+
+
+\section{\en{SOM-Caps}}
+\textit{Αλγόριθμος δρομολόγησης εμπνευσμένος από τον SOM.}
