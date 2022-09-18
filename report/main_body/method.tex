@@ -363,7 +363,7 @@
   \item Οι πίνακες από βάρη ενός επιπέδου $L$ που αποθηκεύουν τις σχέσεις μέρους - όλου οργανώνονται στη μήτρα $W^L$. Η μήτρα περιέχει όλα τα επιμέρους βάρη $W_{ij}^L$ που χρησιμοποιούν οι κάψουλες $C^L$ για να παράξουν τις προβλέψεις $V^L$. Για μια κάψουλα $c_i^L \in \Omega_L$, η ψήφος της υπολογίζεται με τη φόρμουλα: $V_{ij}^L = C_i^L \times W_{ij}^L$.
   \item Συνήθως, μπορεί να αναφερόμαστε στις κάψουλες επιπέδου $L$ ως κάψουλες παιδιά και στις αντίστοιχες του επιπέδου $L+1$ ως κάψουλες γονείς.
   \item Ο επιμέρους πίνακας που προκύπτει από τον μηχανισμό αυτο\textendash προσοχής των ψήφων $V^L_j$ για μια κάψουλα $C_j^{L+1}$ συμβολίζεται ως $Α^L_j$. Η μήτρα που περιέχει όλους τους πίνακες προσοχής ($\forall C_j^{L+1} \in \Omega_{L+1}$) συμβολίζεται με $A^L$.
-  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $C^{L+1}_j$ συμβολίζεται ως $A_{jh=1}^L$.
+  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $C^{L+1}_j$ συμβολίζεται ως $A_{jh=1}^L$. Η αναφορά στο σύνολο των κεφαλών προσοχής ενός επιπέδου $L$ για μια κάψουλα $C_j^{L+1}$ γίνεται με τον συμβολισμό $H_j^L$. Δηλαδή, ισχύει ότι $A_{jh}^L \in H_j^L$.
   \item Η μήτρα βαρών δρομολόγησης μεταξύ επιπέδων $L$ και $L + 1$ συμβολίζεται με $\mathbf{R}^L$. Αυτή, μεταξύ δύο πλήρως διασυνδεδεμένων επιπέδων από κάψουλες, περιέχει όλα τα βάρη ακμών τα οποία συμβολίζονται με $\mathbf{R}_{ij}^L$.
 \end{itemize}
 
@@ -521,6 +521,89 @@
 }
 
 \subsubsection{Διαδικασία Προσοχής Πολλών Κεφαλών}
+\en{
+\begin{algorithm}[hp]
+  \caption{\gr{Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multi\textendash Head Self\textendash Attention})}}\label{alg:method3_max_multihead_rooting}
+  \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, Wv^L \in \Re^{d^{L+1}, nh^L, d_v^L}, Wk \in \Re^{d^{L+1}, nh^L, d_k^L}, Wq \in \Re^{d^{L+1}, nh^L, d_k^L}, Wo \in \Re^{d_v^L \ast nh^L, d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Optional Trainable Parameters} $bv^L \in \Re^{nh^L \times d_v^L}, bk^L \in \Re^{nh^L \times d_k^L}, bq^L \in \Re^{nh^L \times d_q^L}, bo^L \in \Re^{d^{L+1}}$
+  \begin{algorithmic}[1]
+    % \item[] % Empty, unnumbered line
+
+    \Procedure{Main-RoWSS}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+      \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
+      \State $Amh^L, Vp^L \gets$ \Call{Multi-Head Self-Attention}{$V^L$}
+      \State $\prescript{+}{}{Amh^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap2}{$Amh^L$}
+      \State $E^L \gets$ \Call{NewEmb2}{$\prescript{+}{}{Amh^{L}}, Vp^L$} \Comment{Computes new, context-aware, votes.}
+      \State $\prescript{+}{}{A^{L}}\gets$ \Call{AggregateAttentionHeads}{$\prescript{+}{}{Amh^{L}}$}
+      \State $Winners^L \gets$ \Call{FindWinnerIndexes}{$\prescript{+}{}{A^{L}}$}
+      \State $\forall j \in \Omega_{L+1}: S^{L+1}_j \gets E^L_{ji=Winners_j^L}$ \Comment{Equiv.: $S^{L+1}_{jk} \gets E^L_{ji=Winners_j^Lk}$}
+      \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets squash(S_j^{L+1})$
+      \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
+    \EndProcedure
+    
+    \Procedure{Multi-Head Self-Attention}{$V^L$}  \Comment{Input: $V^L \in \Re^{n^{L+1} \times n^L \times d^{L+1}}$} 
+      \State $Q \gets V^L$
+      \State $K \gets V^L$
+      \State $V \gets V^L$
+      \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Vp_{j::h}^L \gets V_j^L \times Wv^L_{:h:}$ \Comment{Equiv.: $Vp_{jikh}^L \gets \sum_{k_1}^{d^{L+1}} V^L_{jik_1}\ast Wv^L_{k_1ik}$}
+      \State \Comment $Vp^L \in \Re^{n^{L+1} \times n^L \times d_v^L \times nh^L}$
+      \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Qp_{j::h}^L \gets V_j^L \times Wq^L_{:h:}$ \Comment{Equiv.: $Qp_{jikh}^L \gets \sum_{k_1}^{d^{L+1}} V^L_{jik_1}\ast Wq^L_{k_1ik}$}
+      \State \Comment $Qp^L \in \Re^{n^{L+1} \times n^L \times d_k^L \times nh^L}$
+      \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Kp_{j::h}^L \gets V_j^L \times Wk^L_{:h:}$ \Comment{Equiv.: $Kp_{jikh}^L \gets \sum_{k_1}^{d^{L+1}} V^L_{jik_1}\ast Wk^L_{k_1ik}$}
+      \State \Comment $Kp^L \in \Re^{n^{L+1} \times n^L \times d_k^L \times nh^L}$
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_{L}: Vp_{ji::}^L \gets Vp_{ji::}^L + {bv^L}^T$
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_{L}: Kp_{ji::}^L \gets Kp_{ji::}^L + {bk^L}^T$
+      \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_{L}: Qp_{ji::}^L \gets Qp_{ji::}^L + {bq^L}^T$
+      \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Amh_{j::h}^L \gets \frac{Qp^L_{j::h} \times {Kp_{j::h}^L}^T}{\sqrt{d^{L}_k}}$ \Comment{Equiv.: $Amh^L_{ji_1i_2h} \gets \sum_k^{d^{L+1}} Qp^L_{ji_1kh} \ast Kp^L_{ji_2kh}$}
+      \State \Return $A^{L}, Vp^L$ \Comment{Output: $Amh^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}, Vp^L \in \Re^{n^{L+1} \times n^L \times d_v^L \times nh^L}$}
+    \EndProcedure
+
+    \Procedure{ComputeNonNegativeAttentionMap2}{$Amh^L$}\Comment{Input: $Amh^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
+    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: \prescript{+}{}{Amh^{L}_{j::h}} \gets \mathbf{ReLU}(Amh^L_{j::h})$ \Comment{Equiv.: $\prescript{+}{}{Amh^{L}_{ji\tilde{i}h}} \gets ReLU(Amh^L_{ji\tilde{i}h})$} \label{op:method3_max_alternative_pointwise_relu_this_op_may_be_different}
+    \State \Return $\prescript{+}{}{Amh^{L}}$ \Comment{Output: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
+    \EndProcedure
+
+    \Procedure{NewEmb2}{$\prescript{+}{}{Amh^{L}}, Vp^L$} \Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}, Vp^L \in \Re^{n^{L+1} \times n^L \times dv^{L} \times nh^L}$} 
+    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Ep^L_{j::h} \gets \prescript{+}{}{Amh_{j::h}^L} \times Vp_{j::h}^L$ \Comment{Equiv.: $Ep^L_{jikh} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{Amh_{ji\tilde{i}h}^L} \ast V^L_{j\tilde{i}kh}$} \label{op:method3_max_alternative_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
+    \State \Comment{$Ep^L \in \Re^{n^{L+1} \times n^L \times d_v^L \times nh^L}$}
+    \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: Econcat_{ji}^L \gets Concatenate(E_{ji:h=1}^L, E_{ji:h=2}^L, \dots, E_{ji:h=nh^L}^L)$ \Comment{Equiv.: $Econcat_{jik}^L \gets E_{ji\tilde{k}={(k-1) mod nh^L + 1}h={k div nh^L}}^L $} \label{op:weird_method3_alternative_modulo}
+    \State \Comment{$Econcat^L \in \Re^{n^{L+1} \times n^L \times d_v^L \ast nh^L}$}
+    \State  $\forall j \in \Omega_{L+1}: E_j^L \gets Econcat_j^L \times Wo^L$ \Comment{Equiv.: $E_{jik}^L \gets \sum_{k_2}^{nh^L \ast dv^L} Econcat_{jik_2}^L \ast Wo_{k_2k}^L$}
+    \State  $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: E_{ji}^L \gets E_{ji}^L + bo^L$
+    \State \Return $E^L$ \Comment{Output: $E^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
+    \EndProcedure
+
+    \Procedure{AggregateAttentionHeads}{$\prescript{+}{}{Amh^L}$}\Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
+    \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: \prescript{+}{}{A^{L}_{ji:}} \gets \sum_h^{nh^L} \prescript{+}{}{Amh^{L}_{ji:h}}$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji_1i_2}} \gets \sum_h^{nh^L} \prescript{+}{}{Amh^{L}_{ji_1i_2h}}$} \label{op:method3_max_alternative_pointwise_relu_this_op_may_be_different}
+    \State \Return $\prescript{+}{}{A^{L}}$ \Comment{Output: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \EndProcedure
+
+  \end{algorithmic}
+  \end{algorithm}
+}
+
+\subsubsection{Εναλλακτικό Κριτήριο Επιλογής Νικητών (Κριτήριο Μέτρου)}
+\en{
+\begin{algorithm}[hp]
+  \caption{\gr{Διαδικασία Φιλτραρίσματος με Κριτήριο Μήκους ($L_2$ Νόρμα)}}\label{alg:method3_max_alt_rooting}
+  \hspace*{\algorithmicindent} \textbf{Input} CapsuleVotes $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $Winners^L \in \Re^{n^{L+1} \times 1}$
+
+  \begin{algorithmic}[1]
+
+    \Procedure{FindWinnerIndexes2}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: Length_{ji}^L \gets {\left\lVert A^L_{ji:}\right\rVert}_2 $ \Comment{Equiv.: $Length_{ji}^L \gets \sqrt{\sum_{i_2}^{n^L} (A^L_{jii_2})^2}$} 
+    \State \Comment{$Length^L \in \Re^{n^{L+1} \times n^L}$}
+    \State $\forall i \in \Omega_L: SoftLength_{:i}^L \gets softmax(Length^L_{:i})$ \Comment{Equiv.: $ SoftLength_{ji}^L \gets \frac{\exp(Length_{ji}^L)}{\sum_j^{n^{L+1}} \exp(SC_{ji}^L)}$} \label{op:method3_max_alternative_softmax_like_previous_softmax}
+    \State $\forall j \in \Omega_{L+1}: Winners_j^L \gets \underset{i \in [1,n^L]}{\mathrm{argmax}}(SoftLength_j^L)$ \label{op:method3_max_alternative_argmax_say_that_input_is_a_row}
+    \State \Return $Winners^L$ \Comment{Output: $Winners^L \in \Re^{n^{L+1} \times 1}$}
+    \EndProcedure
+  \end{algorithmic}
+  \end{algorithm}
+}
+
 % Just mention that instead of attention matrices procedure you can use multihead attention matrices procedure (again, you will return one attention map by summing along the heads).
 % No need to repet the two algorithms, just describe the new procedure.
 
