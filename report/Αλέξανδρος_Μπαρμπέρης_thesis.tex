@@ -10,6 +10,7 @@
 
 \usepackage{amsmath} 
 \usepackage{mathtools}
+\usepackage{amsfonts}
 % I would use babelbib but it has no support for iee style.
 % \usepackage{babelbib}
 % \selectbiblanguage{english}
@@ -36,6 +37,9 @@
 % For algorithms
 \usepackage{algorithm} 
 \usepackage{algpseudocode} 
+% Change list of Algorithms name
+\renewcommand{\listalgorithmname}{\gr{Λίστα Αλγορίθμων}}
+
 
 % Better paragraphs
 \usepackage{parskip}
@@ -47,6 +51,8 @@
 \usepackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{\selectlanguage{english}\renewcommand\bibname{\gr{Βιβλιογραφία}}}
 
+% Prevent placing floats before a section.
+\usepackage[section]{placeins}
 % Line spacing
 % 1.2 spacing
 \renewcommand{\baselinestretch}{1.2}
@@ -91,14 +97,18 @@
 \newcommand{\tl}[1]{\textlatin{#1}}
 \newcommand{\tg}[1]{\textgreek{#1}}
 
-
+% Draw neural networks
 \usepackage{neuralnetwork}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows}
 
+% Insert pdf pages as-is in latex.
+\usepackage{pdfpages}
+
 
 \begin{document}
+    
     \include{front/cover_page}
     % Leave a Total Blank page (without numbering).
     \blankpage
@@ -143,7 +153,7 @@
     \addcontentsline{toc}{chapter}{\contentsname}
 
     % \listoffigures
-    % \listofalgorithms
+    \listofalgorithms
 
     % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed. In a two-sided printing style, 
     % it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
@@ -175,10 +185,8 @@
     \appendix
     \include{appendixes/definitions}
     \include{appendixes/apodosixenwnorwn.tex}
-    \include{appendixes/abbreviations.tex}
-    \include{appendixes/method.tex}
-    \include{appendixes/experiments.tex}
-    \include{appendixes/conclusion.tex}
+    % \include{appendixes/abbreviations.tex}
+    \include{appendixes/SOMalgo.tex}
 
 
     
