@@ -433,7 +433,7 @@
   \item Οι πίνακες από βάρη ενός επιπέδου $L$ που αποθηκεύουν τις σχέσεις μέρους - όλου οργανώνονται στη μήτρα $W^L$. Η μήτρα περιέχει όλα τα επιμέρους βάρη $W_{ji}^L$ που χρησιμοποιούν οι κάψουλες $C^L$ για να παράξουν τις προβλέψεις $V^L$. Για μια κάψουλα $C_i^L \in \Omega_L$, η ψήφος της υπολογίζεται με τη φόρμουλα: $V_{ji}^L = C_i^L \times W_{ji}^L$.
   \item Συνήθως, μπορεί να αναφερόμαστε στις κάψουλες επιπέδου $L$ ως κάψουλες παιδιά και στις αντίστοιχες του επιπέδου $L+1$ ως κάψουλες γονείς.
   \item Ο επιμέρους πίνακας που προκύπτει από τον μηχανισμό αυτο\textendash προσοχής των ψήφων $V^L_j$ για μια κάψουλα $C_j^{L+1}$ συμβολίζεται ως $Α^L_j$. Η μήτρα που περιέχει όλους τους πίνακες προσοχής ($\forall C_j^{L+1} \in \Omega_{L+1}$) συμβολίζεται με $A^L$.
-  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $C^{L+1}_j$ συμβολίζεται ως $A_{jh=1}^L$. Η αναφορά στο σύνολο των κεφαλών προσοχής ενός επιπέδου $L$ για μια κάψουλα $C_j^{L+1}$ γίνεται με τον συμβολισμό $H_j^L$. Δηλαδή, ισχύει ότι $A_{jh}^L \in H_j^L$.
+  \item Στην περίπτωση που χρησιμοποιείται αυτο\textendash προσοχή πολλών κεφαλών (\en{multi\textendash head self\textendash attention}) η αναφορά σε επιμέρους κεφαλές γίνεται με τον δείκτη $h$ και ο συνολικός αριθμός των κεφαλών συμβολίζεται ως $nh^L$. Για παράδειγμα, η πρώτη κεφαλή (\en{head}) ενός πίνακα προσοχής για μια κάψουλα $C^{L+1}_j$ συμβολίζεται ως $A_{jh=1}^L$. Η αναφορά στο σύνολο των κεφαλών προσοχής ενός επιπέδου $L$ για μια κάψουλα $C_j^{L+1}$ γίνεται με τον συμβολισμό $H_j^L$. Δηλαδή, ισχύει ότι $A_{jh}^L \in H_j^L$.
   \item Η μήτρα βαρών δρομολόγησης μεταξύ επιπέδων $L$ και $L + 1$ συμβολίζεται με $\mathbf{R}^L$. Αυτή, μεταξύ δύο πλήρως διασυνδεδεμένων επιπέδων από κάψουλες, περιέχει όλα τα βάρη ακμών τα οποία συμβολίζονται με $\mathbf{R}_{ij}^L$.
 \end{itemize}
 
@@ -732,22 +732,28 @@
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
 
-    \Procedure{ComputeNonNegativeAttentionMap2}{$Amh^L$}\Comment{Input: $Amh^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
-    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: \prescript{+}{}{Amh^{L}_{j::h}} \gets \mathbf{ReLU}(Amh^L_{j::h})$ \Comment{Equiv.: $\prescript{+}{}{Amh^{L}_{ji\tilde{i}h}} \gets ReLU(Amh^L_{ji\tilde{i}h})$} \label{op:method3_max_alternative_pointwise_relu_this_op_may_be_different_multihead}
+    \Procedure{ComputeNonNegativeAttentionMap2}{$Amh^L$}
+    \State \Comment{Input: $Amh^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
+    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: \prescript{+}{}{Amh^{L}_{j::h}} \gets \mathbf{ReLU}(Amh^L_{j::h})$ 
+    \State \Comment{Equiv.: $\prescript{+}{}{Amh^{L}_{ji\tilde{i}h}} \gets ReLU(Amh^L_{ji\tilde{i}h})$} \label{op:method3_max_alternative_pointwise_relu_this_op_may_be_different_multihead}
     \State \Return $\prescript{+}{}{Amh^{L}}$ \Comment{Output: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
     \EndProcedure
 
-    \Procedure{NewEmb2}{$\prescript{+}{}{Amh^{L}}, Vp^L$} \Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}, Vp^L \in \Re^{n^{L+1} \times n^L \times dv^{L} \times nh^L}$} 
-    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Ep^L_{j::h} \gets \prescript{+}{}{Amh_{j::h}^L} \times Vp_{j::h}^L$ \Comment{Equiv.: $Ep^L_{jikh} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{Amh_{ji\tilde{i}h}^L} \ast V^L_{j\tilde{i}kh}$} \label{op:method3_max_alternative_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
+    \Procedure{NewEmb2}{$\prescript{+}{}{Amh^{L}}, Vp^L$} 
+    \State \Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}, Vp^L \in \Re^{n^{L+1} \times n^L \times dv^{L} \times nh^L}$} 
+    \State $\forall j \in \Omega_{L+1}, \forall h \in H^L: Ep^L_{j::h} \gets \prescript{+}{}{Amh_{j::h}^L} \times Vp_{j::h}^L$ 
+    \State \Comment{Equiv.: $Ep^L_{jikh} \gets \sum_{\tilde{i}}^{n^L} \prescript{+}{}{Amh_{ji\tilde{i}h}^L} \ast V^L_{j\tilde{i}kh}$} \label{op:method3_max_alternative_weighted_sum} % Πες για την ερμηνεία, πρόκειται για σταθμισμένο άθροισμα των votes. Αλλά εσύ το κάνες για κάθε ένα row. Υπολογίζεις μια νέα αναπαράσταση (embeding) που είναι context-aware, δηλαδή σχηματίζεται από όλες τις ψήφους (για την κάψουλα j) που συμφωνούν με την εκάστοτε κάψουλα i (εκπρόσωπος γραμμής). Από εδώ είναι εύκολο να πας λογικά στον επόμενο αλγόριθμο που βρίσκει το max row.
     \State \Comment{$Ep^L \in \Re^{n^{L+1} \times n^L \times d_v^L \times nh^L}$}
-    \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: Econcat_{ji}^L \gets Concatenate(E_{ji:h=1}^L, E_{ji:h=2}^L, \dots, E_{ji:h=nh^L}^L)$ \Comment{Equiv.: $Econcat_{jik}^L \gets E_{ji\tilde{k}={(k-1) mod nh^L + 1}h={k div nh^L}}^L $} \label{op:weird_method3_alternative_modulo}
+    \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: Econcat_{ji}^L \gets Concatenate(E_{ji:h=1}^L, E_{ji:h=2}^L, \dots, E_{ji:h=nh^L}^L)$ 
+    \State \Comment{Equiv.: $Econcat_{jik}^L \gets E_{ji\tilde{k}={(k-1) mod nh^L + 1}h={k div nh^L}}^L $} \label{op:weird_method3_alternative_modulo}
     \State \Comment{$Econcat^L \in \Re^{n^{L+1} \times n^L \times d_v^L \ast nh^L}$}
     \State  $\forall j \in \Omega_{L+1}: E_j^L \gets Econcat_j^L \times Wo^L$ \Comment{Equiv.: $E_{jik}^L \gets \sum_{k_2}^{nh^L \ast dv^L} Econcat_{jik_2}^L \ast Wo_{k_2k}^L$}
     \State  $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: E_{ji}^L \gets E_{ji}^L + bo^L$
     \State \Return $E^L$ \Comment{Output: $E^{L} \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$}
     \EndProcedure
 
-    \Procedure{AggregateAttentionHeads}{$\prescript{+}{}{Amh^L}$}\Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
+    \Procedure{AggregateAttentionHeads}{$\prescript{+}{}{Amh^L}$}
+    \State \Comment{Input: $\prescript{+}{}{Amh^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L} \times nh^L}$}
     \State $\forall j \in \Omega_{L+1}, \forall i \in \Omega_L: \prescript{+}{}{A^{L}_{ji:}} \gets \sum_h^{nh^L} \prescript{+}{}{Amh^{L}_{ji:h}}$ \Comment{Equiv.: $\prescript{+}{}{A^{L}_{ji_1i_2}} \gets \sum_h^{nh^L} \prescript{+}{}{Amh^{L}_{ji_1i_2h}}$} \label{op:method3_max_alternative_pointwise_relu_this_op_may_be_different}
     \State \Return $\prescript{+}{}{A^{L}}$ \Comment{Output: $\prescript{+}{}{A^{L}} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
     \EndProcedure
@@ -897,19 +903,15 @@
 Οι υπερπαράμετροι που μπορεί να ρυθμίσει κανείς κατά την εκτέλεση του αρχείου\footnote{Ο κώδικας για όλες τις μεθόδους είναι αναρτημένος σε \href{https://github.com/abarmper/Capsule_Nets_with_uncertainty}{αυτή} την ιστοσελίδα.} είναι οι εξής:
 
 
-
-\subsubsection{Φορμαλιστική Παρουσίαση Αλγορίθμου}
-
-
 \begin{description}
   \item[$reduced\_votes$] \hfill \\ Αυτή η παράμετρος, όταν τίθεται ενεργή, αίρει τον περιορισμό του να αντιστοιχούν ξεχωριστοί πίνακες μετασχηματισμού ($W_{ij}^L$) για κάθε κάψουλα επιπέδου $(L+1)$. Με άλλα λόγια, όταν εισάγεται ως όρισμα στην κλήση του εκτελέσιμου αρχείου, παράγονται τόσοι μετασχηματισμοί της εκάστοτε κάψουλας $C_i^L$ όσοι ορίζονται από μια άλλη υπερπαράμετρο, την $m$ (και όχι όσες είναι οι κάψουλες του επόμενου επιπέδου). Έτσι, κάθε κάψουλα $C^{L+1}_j$ έχει την ίδια όψη (\en{view}) των ψήφων. Σε τελική ανάλυση, αφήνεται στον αλγόριθμο ανταγωνιστικής μάθησης (τον αλγόριθμο \en{SOM}) να διαχωρίσει τις ψήφους και να τις συνδέσει με κάποια κλάση.
   
-  \item[\en{m}] \hfill \\ Η παράμετρος αυτή ρυθμίζει τον αριθμό των πινάκων μετασχηματισμού, για κάθε κάψουλα $C_i^L$ (εφόσον η προηγούμενη παράμετρος είναι ενεργή). Έτσι, προκύπτουν $m$ ψήφοι για κάθε $C_i^L$. Συνολικά λοιπόν, κάθε \en{DigitCap} \textquote{βλέπει} $n^L \ast m$ ψήφους.
+  \item[$m$] \hfill \\ Η παράμετρος αυτή ρυθμίζει τον αριθμό των πινάκων μετασχηματισμού, για κάθε κάψουλα $C_i^L$ (εφόσον η προηγούμενη παράμετρος είναι ενεργή). Έτσι, προκύπτουν $m$ ψήφοι για κάθε $C_i^L$. Συνολικά λοιπόν, κάθε \en{DigitCap} \textquote{βλέπει} $n^L \ast m$ ψήφους.
   
-  \item[\en{radical}] \hfill \\ Η παράμετρος αυτή επηρεάζει άμεσα τον μηχανισμό ενημέρωσης των $C^{L+1}$. Όταν είναι ενεργή, τότε οι κάψουλες γονείς προκύπτουν σαν ένας μέσος όρος των ψήφων που μπορούν και εξηγούν καλύτερα (των ψήφων που κέρδισαν). Αυτό, διαφέρει από τον κλασικό αλγόριθμο \en{SOM} και την δική μας υλοποίηση χωρίς την συγκεκριμένη παράμετρο ενεργή όπου η ενημέρωση των κόμβων γίνεται με την πρόσθεση της διαφοράς τους με το \en{datapoint} που εξηγούν καλύτερα.\footnote{Φυσικά, σε κάθε περίπτωση, η μετρική που χρησιμοποιείται για την επιλογή του νικητή διαφέρει από τον αυθεντικό αλγόριθμο που παρουσιάσαμε στο \ref{sec:_SOM}. Εκεί χρησιμοποιείται η Ευκλείδια απόσταση ενώ εμείς χρησιμοποιούμε το εσωτερικό γινόμενο.}
+  \item[$radical$] \hfill \\ Η παράμετρος αυτή επηρεάζει άμεσα τον μηχανισμό ενημέρωσης των $C^{L+1}$. Όταν είναι ενεργή, τότε οι κάψουλες γονείς προκύπτουν σαν ένας μέσος όρος των ψήφων που μπορούν και εξηγούν καλύτερα (των ψήφων που κέρδισαν). Αυτό, διαφέρει από τον κλασικό αλγόριθμο \en{SOM} και την δική μας υλοποίηση χωρίς την συγκεκριμένη παράμετρο ενεργή όπου η ενημέρωση των κόμβων γίνεται με την πρόσθεση της διαφοράς τους με το \en{datapoint} που εξηγούν καλύτερα.\footnote{Φυσικά, σε κάθε περίπτωση, η μετρική που χρησιμοποιείται για την επιλογή του νικητή διαφέρει από τον αυθεντικό αλγόριθμο που παρουσιάσαμε στο \ref{sec:_SOM}. Εκεί χρησιμοποιείται η Ευκλείδια απόσταση ενώ εμείς χρησιμοποιούμε το εσωτερικό γινόμενο.}
   
   \item[$lr\_SOM$] \hfill \\ Ο ρυθμός μάθησης του αλγορίθμου \en{SOM-Based Routing}. Καθορίζει το βάρος των ενημερώσεων.
-  \item[\en{r}] \hfill \\ Καθορίζει τον αριθμό των ενημερώσεων που θα γίνουν στα διανύσματα των \en{DigitCaps} όταν ο αλγόριθμος εκπαίδευσης έχει τροφοδοτηθεί με μια δέσμη παραδειγμάτων (\en{batch}). Όσο πιο πολλές ενημερώσεις εκτελούνται και όσο πιο μικρό είναι το μέγεθος της δέσμης τόσο πιο πολύ τα \en{DigitCaps} θα περιέχουν ιδιότητες που αφορούν τις συγκεκριμένες αναπαραστάσεις των αντικειμένων εισόδου (π.χ. προσανατολισμός, χρώμα κτλ.). Στην αντίθετη περίπτωση όπου οι ενημερώσεις είναι λίγες, ο ρυθμός μάθησης \en{SOM} μικρός και το μέγεθος της δέσμης μεγάλο, τα διανύσματα \en{DigitCaps} διαμορφώνονται έτσι ώστε να αναπαριστούν γενικά χαρακτηριστικά των κλάσεων που παραμένουν αμετάβλητα μέσα στα παραδείγματα μιας κλάσης (\en{instance\textendash invariant characteristics}). Σημειώνουμε ότι αν θέσουμε την παράμετρο ίση με τη μονάδα τότε ακολουθούμε την πολιτική \textquote{ο νικητής τα παίρνει όλα} (\en{winner takes it all}).
+  \item[$r$] \hfill \\ Καθορίζει τον αριθμό των ενημερώσεων που θα γίνουν στα διανύσματα των \en{DigitCaps} όταν ο αλγόριθμος εκπαίδευσης έχει τροφοδοτηθεί με μια δέσμη παραδειγμάτων (\en{batch}). Όσο πιο πολλές ενημερώσεις εκτελούνται και όσο πιο μικρό είναι το μέγεθος της δέσμης τόσο πιο πολύ τα \en{DigitCaps} θα περιέχουν ιδιότητες που αφορούν τις συγκεκριμένες αναπαραστάσεις των αντικειμένων εισόδου (π.χ. προσανατολισμός, χρώμα κτλ.). Στην αντίθετη περίπτωση όπου οι ενημερώσεις είναι λίγες, ο ρυθμός μάθησης \en{SOM} μικρός και το μέγεθος της δέσμης μεγάλο, τα διανύσματα \en{DigitCaps} διαμορφώνονται έτσι ώστε να αναπαριστούν γενικά χαρακτηριστικά των κλάσεων που παραμένουν αμετάβλητα μέσα στα παραδείγματα μιας κλάσης (\en{instance\textendash invariant characteristics}). Σημειώνουμε ότι αν θέσουμε την παράμετρο ίση με τη μονάδα τότε ακολουθούμε την πολιτική \textquote{ο νικητής τα παίρνει όλα} (\en{winner takes it all}).
   \item[$Theta$] \hfill \\ Πρόκειται για μια λίστα με βάρη που καθορίζουν το μέγεθος της \textquote{γειτονιάς} του νικητή\footnote{Στο πλαίσιο του αλγορίθμου \en{SOM} ο νικητής ονομάζεται και \en{BMU (Best Matching Unit)}.} αλλά και το βάρος ενημέρωσης των γειτόνων (συμπεριλαμβανομένου του βάρους ενημέρωσης του νικητή). Με άλλα λόγια, είναι μια διακριτή συνάρτηση γειτνίασης με όρισμα την πλευρική απόσταση (\en{lateral distance}) και έξοδο το βάρος ενημέρωσης. Σημαντική διαφορά με τον αυθεντικό αλγόριθμο \en{SOM}, ωστόσο, είναι στο πως ορίζουμε αυτήν την πλευρική απόσταση (\en{lateral distance}). Αν θεωρήσουμε ότι η κάψουλα $C_j^{L+1}$ είναι το \en{BMU} για την κάψουλα $C_i^L$ τότε η $C^{L+1}_{\grave{j}}$ που είχε την δεύτερη μεγαλύτερη συμφωνία (εσωτερικό γινόμενο) με την συγκεκριμένη κάψουλα παιδί, θα έχει με το \en{BMU} πλευρική απόσταση ίση με 1. Προφανώς, μια τέτοια τοπολογική διάταξη δεν είναι σταθερή αλλά μεταβάλεται από δέσμη σε δέσμη. Για αυτό λέμε ότι ο αλγόριθμός μας δεν διαθέτει κάποια προφανή τοπολογική διάταξη, ούτε και είναι ποτέ σκοπός η δημιουργεία μιας τέτοιας.
   \item[$softmax$] \hfill \\ Αν θέσουμε αυτή τη παράμετρο ενεργή τότε η επιλογή των νικητών δεν είναι μια διαδικασία με μόνο δύο καταστάσεις. Αντιθέτως έχουμε μαλακούς νικητές (\en{soft winners}) που καθορίζονται από τον βαθμό ομοιότητας που εμφανίζουν με την κάθε ψήφο. Συνεπώς, στην διεκδίκηση της κάψουλας $C_i^L$ από τις $C^{L+1}$, όλες \textquote{κερδίζουν} και η συμβολή του διανύσματος  $C_i^L$ στην κάθε κάψουλα $C^{L+1}_j$ θα είναι ανάλογη του βαθμού ομοιότητας μεταξύ τους. Φυσικά, σε μια τέτοια περίπτωση, δεν έχει νόημα η ύπαρξη της γειτονιάς και ο αλγόριθμος διαφοροποιείται αρκετά από τον αυθεντικό \en{SOM}.
   \item[$tanh\_like$] \hfill \\ Η παράμετρος αυτή έχει παρόμοια επίδραση με την παράμετρο $softmax$ και είναι αμοιβαία αποκλεινόμενες (δεν επιτρέπεται και οι δύο να είναι ενεργές). Η διαφορά έγκειται ότι εφαρμόζεται επιπλέον μια οίσθηση και κλιμάκωση προκειμένου η σιγμοειδής συνάρτηση με είσοδο τον βαθμό ομοιότητας και έξοδο το βάρος ενημέρωσης να γίνεται πιο απότομη και ο αλγόριθμος να τείνει (σχεδόν) στην επιλογή σκληρών νικητών (\en{hard winners}).
@@ -920,4 +922,159 @@
   \item[$normalize\_d\_in\_loop$] \hfill \\ Αν η ρύθμιση αυτή είναι ενεργή, τότε οι κάψουλες $C^{L+1}$ κανονικοποιούνται αμέσως μετά από κάθε ενημέρωση. Συνήθως, βοηθάει στην ευστάθεια του αλγορίθμου όταν έχουμε μεγάλο αριθμό επαναλήψεων (παράμετρος $r$).
 \end{description}
 
+\subsubsection{Φορμαλιστική Παρουσίαση Αλγορίθμου}
+
+Στην παράγραφο αυτή παρουσιάζουμε σε μια τυπική μορφή τον αλγόριθμο που αναπτύξαμε στην τέταρτη μέθοδο. Τον αλγόριθμο δεν τον συνοδεύουμε με πολλά σχόλια, αφενώς διότι στο παράρτημα \ref{chap:SOM_appendix} έχουμε αναπτύξει ενιά σελίδες περιγράφοντας τον εν λόγο αλγόριθμο και αφετέρου διότι οι μέχρι τώρα περιγραφές επαρκούν για την ποιοτική κατανόησή του.
+
+\en{
+\begin{algorithm}[h]
+  \setstretch{1.2}
+  \caption{\gr{Αλγόριθμος Δρομολόγησης Βασισμένος στον \en{SOM} (\en{SOM-Based Routing})}}\label{alg:method4_som}
+  \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{B \times n^L \times d^L}$\\
+  \hspace*{\algorithmicindent} \textbf{Output} SimsOut $C^{L+1} \in \Re^{B \times n^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} If $reduced\_votes == True$: $W^L \in \Re^{n^{L} \times d^L \times d^{L+1} \times n^{L+1}}$ \\
+  \hspace*{\algorithmicindent} \textbf{Trainable Parameters} If $reduced\_votes == False$: $W^L \in \Re^{n^{L} \times d^L \times d^{L+1} \times m^L}$ \\
+
+  \hspace*{\algorithmicindent} \textbf{Non-Trainable Parameters} $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
+  \hspace*{\algorithmicindent} \textbf{Hyperparameters} $reduced\_votes, m, normalize\_votes, norm\_type, r, radical, \Theta,$\\
+  \hspace*{\algorithmicindent} $take\_into\_account\_win\_ratio, take\_into\_account\_similarity, softmax, tanh\_like,$\\
+  \hspace*{\algorithmicindent} $normalize\_d\_in\_loop, lr\_SOM$
+  \begin{algorithmic}[1]
+    % \item[] % Empty, unnumbered line
+
+    \Procedure{SOM-Based Routing}{$C^L$} \Comment{Input: $C^L \in  \Re^{B \times n^L \times d^L}$} 
+      \Initializee{$C^{L+1} \gets UniformRandom([-1,+1])$} 
+      \State \Comment{$C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$}
+      \If{$reduced\_votes$}
+        \State $\forall b \in [1,B], \forall i \in \Omega_L, \forall j \in \Omega_{L+1}: V^L_{bij:} \gets C^L_{bi:} \times W^L_{i::j}$
+      \Else
+        \State $\forall b \in [1,B], \forall i \in \Omega_L, \forall j \in \Omega_{L+1}: preV^L_{b(i+n^L\ast (j_m-1))d^{L+1}} \gets C^L_{bi::} \times W^L_{i::j_m}$
+        \State $\forall j \in \Omega_{L+1}: V^L_{::j:} \gets preV^L$ \Comment{Copy $n^{L+1} times.$}
+      \EndIf
+      \State \Comment{$V^L \in \Re^{B \times \underline{n^L}, n^{L+1, d^{L+1}}}}$ 
+      \State \Comment{where $\underline{n}^L=n^L$ OR $n^L \ast m$, depending on the value of $reduced\_votes$}
+
+      \If{$normalize\_votes$}
+        \If{$norm\_type == 0$}
+          \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L, \forall j \in \Omega_{L+1}: V^L_{bij} \gets Squash(V^L_{bij})$
+          
+        \Else
+          \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L, \forall j \in \Omega_{L+1}: V_{bij}^L \gets tanh{\left\lVert V^L_{bij}\right\rVert } \frac{V_{bij}^L}{\left\lVert V_{bij}^L\right\rVert }$
+        \EndIf
+      \EndIf
+
+      \If{$take\_into\_account\_win\_ratio$}
+      \Initializee{$WinCount \gets zeros^{n^{L+1}}$}
+      \EndIf
+      \algstore{first_part}
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+  \setstretch{1.2}
+  \begin{algorithmic}[1]
+    \algrestore{first_part}
+      \For{$r$ iterations}
+        \Initializee{$SU^L \gets zeros^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+        \If{$radical$}
+          \State $D^L \gets V^L$ \Comment{$D^L$ stores differences}
+        \Else
+          \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: D^L_{bi::} \gets V^L_{bi} - C^L$
+        \EndIf
+        \State \Comment{$D^L \in \Re^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+        \Initializee{$M^L \gets ones^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+        \State \Call{IterateOver$\Theta$}{$\Theta$} \Comment{Inner loop, check pseudocode below.}
+        \State \Comment{Make update dense.}
+        \State $U^L \gets \frac{\sum_b^B \sum_i^{\underline{n}^L} SU^L_{bi}}{B \ast \underline{n}^L}$ \Comment{$U^L \in \Re^{n^{L+1} \times d^{L+1}}$}
+
+        \If{not $take\_into\_account\_win\_ratio$}
+
+          \If{not $radical$}
+            \State $C^{L+1} \gets C^{L+1} + U^L$
+          \ElsIf{$radical$}
+            \State $C^{L+1} \gets \frac{C^{L+1} \ast (r-1) + U^L}{r}$ \Comment{Moving Average}
+          \EndIf
+
+          \Else
+            \State $WinRatio^L \gets \frac{WinCount^L}{\underline{n}^L \ast B}$
+            \State $SoftWinRatio^L \gets softmax(WinRatio^L)$
+            \State $\forall j \in \Omega_{L+1}: U^L_j \gets SoftWinRatio_j^L \ast U^L_j$
+            \If{not $radical$}
+              \State $C^{L+1} \gets C^{L+1} + U^L$
+            \ElsIf{$radical$}
+              \State $C^{L+1} \gets \frac{C^{L+1} \ast (r-1) + U^L}{r}$
+            \EndIf
+        \EndIf
+
+        \If{$normalize\_in\_d\_loop$}
+          \If{$norm\_type == 0$}
+            \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets Squash(C_j^{L+1})$
+          \Else
+            \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets tanh(\left\lVert C_j^{L+1}\right\rVert ) \frac{C_j^{L+1}}{\left\lVert C_j^{L+1}\right\rVert }$
+          \EndIf
+        \EndIf
+
+      \EndFor
+      
+
+
+      \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: FinalSims^{L+1}_{bi} \gets \sum_k^{d^{L+1}} [V^L_{bi} \ast C^{L+1}]_{bik}$
+      \State \Comment{$FinalSims \in \Re^{B \times \underline{n}^L \times n^{L+1}}$}
+      \State $\forall b \in [1,B]: SimsOut_b^{L+1} \gets \frac{\sum_i^{\underline{n}^L} FinalSims^{L+1}_{bi}}{\underline{n}^L}$
+      \State \Return $SimsOut^{L+1}$ \Comment{$SimsOut^{L+1} \in \Re^{B, n^{L+1}}$, optional output: $C^{L+1}$}
+    \EndProcedure
+    \algstore{second_part}
+  \end{algorithmic}
+  \end{algorithm}
+
+\begin{algorithm}
+  \setstretch{1.2}
+  \begin{algorithmic}
+    \algrestore{second_part}
+    \Procedure{IterateOver$\Theta$}{$\Theta$}
+      \ForAll{$\theta \in \Theta$}
+            \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: Sims^L_{bi} \gets \sum_k^{d^L+1} [(V^L_{bi} \ast M^L_{bi}) \ast C^{L+1}]_{bi:k}$
+            \State \Comment{$Sims^L \in \Re^{B \times \underline{n}^L, n^{L+1}}$}
+            \If{not $softmax$ nor $tanh\_like$}
+              \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: Jwinners^L_{bi} \gets \underset{j}{\mathrm{argmax}}(Sims^L_{bi})$
+              \State \Comment{$Jwinners^L \in \Re^{B \times \underline{n}^L}$}
+              \State $\forall b \in [1,B]: Mwinners^L_b \gets OneHot(Jwinners^L_{b};n^{L+1})$
+              
+            \ElsIf{$softmax$}
+              \State $\forall b \in [1,B]: Mwinners^L_{b} \gets \underset{across j}{SoftMax}(Sims^L_b)$
+            \ElsIf{$tanh\_like$}
+              \State $\forall b \in [1,B]: Mwinners^L_b \gets (\underset{across j}{SoftMax}(Sims^L_b) - 0.5) \ast 2$
+            \EndIf
+            \State \Comment{$Mwinners^L \in \Re^{B \times \underline{n}^L \times n^{L+1}}$}
+
+            \If{not $take\_into\_account\_similarity$ nor $take\_into\_account\_win\_ratio$}
+              \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: Usparse^L_{bi} \gets (Mwinners^L_{bi} \times D^L_{bi}) \ast lr_SOM \ast \theta$
+            \ElsIf{$take\_into\_account\_similarity$}
+              \State $SimsSparse^L \gets Sims^L \ast Mwinners^L$
+              \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L: Usparse_{bi}^L \gets (SimsSparse^L_{bi} \times D^L_{bi}) \ast lr_SOM$
+            \EndIf
+            \State \Comment{$Usparse \in \Re^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+            \If{$take\_into\_account\_win\_ratio$}
+              \State $WinCountPartial^L \gets \sum_i^{\underline{n}^L} \sum_b^B Mwinners^L_{bi}$
+              \State $WinCount \gets WinCount + WinCountPartial$ \Comment{$WinCount \in \Re^{n^{L+1}}$}
+
+            \EndIf
+            \If{not $softmax$ nor $tanh\_like$}
+              \State $\forall b \in [1,B], \forall i \in \underline{\Omega}_L, \forall j \in \Omega_{L+1}: M^L_{bij:} \gets M^L_{bij:} - Mwinners^L_{bij}$
+              \State \Comment{$M^L \in \Re^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+            \EndIf
+            \State \Comment{Aggregate updates across $\theta$.}
+            \State $SU^L \gets SU^L + Usparse^L$ \Comment{$SU^L \in \Re^{B \times \underline{n}^L \times n^{L+1} \times d^{L+1}}$}
+
+      \EndFor
+    \EndProcedure
+  \end{algorithmic}
+\end{algorithm}
+}
 \subsection{Λοιπά Στοιχεία Υλοποίησης}
+
+Στον αλγόριθμο που περιγράψαμε χρησιμοποιείται ο βελτιστοποιητής \en{nAdam} ενώ οι περισσότερες παράμετροι εκπαίδευσης (π.χ. ρυθμός μάθησης) είναι παραμετροποιήσημες (ακόμα και η αρχιτεκτονική του πρώτου τμήματος του νευρωνικού δικτύου). Να αναφέρουμε ακόμα ότι δεν χρησιμοποιείται κάποιος προγραματισμός για την σταδιακή ελάτωση του ρυθμού εκπαίδευσης. \par
+
+Και σε αυτήν την αρχιτεκτονική έχουμε την δυνατότητα ανακατασκευής της εικόνας εισόδου χρησιμοποιώντας δύο ξεχωριστά είδη αποκωδικοποιητών (ακριβώς ίδια με αυτά της προηγούμενης μεθόδου). Συγκεκριμένα, χρησιμοποιούμε έναν αποκωδικοποιητή όπως αυτόν της πρώτης μεθόδου αλλά και έναν αποκωδικοποιητή βασιζόμενο σε επίπεδα αποσυνέλιξης. Όπως είναι φυσικό, οι αποκωδικοποιητές μεταβάλλονται ελαφρώς ανάλογα με τα δεδομένα εικόνων που καλούνται να ανακατασκευάσουν\footnote{Η συγκεκριμένη μέθοδος μπορεί με την αλλαγή μιας παραμέτρου να δοκιμαστεί στα σύνολα δεδομένων \en{MNIST, Cifar10, FashionMNIST, MultiMNIST} και \en{smallNORB}}.\par
+
+Τέλος, αναφορικά με την συνάρτηση σφάλματος ειδεικά για το σύνολο δεδομένων υποχρεωτικά πρέπει να χρησιμοποιηθεί \en{MarginLoss} το (όπως το ορίσαμε σε προηγούμενες μεθόδους) ενώ για τα υπόλοιπα (όπου έχουμε μια κλάση πρόβλεψης) υπάρχει η δυνατότητα επιλογής ανάμεσα σε αυτό και στο \en{CategoricalCrossEntropyLoss}.\par

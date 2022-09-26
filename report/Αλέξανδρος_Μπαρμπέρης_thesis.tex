@@ -53,6 +53,14 @@
 
 % Prevent placing floats before a section.
 \usepackage[section]{placeins}
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother
+
 % Line spacing
 % 1.2 spacing
 \renewcommand{\baselinestretch}{1.2}
