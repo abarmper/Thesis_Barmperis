@@ -129,9 +129,9 @@
 
 \subsection{Παραλλαγές Δυναμικού Αλγορίθμου Δρομολόγησης}
 
-Στο πειραματικό μέρος που ακολουθεί το παρόν κεφάλαιο, πειραματιστήκαμε με ορισμένες παραλλαγές του αλγορίθμου αυτού προκειμένου να εξετάσουμε τη σημασία του αλγορίθμου δρομολόγησης. Πιο αναλυτικά, κατασκευάσαμε σε αδρές γραμμές δύο νέους αλγορίθμους που δε χρησιμοποιούν τον επαναληπτικό αλγόριθμο δρομολόγησης αλλά χρησιμοποιούν έναν παραπλήσιο, ταχύ αλγόριθμο δρομολόγησης. Τους αλγορίθμους αυτούς τους ονομάζουμε \en{Argmax Rooting} και \en{Max Rooting}. Τους παρουσιάζουμε παρακάτω με την σειρά που τους αναφέραμε.
+Στο πειραματικό μέρος που ακολουθεί το παρόν κεφάλαιο, πειραματιστήκαμε με ορισμένες παραλλαγές του αλγορίθμου αυτού προκειμένου να εξετάσουμε τη σημασία του αλγορίθμου δρομολόγησης. Πιο αναλυτικά, κατασκευάσαμε σε αδρές γραμμές δύο νέους αλγορίθμους που δε χρησιμοποιούν τον επαναληπτικό αλγόριθμο δρομολόγησης αλλά χρησιμοποιούν έναν παραπλήσιο, ταχύ αλγόριθμο δρομολόγησης. Τους αλγορίθμους αυτούς τους ονομάζουμε \en{Argmax Routing} και \en{Max Routing}. Τους παρουσιάζουμε παρακάτω με την σειρά που τους αναφέραμε.
 
-\subsubsection{Αλγόριθμος \en{Argmax Scaled Rooting} και \en{Argmax Rooting}}
+\subsubsection{Αλγόριθμος \en{Argmax Scaled Routing} και \en{Argmax Routing}}
 
 Ο παρόν αλγόριθμος σκοπό έχει να εξετάσει αν υψηλές επιδόσεις επιτυγχάνονται με την επιλογή μόνο μιας κάψουλας παιδί (κάψουλας επιπέδου $l$) για δρομολόγηση στην εκάστοτε κάψουλα του επόμενου επιπέδου. Όπως θα φανεί από τα πειραματικά αποτελέσματα, δεν απαιτείται ο γραμμικός συνδυασμός των ψήφων για τη συγκρότηση των διανυσμάτων του επόμενου επιπέδου. Η επιλογή ενός \textquote{εκπρόσωπου} για κάθε κάψουλα επιπέδου $(l+1)$ με κριτήριο το ποια ψήφος για την κάψουλα έχει το μεγαλύτερο βάρος δρομολόγησης θα δούμε στη συνέχεια πως είναι μια αποδοτική μέθοδος δρομολόγησης.\par
 
@@ -141,7 +141,7 @@
 
 \en{
 \begin{algorithm}[H]
-    \caption{\gr{Αλγόριθμος} \en{Argmax Scaled Rooting}}\label{alg:dynam_argmax_scaled_routing}
+    \caption{\gr{Αλγόριθμος} \en{Argmax Scaled Routing}}\label{alg:dynam_argmax_scaled_routing}
     \begin{algorithmic}[1]
         \Function{Argmax Scaled Routing}{$\hat{u}_{j|i}, r, l$}
         \Initialize_gr{$\forall$ \gr{κάψουλα} $i$ $\in$ \gr{επίπεδο} $l$ \gr{και κάψουλα} $j \in$ \gr{επίπεδο} $(l+1)$: $b_{ij} \gets 0$}
@@ -164,7 +164,7 @@
 
 \en{
 \begin{algorithm}[H]
-    \caption{\gr{Αλγόριθμος} \en{Argmax Rooting}}\label{alg:dynam_argmax_routing}
+    \caption{\gr{Αλγόριθμος} \en{Argmax Routing}}\label{alg:dynam_argmax_routing}
     \begin{algorithmic}[1]
         \Function{Argmax Routing}{$\hat{u}_{j|i}, r, l$}
         \Initialize_gr{$\forall$ \gr{κάψουλα} $i$ $\in$ \gr{επίπεδο} $l$ \gr{και κάψουλα} $j \in$ \gr{επίπεδο} $(l+1)$: $b_{ij} \gets 0$}
@@ -182,12 +182,12 @@
     \end{algorithm}
 }
 
-\subsubsection{Αλγόριθμος \en{Max Rooting}}
+\subsubsection{Αλγόριθμος \en{Max Routing}}
 Ο αλγόριθμος αυτός αποτελεί μια ακραία εκδοχή του αλγορίθμου δρομολόγησης με μηδενικό αριθμό επαναλήψεων. Μέσω αυτού, εξετάζουμε την περίπτωση όπου ο δυναμικός, επαναληπτικός αλγόριθμος δρομολόγησης (Αλγόριθμος \ref{alg:dynam_routing}) δεν έχει κανένα ρόλο στη διαμόρφωση των καψουλών επιπέδου $(l+1)$. Συγκρίνοντας τις επιδόσεις, μπορούμε να κρίνουμε την απόδοση του αργού, δυναμικού αλγορίθμου \ref{alg:dynam_routing} σε εργασίες ταξινόμησης. Ο αλγόριθμος που εξετάζουμε, απλώς επιλέγει από τις ψήφους της κάθε κάψουλας επιπέδου $(l+1)$ την κάψουλα με το μεγαλύτερο μήκος και δρομολογεί αυτήν στο επόμενο επίπεδο.
 
 \en{
 \begin{algorithm}[H]
-    \caption{\gr{Αλγόριθμος} \en{Max Rooting}}\label{alg:dynam_max_routing}
+    \caption{\gr{Αλγόριθμος} \en{Max Routing}}\label{alg:dynam_max_routing}
     \begin{algorithmic}[1]
         \Function{Max Routing}{$\hat{u}_{j|i}, l$}
           \State $\forall$ \gr{κάψουλα} $j$ $\in$ \gr{επίπεδο} $(l+1)$: $v_j \gets max_i(\hat{u}_{j|i})$ \label{op:special_max_method1}
@@ -458,7 +458,7 @@
     \Procedure{Main}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
-      \State $\textbf{R}^L \gets$ \Call{ComputeRootingCoefficients}{$A^L$}
+      \State $\textbf{R}^L \gets$ \Call{ComputeRoutingCoefficients}{$A^L$}
       \State $\forall j \in \Omega_{L+1}: S_j^{L+1} \gets (\textbf{R}_j^L + b_j^L) \times V_j^L$ \Comment{Equiv.: $S_{jk}^{L+1} \gets \sum_i^{n^L} (\textbf{R}_{ji}^L + b_{ji}^L) \ast V_{jik}^L$}
       \State $\forall j \in \Omega_{L+1}: C_j^{L+1} \gets squash(S_j^{L+1})$
       \State \Return $C^{L+1}$ \Comment{Output: $C^{L+1} \in  \Re^{n^{L+1} \times d^{L+1}}$} 
@@ -474,7 +474,7 @@
       \State \Return $A^{L}$ \Comment{Output: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
     \EndProcedure
 
-    \Procedure{ComputeRootingCoefficients}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
+    \Procedure{ComputeRoutingCoefficients}{$A^L$} \Comment{Input: $A^{L} \in \Re^{n^{L+1} \times n^{L} \times n^{L}}$}
       \State $\forall j \in \Omega_{L+1}: R_j^L \gets \sum_{i_1}^{n^L} A^L_{ji_1:}$ \Comment{Equiv.: $R_{ji_2}^L \gets \sum_{i_1}^{n^L} A^L_{ji_1i_2}$} \label{op:stupid_algo_is_sum_of_rows}
       \State $\forall i \in \Omega_{L}: \mathbf{R}_{:i}^L \gets \mathit{softmax}(R_{:i}^L)$ \Comment{Equiv.: $\mathbf{R}_{ji}^L \gets \frac{\exp(R_{ji}^L)}{\sum_j^{n^{L+1}} \exp(R_{ji}^L)}$} \label{op:stupid_algo_softmax_definition}% How to define softmax: $\mathit{softmax}(X \in \Re^{1\times n}) = $
       \State \Return $\mathbf{R}^L$ \Comment{Output: $\mathbf{R}^{L} \in \Re^{n^{L+1} \times n^{L}}$}
@@ -498,11 +498,11 @@
 
 Πλέον, είμαστε σε θέση να παρουσιάσουμε τους δικούς μας αλγορίθμους οι οποίοι έχουν περισσότερο προφανή ποιοτική ερμηνεία και μάλιστα, επιτυγχάνουν καλύτερα πειραματικά αποτελέσματα.
 
-\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RooMAV})}
+\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RoMAV})}
 
-Ο πρώτος αλγόριθμός μας που εξετάζουμε στην παρούσα ενότητα είναι αυτός της δρομολόγησης με αυτο\textendash προσοχή όπου προσθέτουμε τις ψήφους που εμφανίζουν υψηλή συμφωνία (\en{Rooting by Merged Agreeing Votes - RooMAV}). Ο αλγόριθμος αυτός, μοιάζει πολύ με τον απλοϊκό αλγόριθμο \ref{alg:method3_stupid_routing} αλλά εδώ, αντί να αθροίζουμε τις γραμμές του πίνακα προσοχής, αθροίζουμε τις προκύπτουσες αναπαραστάσεις (\en{embeddings}). \par
+Ο πρώτος αλγόριθμός μας που εξετάζουμε στην παρούσα ενότητα είναι αυτός της δρομολόγησης με αυτο\textendash προσοχή όπου προσθέτουμε τις ψήφους που εμφανίζουν υψηλή συμφωνία (\en{Routing by Merged Agreeing Votes - RoMAV}). Ο αλγόριθμος αυτός, μοιάζει πολύ με τον απλοϊκό αλγόριθμο \ref{alg:method3_stupid_routing} αλλά εδώ, αντί να αθροίζουμε τις γραμμές του πίνακα προσοχής, αθροίζουμε τις προκύπτουσες αναπαραστάσεις (\en{embeddings}). \par
 
-Η γενική ιδέα πίσω από τον αλγόριθμο \ref{alg:method3_sum_routing} φαίνεται στο σχήμα \ref{fig:method_3_architecture}. Αν και έχει δοθεί μεγάλη προσοχή στο να παρουσιαστεί ο αλγόριθμος με τον πιο σαφή τρόπο, πολλές φορές η κατανόηση του αλγορίθμου δε συνεπάγεται την αντίληψη της ποιοτικής του ερμηνείας. Για τον λόγο αυτό, κρίνεται σκόπιμη η διαισθητική παρουσίαση τόσο του αλγορίθμου 1 (\en{RooMAV}) όσο και του αλγορίθμου 2 που τον διαδέχεται. \par
+Η γενική ιδέα πίσω από τον αλγόριθμο \ref{alg:method3_sum_routing} φαίνεται στο σχήμα \ref{fig:method_3_architecture}. Αν και έχει δοθεί μεγάλη προσοχή στο να παρουσιαστεί ο αλγόριθμος με τον πιο σαφή τρόπο, πολλές φορές η κατανόηση του αλγορίθμου δε συνεπάγεται την αντίληψη της ποιοτικής του ερμηνείας. Για τον λόγο αυτό, κρίνεται σκόπιμη η διαισθητική παρουσίαση τόσο του αλγορίθμου 1 (\en{RoMAV}) όσο και του αλγορίθμου 2 που τον διαδέχεται. \par
 
 Ο αλγόριθμος \ref{alg:method3_sum_routing} αποσκοπεί στο να φιλτράρει τις ψήφους\textendash διανύσματα $V^L$ με κριτήριο το εσωτερικό τους γινόμενο (μετρική συμφωνίας) και να κατασκευάσει νέες αναπαραστάσεις (\en{embeddings}) χρησιμοποιώντας τα διανύσματα που συμφωνούν μεταξύ τους για την πόζα της εκάστοτε κάψουλας $C_j^{L+1}$. Για την αποδοτική υλοποίηση του φιλτραρίσματος δανιζόμαστε στοιχεία από τον μηχανισμό προσοχής, όπως τον παρουσιάσαμε στην ενότητα \ref{sec:transformers}. Πιο αναλυτικά, κατασκευάζουμε ένα χάρτη προσοχής (\en{attention map}) $A_j^L$ για κάθε κάψουλα $C_j^L$. Για όλους μαζί τους χάρτες αυτούς, ισχύει ότι $A^L \in [-1,1]^{n^{L+1} \times n^L \times n^L}$. Με άλλα λόγια, σε κάθε θέση $[i_1,i_2]$ ενός εξ'αυτών (για μια κάψουλα $C_j^L$) αποθηκεύεται η ομοιότητα που έχει η ψήφος $V^L_{ji_1}$ με την ψήφο $V_{ji_2}^L$.\par
 
@@ -510,9 +510,9 @@
 
 Ύστερα από τον υπολογισμό αυτό, έχουμε στη διάθεσή μας μια μήτρα με τις ίδιες διαστάσεις με τον $A^L$ αλλά με μη\textendash αρνητικά στοιχεία. Τον νέο τρισδιάστατο πίνακα αυτόν τον συμβολίζουμε ως $\prescript{+}{}{A^{L}}$ και περιέχει τους χάρτες προσοχής $\prescript{+}{}{A_j^{L}}$ με στοιχεία μη μηδενικά μόνο στα σημεία που αντιστοιχούν σε δύο κάψουλες που συμφωνούν μεταξύ τους. Με άλλα λόγια, μπορεί κανείς να φανταστεί το $\prescript{+}{}{A_j^{L}}$ σαν έναν δισδιάστατο πίνακα $[n^L \times n^L]$ (βλέπε σχήμα \ref{fig:method_3_architecture}). Ποιοτικά, κάθε γραμμή $i$ του πίνακα\footnote{Το ίδιο ισχύει και για τις στήλες αφού ο πίνακας είναι συμμετρικός.} $A_j^{L}$ περιέχει τις ομοιότητες που εμφανίζει η ψήφος $V_{ji}^L$ με όλες τις ψήφους ($V_{j:}^L$) για την κάψουλα $C_j^{L+1}$. Φιλτράροντας με τη μη\textendash γραμμική συνάρτηση, κρατάμε μόνο τις θετικές ομοιότητες. Σε τελική ανάλυση, η θέση $[1,1]$ του πίνακα $A_j^{L}$ είναι το εσωτερικό γινόμενο της ψήφου $V_{ji=1}^L$ με τον εαυτό της, η θέση $[1,2]$ και $[2,1]$ είναι το εσωτερικό γινόμενο του διανύσματος $V_{ji=1}^L$ με το $V_{ji=2}^L$ κ.ο.κ.\par
 
-Το τελευταίο κοινό βήμα των αλγορίθμων \en{RooMAV} και \en{RoWSS} (παρουσιάζεται αργότερα) είναι αυτό του υπολογισμού των νέων αναπαραστάσεων, όπως προκύπτουν από τη συνένωση των ψήφων που συμφωνούν μεταξύ τους. Ακολουθώντας και πάλι τη θεωρεία των μετασχηματισμών, οι νέες αναπαραστάσεις (συμβολίζονται με $E^L \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$) υπολογίζονται από το βεβαρημένο ανάλογα με την ομοιότητα άθροισμα των ψήφων. Ας πάρουμε για παράδειγμα τον υπολογισμό του $E^L_{ji}$. Πρόκειται για τη νέα αναπαράσταση της ψήφου $V^L_{ji}$ η οποία λαμβάνει υπόψη τα \textquote{συμφραζόμενα} (\en{context}), δηλαδή, τις άλλες ψήφους καψουλών που αναπαριστούν διαφορετικά μέρη του αντικειμένου\textendash όλου στο οποίο συμφωνούν. Ο υπολογισμός λοιπόν πραγματοποιείται προσθέτοντάς τα διανύσματα ψήφων $V^L_{j:}$ με βάρη από το διάνυσμα γραμμή $\prescript{+}{}{A_{ji:}^{L}}$ σύμφωνα με την πράξη $E^L_{ji} \gets \prescript{+}{}{A_{ji:}^{L}} \times V^L_{j:}$. Όπως είναι εμφανές, εάν η ψήφος $V^L_{ji}$ δε συμφωνεί με μια ψήφο $V^L_{ji_2}, i_2 \neq i$ για το προβλεφθέν αντικείμενο, τότε η τελευταία, δε θα ληφθεί υπόψη για τον υπολογισμό της νέας αναπαράστασης από τα συμφραζόμενα (η αντίστοιχη θέση του διανύσματος γραμμής θα είναι μηδενική).\par
+Το τελευταίο κοινό βήμα των αλγορίθμων \en{RoMAV} και \en{RoWSS} (παρουσιάζεται αργότερα) είναι αυτό του υπολογισμού των νέων αναπαραστάσεων, όπως προκύπτουν από τη συνένωση των ψήφων που συμφωνούν μεταξύ τους. Ακολουθώντας και πάλι τη θεωρεία των μετασχηματισμών, οι νέες αναπαραστάσεις (συμβολίζονται με $E^L \in \Re^{n^{L+1} \times n^{L} \times d^{L+1}}$) υπολογίζονται από το βεβαρημένο ανάλογα με την ομοιότητα άθροισμα των ψήφων. Ας πάρουμε για παράδειγμα τον υπολογισμό του $E^L_{ji}$. Πρόκειται για τη νέα αναπαράσταση της ψήφου $V^L_{ji}$ η οποία λαμβάνει υπόψη τα \textquote{συμφραζόμενα} (\en{context}), δηλαδή, τις άλλες ψήφους καψουλών που αναπαριστούν διαφορετικά μέρη του αντικειμένου\textendash όλου στο οποίο συμφωνούν. Ο υπολογισμός λοιπόν πραγματοποιείται προσθέτοντάς τα διανύσματα ψήφων $V^L_{j:}$ με βάρη από το διάνυσμα γραμμή $\prescript{+}{}{A_{ji:}^{L}}$ σύμφωνα με την πράξη $E^L_{ji} \gets \prescript{+}{}{A_{ji:}^{L}} \times V^L_{j:}$. Όπως είναι εμφανές, εάν η ψήφος $V^L_{ji}$ δε συμφωνεί με μια ψήφο $V^L_{ji_2}, i_2 \neq i$ για το προβλεφθέν αντικείμενο, τότε η τελευταία, δε θα ληφθεί υπόψη για τον υπολογισμό της νέας αναπαράστασης από τα συμφραζόμενα (η αντίστοιχη θέση του διανύσματος γραμμής θα είναι μηδενική).\par
 
-Το τελευταίο σημείο (και αυτό που διαφοροποιεί τους αλγορίθμους \en{RooMAV} και \en{RoWSS}) είναι αυτό του υπολογισμού των $C_j^{L+1}$. Στον αλγόριθμο \en{RooMAV}, απλά έχουμε ότι $C_j^{L+1} \gets \sum_i^{n^L} E^L_{ji}$. Δηλαδή, η κάψουλα $C_j^{L+1}$ προκύπτει από το άθροισμα όλων των νέων αναπαραστάσεων των ψήφων που την αφορούν. Αυτό μπορεί να φανεί σαν ένα ακόμα βήμα \textquote{φιλτραρίσματος μέσω της πολυδιάστατης σύμπτωσης} (\en{high dimensional coincidence filtering}) αφού οι ψήφοι που εμφάνιζαν μεγάλη συμφωνία μεταξύ τους αφενός έχουν νέες αναπαραστάσεις με μεγαλύτερο μήκος και αφετέρου, κατά την πρόσθεση του τελευταίου βήματος θα ενισχυθούν μεταξύ τους και θα αποσιωπήσουν τις αναπαραστάσεις με τις οποίες δε συμφωνούν. Φυσικά, κοιτώντας την ευρύτερη εικόνα, αν καμία αναπαράσταση $E^L_{ji}$ δε συμφωνεί σημαντικά με τις υπόλοιπες για μια κάψουλα $C_j^{L+1}$ τότε η κάψουλα αυτή θα έχει διάνυσμα με μικρό μέτρο.\par
+Το τελευταίο σημείο (και αυτό που διαφοροποιεί τους αλγορίθμους \en{RoMAV} και \en{RoWSS}) είναι αυτό του υπολογισμού των $C_j^{L+1}$. Στον αλγόριθμο \en{RoMAV}, απλά έχουμε ότι $C_j^{L+1} \gets \sum_i^{n^L} E^L_{ji}$. Δηλαδή, η κάψουλα $C_j^{L+1}$ προκύπτει από το άθροισμα όλων των νέων αναπαραστάσεων των ψήφων που την αφορούν. Αυτό μπορεί να φανεί σαν ένα ακόμα βήμα \textquote{φιλτραρίσματος μέσω της πολυδιάστατης σύμπτωσης} (\en{high dimensional coincidence filtering}) αφού οι ψήφοι που εμφάνιζαν μεγάλη συμφωνία μεταξύ τους αφενός έχουν νέες αναπαραστάσεις με μεγαλύτερο μήκος και αφετέρου, κατά την πρόσθεση του τελευταίου βήματος θα ενισχυθούν μεταξύ τους και θα αποσιωπήσουν τις αναπαραστάσεις με τις οποίες δε συμφωνούν. Φυσικά, κοιτώντας την ευρύτερη εικόνα, αν καμία αναπαράσταση $E^L_{ji}$ δε συμφωνεί σημαντικά με τις υπόλοιπες για μια κάψουλα $C_j^{L+1}$ τότε η κάψουλα αυτή θα έχει διάνυσμα με μικρό μέτρο.\par
 
 Σαν τελικό σχόλιο να αναφέρουμε ότι ο αλγόριθμος αυτός, όντας μη\textendash επαναληπτικός, δεν περιλαμβάνει ρητά την ανατροφοδότηση από πάνω προς τα κάτω (\en{top down feedback}). Επεξηγηματικά, να αναφέρουμε ότι η συμφωνία που μπορεί να υπάρξει στις ψήφους για μια κάψουλα $C_j^{L+1}$ δε θα επηρεάσει τη διαμόρφωση των άλλων καψουλών $C_{\grave{j}}^{L+1}$. Σημαντικός λόγος για αυτό το χαρακτηριστικό είναι ότι δεν επιβάλουμε κάποιον περιορισμό (τύπου \textquote{υπόθεσης μοναδικού πατέρα} - \en{single parent assumption}) ώστε να προκαλέσουμε ανταγωνισμό μεταξύ των καψουλών γονέων για το ποιες ψήφους θα \textquote{εξηγήσουν}. Σύμφωνα με την παρούσα υλοποίηση, το κάθε τμήμα αντικειμένου μπορεί να ανήκει σε περισότερα του ενός αντικείμενα και να συμμετέχει στη διαμόρφωση της πόζας τους.\par
 
@@ -521,13 +521,13 @@
 
 \en{
 \begin{algorithm}[H]
-  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RooMAV}) }}\label{alg:method3_sum_routing}
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 1 (Αλγόριθμος \en{RoMAV}) }}\label{alg:method3_sum_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}$
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
-    \Procedure{Main-RooMAV}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+    \Procedure{Main-RoMAV}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
       \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
@@ -562,7 +562,7 @@
 }
 
 \subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 2 (Αλγόριθμος \en{RoWSS})}
-Ο αλγόριθμος \en{Rooting by Winner of Similarity Score - RoWSS} (αλγόριθμος \ref{alg:method3_max_rooting}) μοιράζεται πολλά στοιχεία με τον αλγόριθμο \en{RooMAV} για αυτό και δε θα επαναλάβουμε την επεξήγηση των πρώτων βημάτων, παρά μόνο θα συνεχίσουμε από το σημείο στο οποίο οι δύο αλγόριθμοι διαφέρουν. Ειδικότερα, αν και και οι δύο αλγόριθμοι υπολογίζουν τις νέες αναπαραστάσεις (\en{embeddings}) $E^L$, ο αλγόριθμος \en{RoWSS} χρησιμοποιεί έναν πιο σύνθετο μηχανισμό για τη συγκρότηση των $C^{L+1}$.\par
+Ο αλγόριθμος \en{Routing by Winner of Similarity Score - RoWSS} (αλγόριθμος \ref{alg:method3_max_routing}) μοιράζεται πολλά στοιχεία με τον αλγόριθμο \en{RoMAV} για αυτό και δε θα επαναλάβουμε την επεξήγηση των πρώτων βημάτων, παρά μόνο θα συνεχίσουμε από το σημείο στο οποίο οι δύο αλγόριθμοι διαφέρουν. Ειδικότερα, αν και και οι δύο αλγόριθμοι υπολογίζουν τις νέες αναπαραστάσεις (\en{embeddings}) $E^L$, ο αλγόριθμος \en{RoWSS} χρησιμοποιεί έναν πιο σύνθετο μηχανισμό για τη συγκρότηση των $C^{L+1}$.\par
 
 Ο πιο σύνθετος μηχανισμός περιλαμβάνει τη διεργασία της \textquote{εύρεσης των δεικτών νικητών} (\en{find winner indices}). Πρόκειται ουσιαστικά για έναν μηχανισμό που στην πρώτη φάση του υπολογίζει τα σκορ ομοιότητας (\en{similarity scores}) της κάθε γραμμής, για κάθε δισδιάστατο πίνακα $A_j^L$. Το σκορ αυτό προκύπτει από την πράξη $SC_j^L \gets (\sum_{i_2}^{n^L} A^L_{j:i_2})^T$ η οποία πραγματοποιείται στη γραμμή \ref{op:method3_max_sum_of_vector_columns} του αλγορίθμου. Κατά αυτόν τον τρόπο, συνολικά, για κάθε $j$ δημιουργείται ο πίνακας $SC^L \in [-1, 1]^{n^{L+1}\times n^L}$.\par
 
@@ -580,13 +580,13 @@
     \forall j \in \Omega_{L+1}, \forall i \in \Omega_{L}: ScaledE_{ji}^L \gets E_{ji}^L \ast SoftSC^L_{ji}
   \end{equation}
   Αυτή η εκχώρηση θα λάμβανε χώρα μετά το βήμα \ref{op:method3_max_scale_embeddings} όπου θα έπρεπε να τροποποιήσουμε τη διαδικασία $NewEmb$ να επιστρέφει και τον πίνακα $SoftSC^L$.
-  \item Υπάρχει μια παραλλαγή του αλγορίθμου \en{RoWSS} που ακούει στο όνομα \en{RoWL} ο οποίος αντί για τη διαδικασία \en{FindWinnerIndexes} χρησιμοποιεί τη διαδικασία \en{FindWinnerIndexesLength}. Ουσιαστικά, πρόκειται για τη διαδικασία που πραγματοποιεί την επιλογή των εκπροσώπων όχι με κριτήριο την αθροιστική ομοιότητα γραμμής ($SC^L$) αλλά με το μήκος των διανυσμάτων αναπαράστασης ($L_2$ νόρμα). Η μόνη διαφορά στην κύρια διεργασία του αλγορίθμου είναι ότι αντί για την κλήση της διαδικασίας $FindWinnerIndexes$ με όρισμα $\prescript{+}{}{A^{L}}$ γίνεται κλήση στη διαδικασία $FindWinnerIndexesLength$ με όρισμα τη μήτρα $V^L$. Φυσικά, και εδώ υπάρχει το προαιρετικό βήμα της κλιμάκωσης των νέων αναπαραστάσεων με τα στοιχεία του πίνακα $SoftSC^L$.
-  \item Όλοι οι αλγόριθμοί μας που χρησιμοποιούν προσοχή (\en{RooMAV}, \en{RoWSS} και \en{RoWL}) υποστηρίζουν μηχανισμό προσοχής πολλών κεφαλών (\en{multi\textendash head attention}). Επειδή όμως η προσθήκη του πιο σύνθετου μηχανισμού δεν αλλάζει τη διαισθητική ερμηνεία των αντίστοιχων αλγορίθμων, η διαδικασία που υλοποιεί τον σύνθετο αυτό μηχανισμό αλλά και οι υπόλοιπες διαδικασίες που πρέπει να τροποποιηθούν ελαφρώς για να τον υποστηρίξουν παρουσιάζονται στο τέλος της ενότητας. 
+  \item Υπάρχει μια παραλλαγή του αλγορίθμου \en{RoWSS} που ακούει στο όνομα \en{RoWLS} ο οποίος αντί για τη διαδικασία \en{FindWinnerIndexes} χρησιμοποιεί τη διαδικασία \en{FindWinnerIndexesLength}. Ουσιαστικά, πρόκειται για τη διαδικασία που πραγματοποιεί την επιλογή των εκπροσώπων όχι με κριτήριο την αθροιστική ομοιότητα γραμμής ($SC^L$) αλλά με το μήκος των διανυσμάτων αναπαράστασης ($L_2$ νόρμα). Η μόνη διαφορά στην κύρια διεργασία του αλγορίθμου είναι ότι αντί για την κλήση της διαδικασίας $FindWinnerIndexes$ με όρισμα $\prescript{+}{}{A^{L}}$ γίνεται κλήση στη διαδικασία $FindWinnerIndexesLength$ με όρισμα τη μήτρα $V^L$. Φυσικά, και εδώ υπάρχει το προαιρετικό βήμα της κλιμάκωσης των νέων αναπαραστάσεων με τα στοιχεία του πίνακα $SoftSC^L$.
+  \item Όλοι οι αλγόριθμοί μας που χρησιμοποιούν προσοχή (\en{RoMAV}, \en{RoWSS} και \en{RoWLS}) υποστηρίζουν μηχανισμό προσοχής πολλών κεφαλών (\en{multi\textendash head attention}). Επειδή όμως η προσθήκη του πιο σύνθετου μηχανισμού δεν αλλάζει τη διαισθητική ερμηνεία των αντίστοιχων αλγορίθμων, η διαδικασία που υλοποιεί τον σύνθετο αυτό μηχανισμό αλλά και οι υπόλοιπες διαδικασίες που πρέπει να τροποποιηθούν ελαφρώς για να τον υποστηρίξουν παρουσιάζονται στο τέλος της ενότητας. 
 \end{itemize}
 
 \en{
 \begin{algorithm}[H]
-  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 2 (Αλγόριθμος \en{RoWSS})}}\label{alg:method3_max_rooting}
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 2 (Αλγόριθμος \en{RoWSS})}}\label{alg:method3_max_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}$
@@ -635,19 +635,19 @@
   \end{algorithm}
 }
 
-\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 3 (Αλγόριθμος \en{RoWL})}
-Πρόκειται ουσιαστικά για την παραλλαγή του αλγορίθμου \en{RoWSS} που χρησιμοποιεί τη διεργασία $FindWinnerIndexesLength$. Με άλλα λόγια, όπως προαναφέρθηκε, αλλάζει το κριτήριο επιλογής των αναπαραστάσεων - εκπροσώπων από αυτό των $SC^L$ σε αυτό του μήκους των διανυσμάτων αναπαράστασης. Ο αλγόριθμος αυτός προέκυψε φυσικά από την παρατήρηση ότι ψήφοι ($V^L_{ji}$) που έχουν μεγάλο βαθμό ομοιότητας γραμμής ($SC^L_{ji}$) έχουν και μεγάλο μήκος διανύσματος αναπαράστασης (\en{embedding} $E^L_{ji}$). Συνεπώς, επαρκές κριτήριο επιλογής εκπροσώπων είναι το μήκος τους ($L_2$ νόρμα). Όπως και στον αλγόριθμο \en{RoWSS}, η γραμμή \ref{op:method3_max_alternative_softmax_like_previous_softmax} είναι προαιρετική και σκοπό έχει να προκαλέσει ανταγονισμό μεταξύ των καψουλών γονέων. Τέλος, να αναφέρουμε ότι και εδώ υπάρχει η δυνατότητα υπολογισμού της μήτρας $SoftSC^L$ και της κλιμάκωσης των νέων αναπαραστάσεων με αυτή.
+\subsubsection{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 3 (Αλγόριθμος \en{RoWLS})}
+Πρόκειται ουσιαστικά για την παραλλαγή του αλγορίθμου \en{RoWSS} που χρησιμοποιεί τη διεργασία $FindWinnerIndexesLength$. Με άλλα λόγια, όπως προαναφέρθηκε, ο αλγόριθμος \en{Routing by Winner of Length Scores} αλλάζει το κριτήριο επιλογής των αναπαραστάσεων - εκπροσώπων από αυτό των $SC^L$ σε αυτό του μήκους των διανυσμάτων αναπαράστασης. Ο αλγόριθμος αυτός προέκυψε φυσικά από την παρατήρηση ότι ψήφοι ($V^L_{ji}$) που έχουν μεγάλο βαθμό ομοιότητας γραμμής ($SC^L_{ji}$) έχουν και μεγάλο μήκος διανύσματος αναπαράστασης (\en{embedding} $E^L_{ji}$). Συνεπώς, επαρκές κριτήριο επιλογής εκπροσώπων είναι το μήκος τους ($L_2$ νόρμα). Όπως και στον αλγόριθμο \en{RoWSS}, η γραμμή \ref{op:method3_max_alternative_softmax_like_previous_softmax} είναι προαιρετική και σκοπό έχει να προκαλέσει ανταγονισμό μεταξύ των καψουλών γονέων. Τέλος, να αναφέρουμε ότι και εδώ υπάρχει η δυνατότητα υπολογισμού της μήτρας $SoftSC^L$ και της κλιμάκωσης των νέων αναπαραστάσεων με αυτή.
 
 
 \en{
 \begin{algorithm}[H]
-  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 3 (Αλγόριθμος \en{RoWL})}}\label{alg:method3_max_len_rooting}
+  \caption{\gr{Αλγόριθμος Δρομολόγησης με Αυτο\textendash προσοχή 3 (Αλγόριθμος \en{RoWLS})}}\label{alg:method3_max_len_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}$
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
-    \Procedure{Main-RoWL}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+    \Procedure{Main-RoWLS}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $A^L \gets$ \Call{Self-Attention}{$V^L$}
       \State $\prescript{+}{}{A^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap}{$A^L$}
@@ -768,10 +768,10 @@
 
 
 
-% \subsubsection{Αλγόριθμος 1 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (Αλγόριθμος \en{Multihead RooMAV})}
+% \subsubsection{Αλγόριθμος 1 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (Αλγόριθμος \en{Multihead RoMAV})}
 \en{
 \begin{algorithm}[h]
-  \caption{\gr{Αλγόριθμος 1 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RooMAV})}}\label{alg:method3_sum_multihead_rooting}
+  \caption{\gr{Αλγόριθμος 1 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RoMAV})}}\label{alg:method3_sum_multihead_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, Wv^L \in \Re^{d^{L+1}, nh^L, d_v^L},$ \\
@@ -781,7 +781,7 @@
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
 
-    \Procedure{Main-RooMAV-Multihead}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+    \Procedure{Main-RoMAV-Multihead}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $Amh^L, Vp^L \gets$ \Call{Multi-Head Self-Attention}{$V^L$}
       \State $\prescript{+}{}{Amh^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap2}{$Amh^L$}
@@ -799,7 +799,7 @@
 % \subsubsection{Αλγόριθμος 2 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (Αλγόριθμος \en{Multihead RoWSS})}
 \en{
 \begin{algorithm}[h]
-  \caption{\gr{Αλγόριθμος 2 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RoWSS})}}\label{alg:method3_max_multihead_rooting}
+  \caption{\gr{Αλγόριθμος 2 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RoWSS})}}\label{alg:method3_max_multihead_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, Wv^L \in \Re^{d^{L+1}, nh^L, d_v^L},$\\
@@ -825,10 +825,10 @@
   \end{algorithm}
 }
 
-% \subsubsection{Αλγόριθμος 3 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (Αλγόριθμος \en{Multihead RoWL})}
+% \subsubsection{Αλγόριθμος 3 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (Αλγόριθμος \en{Multihead RoWLS})}
 \en{
 \begin{algorithm}[h]
-  \caption{\gr{Αλγόριθμος 3 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RoWL})}}\label{alg:method3_max_len_multihead_rooting}
+  \caption{\gr{Αλγόριθμος 3 με Αυτο\textendash Προσοχή Πολλών Κεφαλών (\en{Multihead RoWLS})}}\label{alg:method3_max_len_multihead_routing}
   \hspace*{\algorithmicindent} \textbf{Input} PrimaryCaps $C^L \in \Re^{n^L \times d^L}$\\
   \hspace*{\algorithmicindent} \textbf{Output} DigitCaps $C^{L+1} \in \Re^{n^{L+1} \times d^{L+1}}$\\
   \hspace*{\algorithmicindent} \textbf{Trainable Parameters} $W^L \in \Re^{n^{L+1} \times n^L \times d^L \times d^{L+1}}, Wv^L \in \Re^{d^{L+1}, nh^L, d_v^L},$\\
@@ -838,7 +838,7 @@
   \begin{algorithmic}[1]
     % \item[] % Empty, unnumbered line
 
-    \Procedure{Main-RoWL-Multihead}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
+    \Procedure{Main-RoWLS-Multihead}{$C^L$} \Comment{Input: $C^L \in  \Re^{n^L \times d^L}$} 
       \State $V^L \gets$ \Call{ComputeVotes}{$C^L$}
       \State $Amh^L, Vp^L \gets$ \Call{Multi-Head Self-Attention}{$V^L$}
       \State $\prescript{+}{}{Amh^{L}} \gets$ \Call{ComputeNonNegativeAttentionMap2}{$Amh^L$}
