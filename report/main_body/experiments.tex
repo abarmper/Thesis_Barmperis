@@ -68,7 +68,7 @@
          
          CIFAR-10 & ViT-H/14\cite{dosovitskiy2020image_is_worth_16} & 0.5 \\ 
          
-         MultiMNIST & CapsNet\cite{sabour2017dynamic} & 5.2 \\ 
+         MultiMNIST & RUCapsNet\cite{de2020introducing} & 1.8 \\ 
          
          smallNORB & Heinsen Routing\cite{heinsen2019algorithm} & 0.90 \\ 
          
@@ -116,14 +116,14 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{4}{*}{Batch Size} & 32 & 3 & 0.001 & no & 0.51 \\
             & 64 & 3 & 0.001 & no & 0.37\footnote{\gr{Σκορ πολύ κοντά στο 0.35, όπως παρουσιάζεται στο \cite{sabour2017dynamic} για τις ίδιες παραμέτρους, κάτι που πιστοποιεί την ακεραιότητα της υλοποίησής μας.}} \\
             & 32 & 3 & 0.001 & yes & 0.37 \\
             & 64 & 3 & 0.001 & yes & 0.41 \\
             \midrule
-            \multirow{6}{*}{Routing Iterations} & 64 & 1 & 0.001 & no & 0.44 \\
+            \multirow{6}{*}{Routing Iter.} & 64 & 1 & 0.001 & no & 0.44 \\
             & 64 & 1 & 0.001 & yes & 0.45 \\
             & 64 & 2 & 0.001 & no & 0.48 \\
             & 64 & 2 & 0.001 & yes & 0.35 \\
@@ -166,14 +166,14 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{4}{*}{Batch Size} & 32 & 3 & 0.001 & no & 0.54 \\
             & 64 & 3 & 0.001 & no & 0.53 \\
             & 32 & 3 & 0.001 & yes & 0.52 \\
             & 64 & 3 & 0.001 & yes & 0.51 \\
             \midrule
-            \multirow{4}{*}{Routing Iterations} & 64 & 2 & 0.001 & no & 0.53 \\
+            \multirow{4}{*}{Routing Iter.} & 64 & 2 & 0.001 & no & 0.53 \\
             & 64 & 2 & 0.001 & yes & \textbf{0.39} \\
             & 64 & 3 & 0.001 & no & 0.53 \\
             & 64 & 3 & 0.001 & yes & 0.51 \\
@@ -215,14 +215,14 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{4}{*}{Batch Size} & 32 & 3 & 0.001 & no & 0.87 \\
             & 64 & 3 & 0.001 & no & \textbf{0.68} \\
             & 32 & 3 & 0.001 & yes & 0.90 \\
             & 64 & 3 & 0.001 & yes & 0.83 \\
             \midrule
-            \multirow{4}{*}{Routing Iterations} & 64 & 2 & 0.001 & no & 0.88 \\
+            \multirow{4}{*}{Routing Iter.} & 64 & 2 & 0.001 & no & 0.88 \\
             & 64 & 2 & 0.001 & yes & 0.81 \\
             & 64 & 3 & 0.001 & no & 0.68 \\
             & 64 & 3 & 0.001 & yes & 0.83 \\
@@ -266,7 +266,7 @@
         \en{
         \begin{tabular}{c c c c c}
             \toprule
-            Experiment & Batch Size & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{4}{*}{Batch Size} & 32 & 0.001 & no & 0.92 \\
             & 64 & 0.001 & no & 0.81 \\
@@ -312,12 +312,12 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{2}{*}{Batch Size} & 32 & 3 & 0.0005 & yes & \textbf{20.60} \\
             & 64 & 3 & 0.0005 & yes & 23.96 \\
             \midrule
-            \multirow{7}{*}{Routing Iterations} & 64 & 1 & 0.001 & no & 24.64 \\
+            \multirow{7}{*}{Routing Iter.} & 64 & 1 & 0.001 & no & 24.64 \\
             & 64 & 1 & 0.001 & yes & 23.19 \\
             & 64 & 2 & 0.001 & no & 29.25* \\
             & 64 & 2 & 0.001 & yes & 26.23* \\
@@ -350,9 +350,9 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
-            \multirow{4}{*}{Routing Iterations} & 64 & 2 & 0.001 & no & 28.10 \\
+            \multirow{4}{*}{Routing Iter.} & 64 & 2 & 0.001 & no & 28.10 \\
             & 64 & 2 & 0.001 & yes & \textbf{27.46} \\
             & 64 & 3 & 0.001 & no & 29.65 \\
             & 64 & 3 & 0.001 & yes & 31.02 \\
@@ -379,9 +379,9 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-            Experiment & Batch Size & Routing Iterations & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Routing Iter. & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
-            \multirow{4}{*}{Routing Iterations} & 64 & 2 & 0.001 & no & 38.96 \\
+            \multirow{4}{*}{Routing Iter.} & 64 & 2 & 0.001 & no & 38.96 \\
             & 64 & 2 & 0.001 & yes & 37.96 \\
             & 64 & 3 & 0.001 & no & 38.06 \\
             & 64 & 3 & 0.001 & yes & 38.49 \\
@@ -407,7 +407,7 @@
         \en{
         \begin{tabular}{c c c c c}
             \toprule
-            Experiment & Batch Size & Learning Rate & Reconstruction & Test Error (\%) \\ 
+            Experiment & Batch Size & Learning Rate & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{3}{*}{Learning Rate} & 64 & 0.0005 & yes & \textbf{37.19} \\
             & 64 & 0.002 & yes & 37.60 \\
@@ -430,7 +430,7 @@
         \en{
         \begin{tabular}{c c c c c c c}
             \toprule
-            Dataset & Algorithm & Bs & r & Lr & Reconstruction & Test Error (\%) \\ 
+            Dataset & Algorithm & Bs & r & Lr & Recon. & Test Error (\%) \\ 
             \midrule
             \multirow{8}{*}{MNIST} &Classic& 64 & 3 & 0.0005 & yes & 0.41 \\
             &Argmax Scaled& 64 & 2 & 0.0005 & yes & 0.43 \\
@@ -548,7 +548,7 @@
         \en{
         \begin{tabular}{c c c c c}
             \toprule
-            Algorithm Used for Training & Algorithm Used for Testing & r & Loss (with reconstruction) & Test Error (\%)  \\ 
+            Trained on Algorithm & Tested on Algorithm & r & Total Loss & Test Error (\%)  \\ 
             \midrule
             \multirow{4}{*}{Dynamic Routing (Classic)} & Classic & 3 & 0.0007 & 0.31 \\
             & Argmax Scaled & 2 & 0.0064 & \textbf{0.30} \\
@@ -797,7 +797,7 @@
         \en{
         \begin{tabular}{c c c c c c}
             \toprule
-             Epoch T. (s) & Step T. (ms) & Param. Count & Heads & Recon. (type) & Test Error (\%) \\ 
+            Epoch T. (s) & Step T. (ms) & Param. Count & Heads & Recon. (type) & Test Error (\%) \\ 
             \midrule
             34 & 11 & 151.8k & 0 & yes (FC) &  2.2222 \\
             45 & 15 & 151.8k & 0 & yes (Decon.) &  2.0123 \\
@@ -809,7 +809,7 @@
             \midrule
             36 & 12 & 152.8k & 2 & yes (FC) &  1.7984 \\
             47 & 16 & 152.8k & 2 & yes (Decon.) &  \textbf{1.4403}\\ % lrelu: 2.0535
-            31 & 10 & 152.8k & 2 & no &  \textbf{1.5761} <<-\\ % lrelu: 2.0041
+            31 & 10 & 152.8k & 2 & no &  \textbf{1.5761} \\ % lrelu: 2.0041
             \bottomrule
         \end{tabular}
         }
@@ -836,47 +836,47 @@
         \en{
         \begin{tabular}{c c c c c c c c}
             \toprule
-            Epoch (s) & Step (ms) & Param. Count & Heads & SoftSC & ScaleEmb & Recon. (type) & Test Error (\%) \\ 
+            Epoch (s) & Step (ms) & Param. & Heads & SoftSC & ScaleEmb & Recon. & Test Error (\%) \\ 
             \midrule
-            35 & 11 & 151.8k & 0 & yes & no & yes (FC) & 1.9959 \\% 2.4074 % 9
-            34 & 11 & 151.8k & 0 & no & no & yes (FC) & 1.9095\\ % 2.0412
-            35 & 12 & 151.8k & 0 & yes & yes & yes (FC) & 3.0206 \\
-            35 & 11 & 151.8k & 0 & no & yes & yes (FC) & 2.1564 \\
+            35 & 11 & 151.8k & 0 & yes & no & FC & 1.9959 \\% 2.4074 % 9
+            34 & 11 & 151.8k & 0 & no & no & FC & 1.9095\\ % 2.0412
+            35 & 12 & 151.8k & 0 & yes & yes & FC & 3.0206 \\
+            35 & 11 & 151.8k & 0 & no & yes & FC & 2.1564 \\
 
-            45 & 15 & 151.8k & 0 & yes & no & yes (Decon.) & 1.7984 \\ %lrelu:1.8930<<-2.2675(1.8477)
-            45 & 15 & 151.8k & 0 & no & no & yes (Decon.) & 1.7407 \\%<<-2.2798lrelu:1.8354(2.3498)(2.0165)
-            46 & 15 & 151.8k & 0 & yes & yes & yes (Decon.) & 2.5885 \\
-            45 & 15 & 151.8k & 0 & no & yes & yes (Decon.) & 2.8642 \\
+            45 & 15 & 151.8k & 0 & yes & no & Decon. & 1.7984 \\ %lrelu:1.8930<<-2.2675(1.8477)
+            45 & 15 & 151.8k & 0 & no & no & Decon. & 1.7407 \\%<<-2.2798lrelu:1.8354(2.3498)(2.0165)
+            46 & 15 & 151.8k & 0 & yes & yes & Decon. & 2.5885 \\
+            45 & 15 & 151.8k & 0 & no & yes & Decon. & 2.8642 \\
 
             29 & 09 & 151.8k & 0 & yes & no & no & 2.1193 \\%lrelu:2.4403, <<-2.1193
             28 & 09 & 151.8k & 0 & no & no & no & \textbf{1.5309} \\%<<-2.7531
             29 & 10 & 151.8k & 0 & yes & yes & no & 2.3498 \\
             29 & 10 & 151.8k & 0 & no & yes & no & 2.2346 \\
             \midrule
-            37 & 12 & 152.8k & 1 & yes & no & yes (FC) & 2.0741 \\%(θέλω μικρότερο του 1.99) <<-2.7778
-            37 & 12 & 152.8k & 1 & no & no & yes (FC) & 2.1481\\%(θέλω μικρότερο του 2.04) 2.2881 <<-
-            37 & 12 & 152.8k & 1 & yes & yes & yes (FC) & 2.8848 \\
-            37 & 12 & 152.8k & 1 & no & yes & yes (FC) & 1.9218  \\
+            37 & 12 & 152.8k & 1 & yes & no & FC & 2.0741 \\%(θέλω μικρότερο του 1.99) <<-2.7778
+            37 & 12 & 152.8k & 1 & no & no & FC & 2.1481\\%(θέλω μικρότερο του 2.04) 2.2881 <<-
+            37 & 12 & 152.8k & 1 & yes & yes & FC & 2.8848 \\
+            37 & 12 & 152.8k & 1 & no & yes & FC & 1.9218  \\
 
-            48 & 16 & 152.8k & 1 & yes & no & yes (Decon.) & 2.1399\\%%(θέλω < του 1.79)\\ 2.7860 <<-
-            48 & 16 & 152.8k & 1 & no & no & yes (Decon.) & 2.8930\\%(θέλω < του 1.74) 2.8971 <<-
-            48 & 16 & 152.8k & 1 & yes & yes & yes (Decon.) & 2.2757 \\
-            48 & 16 & 152.8k & 1 & no & yes & yes (Decon.) & 2.1152 \\
+            48 & 16 & 152.8k & 1 & yes & no & Decon. & 2.1399\\%%(θέλω < του 1.79)\\ 2.7860 <<-
+            48 & 16 & 152.8k & 1 & no & no & Decon. & 2.8930\\%(θέλω < του 1.74) 2.8971 <<-
+            48 & 16 & 152.8k & 1 & yes & yes & Decon. & 2.2757 \\
+            48 & 16 & 152.8k & 1 & no & yes & Decon. & 2.1152 \\
 
             31 & 10 & 152.8k & 1 & yes & no & no & 1.6626 \\%(θέλω μικρότερο του 1.53) <<- 1.7860
             31 & 10 & 152.8k & 1 & no & no & no & 1.5679 \\%%(θέλω μικρό) 2.0041 <<-
             31 & 10 & 152.8k & 1 & yes & yes & no & 2.0370 \\
             31 & 10 & 152.8k & 1 & no & yes & no & 2.9877 \\
             \midrule
-            37 & 12 & 152.8k & 2 & yes & no & yes (FC) & 1.6626\\ %(θέλω < 1.99) 2.9712 <<-
-            37 & 12 & 152.8k & 2 & no & no & yes (FC) & 1.5844\\%(θέλω < 2.04) 2.3909 <<-
-            38 & 12 & 152.8k & 2 & yes & yes & yes (FC) & 2.8272 \\
-            37 & 13 & 152.8k & 2 & no & yes & yes (FC) & 2.8313 \\
+            37 & 12 & 152.8k & 2 & yes & no & FC & 1.6626\\ %(θέλω < 1.99) 2.9712 <<-
+            37 & 12 & 152.8k & 2 & no & no & FC & 1.5844\\%(θέλω < 2.04) 2.3909 <<-
+            38 & 12 & 152.8k & 2 & yes & yes & FC & 2.8272 \\
+            37 & 13 & 152.8k & 2 & no & yes & FC & 2.8313 \\
 
-            48 & 16 & 152.8k & 2 & yes & no & yes (Decon.) & \textbf{1.5597} \\ % <<-2.1399
-            48 & 16 & 152.8k & 2 & no & no & yes (Decon.) & 1.8807 \\ %(θέλω < του 1.74) <<- 2.2798
-            49 & 16 & 152.8k & 2 & yes & yes & yes (Decon.) & 3.4774 \\
-            49 & 16 & 152.8k & 2 & no & yes & yes (Decon.) & 2.1276  \\
+            48 & 16 & 152.8k & 2 & yes & no & Decon. & \textbf{1.5597} \\ % <<-2.1399
+            48 & 16 & 152.8k & 2 & no & no & Decon. & 1.8807 \\ %(θέλω < του 1.74) <<- 2.2798
+            49 & 16 & 152.8k & 2 & yes & yes & Decon. & 3.4774 \\
+            49 & 16 & 152.8k & 2 & no & yes & Decon. & 2.1276  \\
 
             31 & 10 & 152.8k & 2 & yes & no & no & 1.8272 \\ % 2.5720 <<- %repeat
             31 & 10 & 152.8k & 2 & no & no & no & 1.7695\\ % <<-2.7037 %repeat
@@ -908,37 +908,37 @@
         \en{
         \begin{tabular}{c c c c c c c c}
             \toprule
-            Epoch (s) & Step (ms) & Param. Count & Heads & SoftSC & ScaleEmb & Recon. (type) & Test Error (\%) \\ 
+            Epoch (s) & Step (ms) & Param. & Heads & SoftSC & ScaleEmb & Recon. & Test Error (\%) \\ 
             \midrule
-            34 & 11 & 151.8k & 0 & yes & no & yes (FC) &  2.3992 \\% 
-            34 & 11 & 151.8k & 0 & no & no & yes (FC) & 2.2757 \\
-            35 & 12 & 151.8k & 0 & yes & yes & yes (FC) & 2.2881 \\
-            35 & 11 & 151.8k & 0 & no & yes & yes (FC) & 2.2593 \\
+            34 & 11 & 151.8k & 0 & yes & no & FC &  2.3992 \\% 
+            34 & 11 & 151.8k & 0 & no & no & FC & 2.2757 \\
+            35 & 12 & 151.8k & 0 & yes & yes & FC & 2.2881 \\
+            35 & 11 & 151.8k & 0 & no & yes & FC & 2.2593 \\
 
-            45 & 15 & 151.8k & 0 & yes & no & yes (Decon.) & 2.5103 \\ % <<-2.5597
-            45 & 15 & 151.8k & 0 & no & no & yes (Decon.) & 1.7613 \\% <<-2.0535
-            46 & 15 & 151.8k & 0 & yes & yes & yes (Decon.) & 2.3868 \\
-            45 & 15 & 151.8k & 0 & no & yes & yes (Decon.) 2.2263 \\
+            45 & 15 & 151.8k & 0 & yes & no & Decon. & 2.5103 \\ % <<-2.5597
+            45 & 15 & 151.8k & 0 & no & no & Decon. & 1.7613 \\% <<-2.0535
+            46 & 15 & 151.8k & 0 & yes & yes & Decon. & 2.3868 \\
+            45 & 15 & 151.8k & 0 & no & yes & Decon. & 2.2263 \\
 
             29 & 09 & 151.8k & 0 & yes & no & no & 1.7942\\% 2.0658 <<-
             28 & 09 & 151.8k & 0 & no & no & no & 1.6831\\% 1.8107 <<-
             29 & 10 & 151.8k & 0 & yes & yes & no & 2.2675 \\% 20.5
             29 & 10 & 151.8k & 0 & no & yes & no & 2.5597 \\% 20.75
 
-            37 & 12 & 152.8k & 1 & yes & no & yes (FC) & 2.4280 \\% 21.0
-            37 & 12 & 152.8k & 1 & no & no & yes (FC) & 2.0658 \\%
+            37 & 12 & 152.8k & 1 & yes & no & FC & 2.4280 \\% 21.0
+            37 & 12 & 152.8k & 1 & no & no & FC & 2.0658 \\%
 
-            48 & 16 & 152.8k & 1 & yes & no & yes (Decon.) & 2.8272 \\%
-            48 & 16 & 152.8k & 1 & no & no & yes (Decon.) & 1.8477 \\%
+            48 & 16 & 152.8k & 1 & yes & no & Decon. & 2.8272 \\%
+            48 & 16 & 152.8k & 1 & no & no & Decon. & 1.8477 \\%
 
             31 & 10 & 152.8k & 1 & yes & no & no & 2.1235 \\%
             31 & 10 & 152.8k & 1 & no & no & no & 2.1523 \\%
 
-            37 & 12 & 152.8k & 2 & yes & no & yes (FC) 2.6996 \\ % 
-            37 & 12 & 152.8k & 2 & no & no & yes (FC) & 2.1317 \\% 
+            37 & 12 & 152.8k & 2 & yes & no & FC & 2.6996 \\ % 
+            37 & 12 & 152.8k & 2 & no & no & FC & 2.1317 \\% 
 
-            48 & 16 & 152.8k & 2 & yes & no & yes (Decon.) & 2.2058 \\ % <<-2.7160
-            48 & 16 & 152.8k & 2 & no & no & yes (Decon.) & \textbf{1.5967}\\ %2.2675 <<-
+            48 & 16 & 152.8k & 2 & yes & no & Decon. & 2.2058 \\ % <<-2.7160
+            48 & 16 & 152.8k & 2 & no & no & Decon. & \textbf{1.5967}\\ %2.2675 <<-
 
             31 & 10 & 152.8k & 2 & yes & no & no & \textbf{1.5021}\\% 2.2099 <<- 
             31 & 10 & 152.8k & 2 & no & no & no & 2.1276\\%
@@ -963,7 +963,7 @@
         \en{
         \begin{tabular}{c c c}
             \toprule
-            Reconstruction  & Recon. (type) & Test Error (\%) \\ 
+            Scaling Factor  & Recon. (type) & Test Error (\%) \\ 
             \midrule
             0.2 & yes (Decon.) &  \textbf{1.5597} \\
             0.02 &  yes (Decon.) &  2.3004 \\
@@ -1105,17 +1105,48 @@
             \toprule
             Algorithm & SoftSC & Heads & Param. Count & Reconstruction & Test Error (\%) \\ 
             \midrule
-            RoMAV & - & 2 & 162.7 & yes (Decon.) & \textbf{1.4403} \\
-            RoMAV & - & 2 & 162.7 & no & 1.5769 \\
-            RoWSS & yes & 2 & 162.7 & yes (Decon.) & 1.5309 \\
-            RoWSS & no & 2 & 162.7 & no & 1.5597 \\
-            RoWLS & no & 2 & 162.7 & yes (Decon.) & 1.5967 \\
-            RoWLS & yes & 2 & 162.7 & no & 1.5021 \\
+            RoMAV & - & 2 & 152.8 & yes (Decon.) & \textbf{1.4403} \\
+            RoMAV & - & 2 & 152.8 & no & 1.5761 \\
+            RoWSS & yes & 2 & 152.8 & yes (Decon.) & 1.5309 \\
+            RoWSS & no & 2 & 152.8 & no & 1.5597 \\
+            RoWLS & no & 2 & 152.8 & yes (Decon.) & 1.5967 \\
+            RoWLS & yes & 2 & 152.8 & no & 1.5021 \\
             \bottomrule
         \end{tabular}
         }
     \end{center}
     \caption[]{\label{tab:method_3_SmallNORB_final}Επίδωση των αλγορίθμων της μεθόδου 3 στο σύνολο δεδομένων \en{SmallNORB}, όταν χρησιμοποιούνται 30 εποχές για την εκπαίδευση του μοντέλου με μέγεθος δέσμης 8.} 
+\end{table}
+
+\subsubsection{Συγκεντρωτικά Αποτελέσματα για Όλα τα Σύνολα Δεδομένων}
+Για λόγους πληρότητας, παρουσιάζουμε στον πίνακα \ref{tab:method_3_all} για κάθε σύνολο δεδομένων τον αλγόριθμο της τρίτης μεθόδου που εμφάνισε τα καλύτερα αποτελέσματα (με και χωρίς ανακατασκευαστή).
+
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c c c c c}
+            \toprule
+            Dataset & Algorithm & SoftSC & Heads & Parameters (k) & Recon. & Test Error (\%) \\ 
+            \midrule
+            SmallNORB & RoMAV & - & 2 & 152.8 & Decon. & \textbf{1.4403} \\
+            SmallNORB & RoMAV & - & 2 & 152.8 & no & 1.5761 \\
+            \midrule
+            MNIST & RoMAV & - & 2 & 162.7 & FC & \textbf{0.30} \\
+            MNIST & RoWLS & yes & 2 & 162.7 & no & 0.34 \\
+            \midrule
+            Multi-MNIST & RoMAV & - & 2 & 156.9 & Decon. & \textbf{6.2115} \\
+            Multi-MNIST & RoMAV & - & 2 & 156.9 & no & 6.2615 \\
+            \midrule
+            Fashion-MNIST & RoMAV & - & 2 & 162.7 & Decon. & 8.22 \\
+            Fashion-MNIST & RoMAV & - & 2 & 162.7 & no & \textbf{7.84} \\
+            \midrule
+            CIFAR10 & RoMAV & - & 2 & 265.2 & Decon. & \textbf{28.85} \\
+            CIFAR10 & RoMAV & - & 2 & 265.2 & no & 29.74 \\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:method_3_all}Οι επιδώσεις των καλύτερων αλγορίθμων της μεθόδου 3 για το κάθε σύνολο δεδομένων.} 
 \end{table}
 
 \subsection{Ειδικά Πειράματα}
@@ -1180,7 +1211,7 @@
         \en{
         \begin{tabular}{c c c c c c c}
             \toprule
-            radical & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            radical & Routing Iter. & small & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
             - & 0 & yes & 670.5k & 28 & 9 &  \textbf{7.11} \\
             - & 0 & no & 670.5k & 102 & 34 &  8.65 \\
@@ -1202,7 +1233,7 @@
 
 Από τα αποτελέσματα, για την κάθε παράμετρο μπορούμε να κάνουμε τις εξής παρατηρήσεις:
 \begin{itemize}
-    \item Αναφορικά με την παράμετρο \en{\textit{small}}, παρατηρούμε ότι επιβαρύνει σημαντικά το υπολογιστικό κόστος ενώ η επίδοση δεν βελτιώνεται.
+    \item Αναφορικά με την παράμετρο \en{\textit{small}}, παρατηρούμε ότι επιβαρύνει σημαντικά το υπολογιστικό κόστος ενώ η επίδοση χειροτερεύει.
     \item Η παράμετρος \en{\textit{radical}} εν γένη δεν βοηθάει στην επίδοση. Συνεπώς, η ενημέρωση των καψουλών του τελευταίου επιπέδου δεν οφελεί να γίνεται απευθείας με βάση τις ψήφους αλλά με βάση την απόσταση των ψήφων από τις εκάστοτε κάψουλες \en{DigitCaps}. Η παράμετρος αυτή έχει πιο άμεση ερμηνεία όταν παράγουμε ξεχωριστά διανύσματα \en{DigitCaps} για κάθε παράδειγμα εισόδου\footnote{Τα πειράματα ήταν αρκετά χρονοβόρα και δεν περιλαμβάνονται στην μελέτη μας.}. 
     \item Ο αριθμός των επαναλήψεων δεν προσφαίρει κάπια βελτίωση όταν γίνεται μεγάλος. Φαίνεται ότι όσο αυξάνουμε τις επαναλήψεις ο αλγόριθμος δυσκολεύεται όλο και περισσότερο να συγκλίνει. Αυτό διότι τα βάρη που παράγουν τις ψήφους (που στη συνέχεια συγκρίνονται με τα \en{DigitCaps} για να προκύψει η πρόβλεψη) δεν μπορούν να εκπαιδευτούν γρήγορα σε στόχους που συνεχώς αλλάζουν. Εντυπωσιακό είναι ότι ο χρόνος εκτέλεσης δεν αυξάνεται. Αυτό διότι η μια επανάληψη παραπάνω γίνεται σε επίπεδο δέσμης και όχι σε κάθε παράδειγμα ξεχωριστά. Συνεπώς, η επιβάρυνση είναι αμελητέα. 
 \end{itemize}
@@ -1213,12 +1244,12 @@
 \begin{table}[h]
     \begin{center}
         \en{
-        \begin{tabular}{c c c c c c c}
+        \begin{tabular}{c c c c c}
             \toprule
-            non reduced votes & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            non reduced votes & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
-            no & 1 & yes & 670.5k & 28 & 9 &  15.03 \\
-            yes (default) & 1 & yes & 670.5k & 28 &  9 & 9.04 \\
+            no & 670.5k & 28 & 9 &  15.03 \\
+            yes (default) & 670.5k & 28 &  9 & 9.04 \\
             \bottomrule
         \end{tabular}
         }
@@ -1235,12 +1266,12 @@
 \begin{table}[h]
     \begin{center}
         \en{
-        \begin{tabular}{c c c c c c c}
+        \begin{tabular}{c c c c c}
             \toprule
-            softmax & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            softmax  & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
-            no & 1 & yes & 670.5k & 28 & 9 &  9.04 \\
-            yes & 1 & yes & 670.5k & 28 &  9 & \textbf{7.19} \\
+            no & 670.5k & 28 & 9 &  9.04 \\
+            yes & 670.5k & 28 &  9 & \textbf{7.19} \\
             \bottomrule
         \end{tabular}
         }
@@ -1257,12 +1288,12 @@
 \begin{table}[h]
     \begin{center}
         \en{
-        \begin{tabular}{c c c c c c c}
+        \begin{tabular}{c c c c c}
             \toprule
-            similarity & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            similarity & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
-            no (default) & 1 & yes & 670.5k & 28 & 9 & 9.04 \\
-            yes & 1 & yes & 670.5k & 28 &  9 &  \textbf{7.95} \\
+            no (default) & 670.5k & 28 & 9 & 9.04 \\
+            yes & 670.5k & 28 &  9 &  \textbf{7.95} \\
             \bottomrule
         \end{tabular}
         }
@@ -1281,12 +1312,12 @@
 \begin{table}[h]
     \begin{center}
         \en{
-        \begin{tabular}{c c c c c c c}
+        \begin{tabular}{c c c c c}
             \toprule
-            thetas & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            thetas  & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
-            1.0 (default) & 1 & yes & 670.5k & 28 & 9 & 9.04 \\
-            1.0, 0.2 & 1 & yes & 670.5k & 28 &  9 &  \textbf{8.89} \\
+            1.0 (default) &  670.5k & 28 & 9 & 9.04 \\
+            1.0, 0.2 &  670.5k & 28 &  9 &  \textbf{8.89} \\
             \bottomrule
         \end{tabular}
         }
@@ -1303,12 +1334,12 @@
 \begin{table}[h]
     \begin{center}
         \en{
-        \begin{tabular}{c c c c c c c}
+        \begin{tabular}{c c c c c}
             \toprule
-            reconstruction & Routing Iter. & small & Param. Count & Epoch T. (s) & Step T. (ms)  & Test Error (\%) \\ 
+            reconstruction & Param. Count & Epoch (s) & Step (ms)  & Test Error (\%) \\ 
             \midrule
-            no (default) & 1 & yes & 670.5k & 39 & 13 & 9.04 \\
-            yes & 1 & yes & 670.5k & 39 &  13 &  \textbf{11.99} \\
+            no (default) &  670.5k & 39 & 13 & 9.04 \\
+            yes &  670.5k & 39 &  13 &  \textbf{11.99} \\
             \bottomrule
         \end{tabular}
         }
@@ -1342,17 +1373,21 @@
             \multirow{3}{*}{MNIST} & 1 & 64 & 0.53 \\
             & 2 & 64 & 0.68 \\
             & 3 & 64 & \textbf{0.52} \\
+            \midrule
             \multirow{3}{*}{Fashion-MNIST} & 1 & 64 & 9.51 \\
             & 2 & 64 & 9.45 \\
             & 3 & 64 & \textbf{9.51} \\
-            \multirow{3}{*}{MultiMNIST} & 1 & 64 & 22.954* \\
+            \midrule
+            \multirow{3}{*}{MultiMNIST} & 1 & 64 & \textbf{22.954}* \\
             & 2 & 64 & 28.024* \\
             & 3 & 64 & 27.058* \\
+            \midrule
             \multirow{3}{*}{SmallNORB} & 1 & 64 & \textbf{5.30} \\
             & 2 & 8 & 5.317 \\
             & 3 & 8 & 6.494 \\
+            \midrule
             \multirow{3}{*}{CIFAR10} & 1 & 64 & 34.93 \\
-            & 2 & 32 & 34.555 \\
+            & 2 & 32 & \textbf{34.555} \\
             & 3 & 32 & 36.255 \\
 
             \bottomrule
@@ -1371,21 +1406,222 @@
 \section{Σύγκριση Πειραματικών Αποτελεσμάτων Μεθόδων}
 Έχωντας ολοκληρώσει όλα τα πειράματα για την κάθε μέθοδο ξεχωριστά και έχοντας συγκρίνει τους αλγορίθμους της κάθε μεθόδου μεταξύ τους, είμαστε πλέον σε θέση να συγκρίνουμε τους καλύτερους δικούς μας αλγορίθμους με αυτούς που βρίσκονται στη διεθνή βιβλιογραφία και εμφανίζουν την καλύτερη επίδοση την στιγμή της συγγραφής του έργου. Δεδομένου ότι ασχολούμαστε με μια ειδική κατηγορία τεχνητών νευρωνικών δικτύων με συγκεκριμένες ιδιότητες, θα γίνει σύγκριση και με τις πιο αξιόλογες υλοποιήσεις της εν λόγο τεχνολογίας.\par
 
+Σε κάθε υποενότητα, πραγματοποιούμε τη σύγκριση σε καθένα πρόβλημα ξεχωριστά. Ο τρόπος με τον οποίο παρουσιάζουμε τα αποτελέσματα είναι ο εξής: 
+\begin{enumerate}
+    \item Στην ανώτερη βαθμίδα παρουσιάζονται τα αποτελέσματα των δικών μας αλγορίθμων.
+    \item Στην δεύτερη βαθμίδα παρουσιάζονται τα αποτελέσματα των \textquote{βασικών} αλγορίθμων από την ομάδα του \en{Hinton} αλλά και αυτά που αφορούν το έργο \cite{mazzia2021efficient} από το οποίο εμπνεύστηκε η μέθοδος 3.
+    \item Στην τρίτη βαθμίδα καταγράφονται οι επιδόσεις άλλων υλοποιήσεων των νευρωνικών δικτύων από κάψουλες που βρίσκονται στην βιβλιογραφία.
+    \item Τέλος, στην κατώτερη βαθμίδα παρουσιάζεται το μοντέλο με την καλύτερη επίδοση για το συγκεκριμένο \en{dataset}.\par
+\end{enumerate}
+
 Πρωτού ξεκινήσουμε την ανάλυση για κάθε σύνολο δεδομένων ξεχωριστά, είναι σημαντικό να επαναλάβουμε ότι αν εξαιρέσουμε την τρίτη μέθοδο (και ως ένα βαθμό την τέταρτη) οι υπόλοιπες από τις μεθόδους μας δεν έχουν σκοπό την επίτευξη καλύτερης επίδοσης αλλά την διευκόλυνση στην κατανόηση του τρόπου λειτουργίας των νευρωνικών δικτύων με κάψουλες. Επίσης, διευκολύνουν στην σύγκριση με τις μεθόδους μας αφού μέσα από τον πειραματισμό τους αποκτήσαμε χρήσιμες μετρικές που ήταν αδύνατο να αποκομιστούν διαφορετικά. Ακόμα, για τις μεθόδους που προτείνουμε εμείς, τόσο η αναζήτηση στον χώρο παραμέτρων όσο και η εκπαίδευση (από πλευράς χρόνου) δεν είναι πλήρεις και καλύτερες επιδόσεις μπορούν να προκύψουν με μια πιο εκτενής πειραματική μελέτη. \par
+
+
 
 
 \subsection{Σύνολο Δεδομένων \en{SmallNORB}}
 Το σύνολο δεδομένων \en{SmallNORB} αποτελεί μια χαρακτηριστική δοκιμασία για τα νευρωνικά δίκτυα με κάψουλες αφού μέσω αυτού δοκιμάζεται η ικανότητά τους για αναγνώριση αντικειμένων από διαφορετικές οπτικές γωνίες. Ας μην ξεχνάμε ότι η αποδοτική αναγνώριση τέτοιων εικόνων είναι πρωταρχικός στόχος της συγκεκριμένης τεχνολογίας.\par
 
-Ο αριθμός των παραμέτρων δεν μαρτυρά πάντα την υπολογιστική πολυπλοκότητα του δικτύου, ειδεικά στην περίπτωσή μας όποι χρησιμοποιούνται επαναληπτικοί αλγόριθμοι δρομολόγησης. Για τον σκοπό αυτό, ειδεικά για το συγκεκριμένο πρόβλημα κάναμε επιπλέον μετρήσεις του αριθμού των πράξεων κινητής υποδιαστολής που πραγματοποιούνται το δευτερόλεπτο, για ένα \en{batch} μεγέθους 1. Για να μετριάσουμε την υπολογιστική επιβάρυνση που προστίθεται κατά την αρχικοποίηση των μητρώων (\en{tensors}), όλες οι μετρήσεις έγιναν για μέγεθος δέσμης ίσο με 8 και το αποτέλεσμα το διαιρούμε με το 8 για να λάβουμε την τιμή \en{FLOPs per 1 batch}. Προφανώς, επειδή οι μετρήσεις μας αφορούν το κόστος πρόβλεψης (\en{inference}), στις μετρήσεις δεν περιλαμβάνεται το υπολογιστικό κόστος του αποκωδικοποιητή (όπου χρησιμοποιείται).
+Ο αριθμός των παραμέτρων δεν μαρτυρά πάντα την υπολογιστική πολυπλοκότητα του δικτύου, ειδεικά στην περίπτωσή μας όποι χρησιμοποιούνται επαναληπτικοί αλγόριθμοι δρομολόγησης. Για τον σκοπό αυτό, ειδεικά για το συγκεκριμένο πρόβλημα κάναμε επιπλέον μετρήσεις του αριθμού των πράξεων κινητής υποδιαστολής που πραγματοποιούνται το δευτερόλεπτο, για ένα \en{batch} μεγέθους 1. Για να μετριάσουμε την υπολογιστική επιβάρυνση που προστίθεται κατά την αρχικοποίηση των μητρώων (\en{tensors}), όλες οι μετρήσεις έγιναν για μέγεθος δέσμης ίσο με 8 και το αποτέλεσμα το διαιρούμε με το 8 για να λάβουμε την τιμή \en{FLOPs per 1 batch}. Προφανώς, επειδή οι μετρήσεις μας αφορούν το κόστος πρόβλεψης (\en{inference}), στις μετρήσεις δεν περιλαμβάνεται το υπολογιστικό κόστος του αποκωδικοποιητή (όπου χρησιμοποιείται).\par
+
+Στον πίνακα \ref{tab:all_methods_comparison_smallnorb} παρουσιάζονται οι επιδώσεις τόσο των δικών μας μεθόδων όσο και μεθόδων που συναντώνται στην βιβλιογραφία. 
+
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c c c}
+            \toprule
+            Algorithm (Method) & Recon. & Parameters (K) & $FLOPs|_{1 batch}$ (\en{G}) & SmallNORB (\%) \\ 
+            \midrule
+            Argmax Scaled (1)  & yes & 6816 & 0.705 & 16.49 \\
+            RoMAV (3)  & yes & 152.8 &  0.0473 &  \textbf{1.44} \\
+            RoMAV (3)  & no & 152.8 &  0.0473 &  1.58 \\
+            SOM-Based Var.1 (4) & no & 670.5 & 0.889 & 5.30\\
+            Our Dynamic (1) & yes & $6800$ & $0.7$ & 17.01\\
+            Our EM-Routing (2) & no & $310$ & $0.675$  & 14.04\\
+            \midrule
+            Dynamic \cite{sabour2017dynamic} & yes & $6800$ & $0.7$ & 2.7\\
+            EM-Routing \cite{hinton2018matrix} & no & $310$ & $0.675$  & \textbf{1.8}\\
+            Efficient-CapsNet \cite{mazzia2021efficient} & yes & 151 & 0.06 & 2.54\\
+            \midrule
+            VB-Routing \cite{De_Sousa_Ribeiro_Leontidis_Kollias_2020_Capsule_Routing} & no & 169 & - & 1.6\\
+            RU-Routing \cite{de2020introducing} & no & 140 & - & \textbf{1.4}\\
+            DC-Net \cite{phaye2018dense} & yes & 11800 & - & 5.57\\
+            DC-Net++ \cite{phaye2018dense} & yes & 11800 & - & 4.66\\
+            FREM \cite{zhang2018fast} & no & 1200 & - & 2.2\\
+            FRMS \cite{zhang2018fast} & no & 1200 & - & 2.6\\
+            STAR-Caps \cite{NEURIPS2019_cf040fc7_star_caps} & no & 318 & - & 1.8\\
+
+            \midrule % Best
+            Heinsen Routing\cite{heinsen2019algorithm} & no & 272 & - & \textbf{0.9}\\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:all_methods_comparison_smallnorb}Σύγκριση της επίδοσης των μεθόδων μας με αυτές στην βιβλιογραφία για το σύνολο δεδομένων \en{SmallNORB}.} 
+\end{table}
 
 
 \subsection{Σύνολο Δεδομένων \en{MNIST}}
+
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c c}
+            \toprule
+            Algorithm (Method) & Recon. & Parameters (K) & MNIST (\%) \\ 
+            \midrule
+            Argmax Scaled (1)  & yes & 6816  & 0.37 \\
+            RoMAV (3)  & yes & 162.7 & \textbf{0.3} \\
+            RoWLS (3)  & no & 162.7 &  0.34 \\
+            SOM-Based Var.3 (4) & no & 670 & 0.52 \\
+            Our Dynamic (1) & yes & 6800 &  0.31\\
+            \midrule
+            Dynamic \cite{sabour2017dynamic} & yes &  6800 & 0.25\\
+            Dynamic \cite{sabour2017dynamic} & no &  6800 & 0.35\\
+            EM-Routing \cite{hinton2018matrix} & no & 310  & 0.44\\
+            Efficient-CapsNet \cite{mazzia2021efficient} & yes & 161 & \textbf{0.26}\\
+            \midrule
+            VB-Routing \cite{De_Sousa_Ribeiro_Leontidis_Kollias_2020_Capsule_Routing} & no & 169 & 0.3\\
+            RU-Routing \cite{de2020introducing} & no & > 440 &  \textbf{0.28}\\
+            DC-Net \cite{phaye2018dense} & yes & 11800 &  0.28 \\
+            DC-Net++ \cite{phaye2018dense} & yes & 11800 &  0.29 \\
+            FREM \cite{zhang2018fast} & no & 1200 & 0.38\\
+            % FRMS \cite{zhang2018fast} & no & 1200 &  - \\
+            STAR-Caps \cite{NEURIPS2019_cf040fc7_star_caps} & no & 281 & 0.43\\
+            DA-CapsNet \cite{huang2020capsnet} & yes & 7000 & 0.47\\
+            HitNet \cite{deliege2018_hitnet}& yes& >= 8000 &0.32\\
+            Nair \cite{nair2021pushing_Nair}& no & 8200 & 0.5\\
+            DeepCaps \cite{rajasegaran2019deepcaps}& yes & 7220 & 0.28\\
+
+            \midrule % Best
+            CNN Ensemble \cite{an2020ensemble} & no & $\infty$ & \textbf{0.09}\\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:all_methods_comparison_mnist}Σύγκριση της επίδοσης των μεθόδων μας με αυτές στην βιβλιογραφία για το σύνολο δεδομένων \en{MNIST}.} 
+\end{table}
+
+
+
+
 \subsection{Σύνολο Δεδομένων \en{CIFAR10}}
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c c}
+            \toprule
+            Algorithm (Method) & Recon. & Parameters (K) & CIFAR10 (\%) \\ 
+            \midrule
+            Argmax Scaled (1)  & yes & 7000  & 22.16 \\
+            RoMAV (3)  & yes & 265.2  & 28.85 \\
+            RoMAV (3)  & no & 265.2  &  29.74 \\
+            SOM-Based Var.2 (4) & no & 670 & 34.555 \\
+            Our Dynamic (1) & yes & 7000 &  \textbf{21.64}\\
+            \midrule
+            Dynamic \cite{sabour2017dynamic} & yes &  6800 & \textbf{10.6}\\
+            EM-Routing \cite{hinton2018matrix} & no & 460  & 11.9\\
+            % Efficient-CapsNet \cite{mazzia2021efficient} & yes & 161 & - \\
+            \midrule
+            VB-Routing \cite{De_Sousa_Ribeiro_Leontidis_Kollias_2020_Capsule_Routing} & no & 323 & 11.2\\
+            % RU-Routing \cite{de2020introducing} & no & > 440 &  -\\
+            DC-Net \cite{phaye2018dense} & yes & 11800 & 17.37 \\
+            DC-Net++ \cite{phaye2018dense} & yes & 11800 &  10.29 \\
+            FREM \cite{zhang2018fast} & no & 1200 & 14.3\\
+            FRMS \cite{zhang2018fast} & no & 1200 &  15.6 \\
+            STAR-Caps \cite{NEURIPS2019_cf040fc7_star_caps} & no & 281 & \textbf{8.77}\\
+            DA-CapsNet \cite{huang2020capsnet} & yes & 7000 & 14.53\\
+            HitNet \cite{deliege2018_hitnet}& yes& >= 8000 &26.70 \\
+            Nair \cite{nair2021pushing_Nair}& no & 8200 & 32.47\\
+            DeepCaps \cite{rajasegaran2019deepcaps}& yes & 7220 & 8.99\\
+            \midrule % Best
+            ViT-H/14 \cite{dosovitskiy2020image_is_worth_16} & no & $\infty$ & \textbf{0.5}\\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:all_methods_comparison_cifar10}Σύγκριση της επίδοσης των μεθόδων μας με αυτές στην βιβλιογραφία για το σύνολο δεδομένων \en{CIFAR10}.} 
+\end{table}
+
 \subsection{Σύνολο Δεδομένων \en{MultiMNIST}}
+
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c}
+            \toprule
+            Algorithm (Method) & Recon. & MultiMNIST (\%) \\ 
+            \midrule
+            Argmax Scaled (1)  & yes  & - \\
+            RoMAV (3)  & yes   & \textbf{6.2115} \\
+            RoMAV (3)  & no   &  6.2615 \\
+            SOM-Based Var.3 (4) & no & 22.954 \\
+            % Our Dynamic (1) & yes &  - \\
+            \midrule
+            Dynamic \cite{sabour2017dynamic} & yes & \textbf{5.0}\\
+            % EM-Routing \cite{hinton2018matrix} & no   & -\\
+            % Efficient-CapsNet \cite{mazzia2021efficient} & yes  & - \\
+            \midrule
+            % VB-Routing \cite{De_Sousa_Ribeiro_Leontidis_Kollias_2020_Capsule_Routing} & no & -\\
+            RU-Routing \cite{de2020introducing} & no &  1.8\\
+            % DC-Net \cite{phaye2018dense} & yes  & - \\
+            % DC-Net++ \cite{phaye2018dense} & yes  &  - \\
+            % FREM \cite{zhang2018fast} & no  & -\\
+            % FRMS \cite{zhang2018fast} & no  &  - \\
+            % STAR-Caps \cite{NEURIPS2019_cf040fc7_star_caps} & no & -\\
+            % DA-CapsNet \cite{huang2020capsnet} & yes  & -\\
+            % HitNet \cite{deliege2018_hitnet}& yes &- \\
+            % Nair \cite{nair2021pushing_Nair}& no  & -\\
+            % DeepCaps \cite{rajasegaran2019deepcaps}& yes & -\\
+            \midrule % Best
+            RU-Routing \cite{de2020introducing} & no &  1.8\\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:all_methods_comparison_multimnist}Σύγκριση της επίδοσης των μεθόδων μας με αυτές στην βιβλιογραφία για το σύνολο δεδομένων \en{MultiMNIST}.} 
+\end{table}
+
 \subsection{Σύνολο Δεδομένων \en{FashionMNIST}}
 
-
+\begin{table}[h]
+    \begin{center}
+        \en{
+        \begin{tabular}{c c c}
+            \toprule
+            Algorithm (Method) & Recon. & FashionMNIST (\%) \\ 
+            \midrule
+            Argmax Scaled (1)  & yes  & 7.00 \\
+            RoMAV (3)  & yes  & 8.22 \\
+            RoMAV (3)  & no   &  7.84 \\
+            SOM-Based Var.3 (4) & no  & 9.51 \\
+            Our Dynamic (1) & yes &  \textbf{6.94}\\
+            \midrule
+            %Dynamic \cite{sabour2017dynamic} & yes & -\\
+            %EM-Routing \cite{hinton2018matrix} & no   & -\\
+            %Efficient-CapsNet \cite{mazzia2021efficient} & yes  & - \\
+            - & -  & - \\
+            \midrule
+            VB-Routing \cite{De_Sousa_Ribeiro_Leontidis_Kollias_2020_Capsule_Routing} & no & \textbf{5.2}\\
+            %RU-Routing \cite{de2020introducing} & no &  -\\
+            DC-Net \cite{phaye2018dense} & yes  & 5.36 \\
+            DC-Net++ \cite{phaye2018dense} & yes  &  5.35 \\
+            FREM \cite{zhang2018fast} & no  & 6.2\\
+            FRMS \cite{zhang2018fast} & no  &  6.0 \\
+            %STAR-Caps \cite{NEURIPS2019_cf040fc7_star_caps} & no & -\\
+            DA-CapsNet \cite{huang2020capsnet} & yes  & 6.02\\
+            HitNet \cite{deliege2018_hitnet}& yes &7.7 \\
+            Nair \cite{nair2021pushing_Nair}& no  & 10.2\\
+            DeepCaps \cite{rajasegaran2019deepcaps}& yes & 5.54\\
+            \midrule % Best
+            Fine-Tuning DARTS\cite{tanveer2021fine} & no  & \textbf{3.09}\\
+            \bottomrule
+        \end{tabular}
+        }
+    \end{center}
+    \caption[]{\label{tab:all_methods_comparison_fashionmnist}Σύγκριση της επίδοσης των μεθόδων μας με αυτές στην βιβλιογραφία για το σύνολο δεδομένων \en{FashionMNIST}.} 
+\end{table}
 
 
 % Για κάθε dataset ξεχωριστά. Όχι νέα πειράματα.
