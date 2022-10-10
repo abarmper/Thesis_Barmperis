@@ -122,6 +122,12 @@
 % Insert pdf pages as-is in latex.
 \usepackage{pdfpages}
 
+% For reduced space between top page and chapter start
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-30pt}{40pt}
+
 
 \begin{document}
     
